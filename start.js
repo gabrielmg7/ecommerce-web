@@ -1,4 +1,4 @@
-// Este arquivo de configuração serve para trocar o ip de uma host dinâmico de forma automática.
+// Este arquivo de configuração serve para trocar o ip de uma host dinâmico de forma automática e expôr em LAN.
 // Para desabilitar, vá no package.json e altere o script:
 
 // "scripts": {
