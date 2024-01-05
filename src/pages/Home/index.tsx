@@ -4,5 +4,6 @@ import MenuBar from '../../components/MenuBar'
 export const Home = () => {
     return (
         <MenuBar/>
+
     )
 }
