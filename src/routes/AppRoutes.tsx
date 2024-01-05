@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { CadastrarCliente } from '../pages/CadastrarCliente';
 import { CadastrarProduto } from '../pages/CadastrarProduto';
 import { Carrinho } from '../pages/Carrinho';
 import { ListarClientes } from '../pages/ListarClientes';
 import { ListarProdutos } from '../pages/ListarProdutos';
 import { Home } from '../pages/Home';
+import CadastrarCliente from '../pages/CadastrarCliente';
 
 const AppRoutes = () => {
   return (
