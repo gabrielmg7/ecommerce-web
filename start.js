@@ -1,4 +1,4 @@
-// Este arquivo de configuração serve para trocar o ip de uma host dinâmico de forma automática e expôr em LAN.
+// Este arquivo de configuração serve para trocar o ip de um host dinâmico de forma automática e expôr em LAN.
 // Para desabilitar, vá no package.json e altere o script:
 
 // "scripts": {
@@ -29,7 +29,7 @@ const startServer = async () => {
   });
 
   await server.listen(); // Inicia o servidor
-  console.log(`Server running at http://${ip}:3000`);
+  console.log(`Server running at http://${ip}:5173`);
 };
 
 startServer();
