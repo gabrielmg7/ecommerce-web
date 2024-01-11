@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useMediaQuery, AppBar, Toolbar, IconButton, Button, Drawer, List, ListItem, ListItemText, Typography } from '@mui/material';
 import { useState } from 'react';
-import { AppBar, Toolbar, Typography, Button, Drawer, IconButton, useMediaQuery, List, ListItem, ListItemText } from '@mui/material';
-import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useTheme } from '@mui/material/styles';
-import CartButton from './CartButton';
+import { Link } from 'react-router-dom';
+import { useTheme } from 'styled-components';
 
 const MenuBar = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -27,7 +27,6 @@ const MenuBar = () => {
                         </IconButton>
                     ) : (
                         <>
-
                             <Button color="inherit" component={Link} to="/listar-clientes">
                                 Clientes
                             </Button>
@@ -40,7 +39,6 @@ const MenuBar = () => {
                             <Button color="inherit" component={Link} to="/logar-cliente">
                                 Entrar
                             </Button>
-                            <CartButton itemCount={0} />
                         </>
                     )}
                 </Toolbar>

@@ -3,18 +3,8 @@
 
 import { useState } from 'react';
 import { TextField, Button, Typography, Box, Grid, Avatar, Checkbox, CssBaseline, FormControlLabel, Link, Paper } from '@mui/material';
-import { ICliente, initialCliente } from '../types/entity/ICliente';
+import { ICliente, initialCliente } from '../../../types/entity/ICliente';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import LogoLight from '../components/LogoLight';
-
-const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-        email: data.get('email'),
-        password: data.get('password'),
-    });
-};
 
 function Copyright(props: any) {
     return (
@@ -126,7 +116,6 @@ const LogarCliente = () => {
                         </Grid>
                         <Copyright sx={{ mt: 5 }} />
                         <Grid container justifyContent="center" alignItems="center" sx={{ mt: 20 }}>
-                            <LogoLight />
                         </Grid>
                     </Box>
                 </Box>

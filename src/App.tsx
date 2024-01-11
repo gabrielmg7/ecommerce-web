@@ -1,5 +1,5 @@
 import { ThemeProvider, createTheme } from "@mui/material";
-import AppRoutes from "./routes/AppRoutes";
+import AppRoutes from "./Routes/appRoutes";
 
 function App() {
 

@@ -1,12 +1,12 @@
-import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@mui/material';
+import { Card, CardMedia, CardContent, Typography, CardActions, Button } from "@mui/material";
 
-export type ProductCardProps = {
+export interface ProductCardProps {
     id?: string;
     nome: string;
     descricao: string;
     valor: number;
     imageUrl: string;
-};
+}
 
 const ProductCard: React.FC<ProductCardProps> = ({ nome, descricao, valor, imageUrl }) => {
     return (

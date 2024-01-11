@@ -1,4 +1,7 @@
+import { ICliente } from "./ICliente";
+
 export interface IPedido {
-    IdPedido?: string,
-    IdCliente: string
+    id?: string,
+    idCliente?: ICliente["id"],
+
 }
