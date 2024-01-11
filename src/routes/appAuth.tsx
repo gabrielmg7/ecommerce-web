@@ -8,7 +8,7 @@ export type UserType = {
   username: string;
   email: string;
   password: string;
-  role: 'cliente' | 'admin'; // Pode ser qualquer tipo de função ou papel que o usuário desempenha no sistema
+  role: 'cliente' | 'admin'; 
 };
 
 export const initialUserType: UserType = {

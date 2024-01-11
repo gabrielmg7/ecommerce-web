@@ -1,9 +1,9 @@
-
 import { Routes, Route } from "react-router-dom";
-import CadastrarCliente from "../components/Pages/Client/CadastrarCliente";
-import { ListarProdutos } from "../components/Pages/Client/ListarProdutos";
-import LogarCliente from "../components/Pages/Client/LogarCliente";
-import { Home } from "../components/Pages/Client/Home";
+import CadastrarCliente from "../Components/Pages/Client/CadastrarCliente";
+import ListarProdutos from "../Components/Pages/Client/ListarProdutos";
+import LogarCliente from "../Components/Pages/Client/LogarCliente";
+import Home from "../Components/Pages/Client/Home";
+
 
 export const ClientRoutes = () => {
     return (
