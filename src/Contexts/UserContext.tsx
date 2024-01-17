@@ -1,15 +1,15 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-export interface User {
-    id: string;
+export interface IUser {
+    id?: string;
     username: string;
     email: string;
     role: 'cliente' | 'admin';
 }
 
 interface UserContextProps {
-    user: User | null;
-    registerUser: (userData: User) => Promise<void>;
+    user: IUser | null;
+    registerUser: (userData: IUser) => Promise<void>;
     loginUser: (credentials: { email: string; password: string }) => Promise<void>;
     logoutUser: () => void;
 }
@@ -17,29 +17,34 @@ interface UserContextProps {
 const UserContext = createContext<UserContextProps | undefined>(undefined);
 
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<IUser | null>(null);
 
-    const registerUser = async (userData: User) => {
-        // Lógica para registrar o usuário no backend
-        // Substitua o código abaixo pela sua implementação real
-        console.log('Registrando usuário:', userData);
+    // TODO: Lógica para registrar o usuário no backend
+    const registerUser = async (userData: IUser) => {
+        try {
+            console.log('Registrando usuário:', userData);
+        } catch (error) {
+            console.error('Erro no login:', error);
+        }
     };
-
+    // TODO: Lógica para autenticar o usuário no backend
     const loginUser = async (credentials: { email: string; password: string }) => {
-        // Lógica para autenticar o usuário no backend
-        // Substitua o código abaixo pela sua implementação real
-        console.log('Autenticando usuário:', credentials);
+        try {
+            console.log('Autenticando usuário:', credentials);
+        } catch (error) {
+            console.error('Erro no registro:', error);
+        }
     };
 
+    // TODO: Lógica para efetuar logout (limpar o estado do usuário)
     const logoutUser = () => {
-        // Lógica para efetuar logout (limpar o estado do usuário)
         setUser(null);
     };
 
-    // UseEffect para simular a persistência de dados (opcional)
+    // UseEffect para simular a persistência de dados
     useEffect(() => {
         // Lógica para verificar se o usuário já está autenticado (por exemplo, se há um token no localStorage)
-        // Se sim, você pode obter as informações do usuário e definir no estado
+        // Se sim, pode obter as informações do usuário e definir no estado
         const storedUser = localStorage.getItem('user');
         if (storedUser) {
             setUser(JSON.parse(storedUser));

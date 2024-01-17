@@ -2,7 +2,7 @@
 import { ReactNode } from 'react'
 import MenuBar from '../../Utils/MenuBar'
 import Footer from '../../Utils/Footer';
-import { useUser } from '../../Utils/Context/UserContext';
+import { useUser } from '../../../Contexts/UserContext';
 
 type AdminLayoutProps = {
     children: ReactNode;
