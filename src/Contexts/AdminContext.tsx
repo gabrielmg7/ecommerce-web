@@ -30,8 +30,9 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         }
     };
 
+
+    // TODO: Lógica para logar o usuário no backend
     const loginAdmin = async (credentials: { email: string; password: string }) => {
-        // Lógica de autenticação para o administrador
         try {
             console.log('Autenticando usuário:', credentials);
 
@@ -44,6 +45,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         setAdmin(null);
     };
 
+    
     // TODO: UseEffect para simular a persistência de dados
     useEffect(() => {
         const storedAdmin = localStorage.getItem('admin');

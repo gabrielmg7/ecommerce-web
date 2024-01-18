@@ -35,7 +35,6 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const loginUser = async (credentials: { email: string; password: string }) => {
         try {
             console.log('Autenticando usuário:', credentials);
-
         } catch (error) {
             console.error('Erro no registro:', error);
         }
@@ -44,6 +43,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     // TODO: Lógica para efetuar logout (limpar o estado do usuário)
     const logoutUser = () => {
+        console.log('Logout do usuário: ', user)
         setUser(null);
     };
 
