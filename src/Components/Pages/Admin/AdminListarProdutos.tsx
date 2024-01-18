@@ -1,8 +1,10 @@
-import React from 'react'
+import AdminLayout from "../../Layouts/Admin/AdminLayout"
 
 const AdminListarProdutos = () => {
     return (
-        <div></div>
+        <AdminLayout>
+            <div></div>
+        </AdminLayout>
     )
 }
 

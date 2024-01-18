@@ -12,7 +12,6 @@ const ClientLayout = ({ children }: ClientLayoutProps) => {
 
     const { user } = useUser();
 
-
     return (
         <div>
             <MenuBar />

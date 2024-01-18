@@ -4,9 +4,9 @@ const Home = () => {
 
 
     return (
-        <ClientLayout>
-<div></div>
-    </ClientLayout>
+        <ClientLayout children={undefined}>
+
+        </ClientLayout>
     );
 };
 

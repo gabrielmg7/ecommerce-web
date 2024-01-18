@@ -9,6 +9,13 @@ export interface IAdmin {
     isLoggedIn: boolean;
 }
 
+const initialStateIAdmin: IAdmin = {
+    username: 'teste',
+    email: 'teste@teste.com',
+    role: 'admin',
+    isLoggedIn: false
+}
+
 interface AdminContextProps {
     admin: IAdmin | null;
     registerAdmin: (adminData: IAdmin) => Promise<void>;
@@ -45,7 +52,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         setAdmin(null);
     };
 
-    
+
     // TODO: UseEffect para simular a persistência de dados
     useEffect(() => {
         const storedAdmin = localStorage.getItem('admin');

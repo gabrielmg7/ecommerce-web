@@ -4,14 +4,14 @@ import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import theme from '../../Themes/theme';
-import { useUser } from '../../Contexts/UserContext';  // Importe o contexto do usuário
-import { useAdmin } from '../../Contexts/AdminContext';  // Importe o contexto do administrador
+import { useUser } from '../../Contexts/UserContext';  
+import { useAdmin } from '../../Contexts/AdminContext'; 
 
 const MenuBar = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-    const { user } = useUser();  // Use o contexto do usuário
-    const { admin } = useAdmin();  // Use o contexto do administrador
+    const { user } = useUser();  
+    const { admin } = useAdmin();  
 
     const toggleDrawer = (open: boolean) => () => {
         setIsDrawerOpen(open);
@@ -19,7 +19,6 @@ const MenuBar = () => {
 
     return (
         <div>
-
             <AppBar position="static">
                 <Toolbar>
                     <Typography variant="h6" component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit', flexGrow: 2 }}>
