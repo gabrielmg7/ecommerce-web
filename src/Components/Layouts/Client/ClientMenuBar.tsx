@@ -3,11 +3,10 @@ import { useMediaQuery, AppBar, Toolbar, IconButton, Button, Drawer, List, ListI
 import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
-import { useTheme } from 'styled-components';
+import theme from '../../../Themes/theme';
 
 const MenuBar = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
     const toggleDrawer = (open: boolean) => () => {
@@ -18,7 +17,7 @@ const MenuBar = () => {
         <div>
             <AppBar position="static">
                 <Toolbar>
-                    <Typography variant="h6" component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit', flexGrow: 1 }}>
+                    <Typography variant="h6" component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit', flexGrow: 2 }}>
                         NomeDaMarca
                     </Typography>
                     {isSmallScreen ? (
@@ -27,16 +26,10 @@ const MenuBar = () => {
                         </IconButton>
                     ) : (
                         <>
-                            <Button color="inherit" component={Link} to="/listar-clientes">
-                                Clientes
-                            </Button>
-                            <Button color="inherit" component={Link} to="/cadastrar-produto">
-                                Cadastrar Produto
-                            </Button>
                             <Button color="inherit" component={Link} to="/listar-produtos">
                                 Loja
                             </Button>
-                            <Button color="inherit" component={Link} to="/logar-cliente">
+                            <Button color="inherit" component={Link} to="/">
                                 Entrar
                             </Button>
                         </>

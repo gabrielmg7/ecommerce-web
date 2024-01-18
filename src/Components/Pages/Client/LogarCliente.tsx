@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { TextField, Button, Typography, Box, Grid, Avatar, Checkbox, CssBaseline, FormControlLabel, Link, Paper } from '@mui/material';
-import { ICliente, initialCliente } from '../../../types/entity/ICliente';
+import { ICliente, initialCliente } from '../../../Types/ICliente';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 function Copyright(props: any) {

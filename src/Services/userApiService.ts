@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ICliente } from "../types/entity/ICliente";
+import { ICliente } from "../Types/ICliente";
 
 const API_BASE_URL = "http://localhost:8080";
 

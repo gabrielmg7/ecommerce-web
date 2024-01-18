@@ -1,5 +1,6 @@
-import { ICliente } from "./entity/ICliente";
-import { IProduto } from "./entity/IProduto";
+import { ICliente } from "./ICliente";
+import { IProduto } from "./IProduto";
+
 
 export interface ICart {
     id?: string;

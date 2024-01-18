@@ -1,4 +1,4 @@
-import { ICliente } from "../types/entity/ICliente";
+import { ICliente } from "../Types/ICliente";
 
 export const data: ICliente[] = [
 	{

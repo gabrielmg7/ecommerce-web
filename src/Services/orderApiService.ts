@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ItemProduto } from "../types/entity/ItemProduto";
+import { ItemProduto } from "../Types/ItemProduto";
 
 const API_BASE_URL = "http://localhost:8080";
 

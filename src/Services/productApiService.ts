@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IProduto } from '../types/entity/IProduto';
+import { IProduto } from '../Types/IProduto';
 
 const API_BASE_URL = 'http://localhost:8080';
 

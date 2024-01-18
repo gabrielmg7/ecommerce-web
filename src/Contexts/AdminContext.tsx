@@ -1,35 +1,53 @@
-import React, { createContext, useContext, ReactNode, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 export interface IAdmin {
-    id: string;
+    id?: string;
+    username: string;
     email: string;
-    role: 'cliente' | 'admin';
+    role: 'admin';
+    isLoggedIn: boolean;
 }
 
-type AdminContextType = {
+interface AdminContextProps {
     admin: IAdmin | null;
-    setAdmin: (admin: IAdmin | null) => void;
-};
+    loginAdmin: (credentials: { email: string; password: string }) => Promise<void>;
+    logoutAdmin: () => void;
+}
 
-const AdminContext = createContext<AdminContextType | undefined>(undefined);
+const AdminContext = createContext<AdminContextProps | undefined>(undefined);
 
-export const AdminProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [admin, setAdmin] = useState<IAdmin | null>(null);
 
-    const contextValue: AdminContextType = { admin, setAdmin };
+    const loginAdmin = async (credentials: { email: string; password: string }) => {
+        // Lógica de autenticação para o administrador
+        try {
+            console.log('Autenticando usuário:', credentials);
 
-    return <AdminContext.Provider value={contextValue}>{children}</AdminContext.Provider>;
+        } catch (error) {
+            console.error('Erro no login do administrador:', error);
+        }
+    };
+
+    const logoutAdmin = () => {
+        setAdmin(null);
+    };
+
+    useEffect(() => {
+        // Lógica para persistência de dados (se necessário)
+    }, [admin]);
+
+    return (
+        <AdminContext.Provider value={{ admin, loginAdmin, logoutAdmin }}>
+            {children}
+        </AdminContext.Provider>
+    );
 };
 
-export const UseAdminContext = () => {
+export const useAdmin = () => {
     const context = useContext(AdminContext);
     if (!context) {
-        throw new Error('UseAdminContext must be used within an AdminProvider');
+        throw new Error('useAdmin deve ser usado dentro de um AdminProvider');
     }
     return context;
-};
-
-export const isAdminUser = (): boolean => {
-    const { admin } = UseAdminContext();
-    return !!admin && admin.role === 'admin';
 };

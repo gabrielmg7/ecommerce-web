@@ -2,43 +2,48 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../Contexts/UserContext';
 
 export type UserType = {
-  id: string;
+  id?: string;
   username: string;
   email: string;
   password: string;
-  role: 'cliente' | 'admin'; 
+  role: 'cliente' | 'admin';
 };
 
 export const initialUserType: UserType = {
-  id: '',
-  username: '',
-  email: '',
-  password: '',
+
+  username: 'teste',
+  email: 'mock@teste.com',
+  password: 'teste123',
   role: 'cliente'
 }
 
 
 export const AppAuthenticator = ({ userType }: { userType: UserType }) => {
   const navigate = useNavigate();
+  const { user, loginUser } = useUser();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    // Simulação de uma verificação assíncrona de autenticação
-    // lógica de autenticação 
     const authenticate = async () => {
       try {
-        // Aqui você verificará as credenciais, token, etc.
-        // Por enquanto, apenas simulemos que a autenticação é bem-sucedida
-        setIsAuthenticated(true);
+        await loginUser({
+          email: userType.email,
+          password: userType.password,
+        });
+        if (user && user.isLoggedIn) { 
+          setIsAuthenticated(true);
+        } else {
+          setIsAuthenticated(false);
+        }
       } catch (error) {
         setIsAuthenticated(false);
       }
     };
-
     authenticate();
-  }, []); // Executar somente uma vez após a montagem do componente
+  }, [loginUser, userType, user]);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -56,6 +61,5 @@ export const AppAuthenticator = ({ userType }: { userType: UserType }) => {
     }
   }, [isAuthenticated, userType.role, navigate]);
 
-  return null; // Este componente não renderiza nada visível, apenas redireciona
-};
-
+  return null;
+}

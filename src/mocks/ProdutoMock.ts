@@ -1,4 +1,4 @@
-import { IProduto } from "../types/entity/IProduto";
+import { IProduto } from "../Types/IProduto";
 
 const mockProdutos: IProduto[] = [
   {

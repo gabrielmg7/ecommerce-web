@@ -1,7 +1,7 @@
 import { Grid, Paper, Typography, Skeleton } from '@mui/material';
 import { useState, useEffect } from 'react';
 import productApiService from '../../Services/productApiService';
-import { IProduto } from '../../types/entity/IProduto';
+import { IProduto } from '../../Types/IProduto';
 
 const ProductList: React.FC = () => {
     const [loading, setLoading] = useState(true);
