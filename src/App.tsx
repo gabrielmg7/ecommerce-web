@@ -1,12 +1,17 @@
-import AppRoutes from "./Routes/appRoutes";
+import { ThemeProvider, createTheme } from "@mui/material";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
 
+  const theme = createTheme();
+
 
   return (
-      <div>
+    <div>
+      <ThemeProvider theme={theme}>
         <AppRoutes />
-      </div>
+      </ThemeProvider>
+    </div>
   )
 }
 
