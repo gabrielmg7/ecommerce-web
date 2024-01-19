@@ -1,15 +1,17 @@
 
 export interface IProduto {
     id?: string,
-    nome: string,
-    descricao: string,
-    valor: number,
-    quantidade: number
+    title: string,
+    price: number,
+    category: string,
+    description: string,
+    image: string
 }
 
 export const initialProduto: IProduto = {
-    nome: "",
-    valor: 0,
-    descricao: "",
-    quantidade: 0
+    title: "",
+    price: 0,
+    category: "",
+    description: "",
+    image: ""
 }

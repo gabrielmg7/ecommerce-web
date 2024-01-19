@@ -1,11 +1,12 @@
 import axios, { AxiosResponse } from 'axios';
 
-interface IProduct {
+export interface IProduct {
   id: number;
   title: string;
-  description: string;
   price: number;
   category: string;
+  description: string;
+  image: string;
 }
 
 const apiUrl = 'https://fakestoreapi.com/products';

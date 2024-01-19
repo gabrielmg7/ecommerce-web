@@ -1,28 +1,27 @@
-import { ThemeProvider, createTheme } from "@mui/material";
-import AppRoutes from "./Routes/AppRoutes";
-import { AdminProvider } from "./Contexts/AdminContext";
-import { UserProvider } from "./Contexts/UserContext";
-import { BrowserRouter as Router } from 'react-router-dom';
-
+// App.tsx
+import React from 'react';
+import { ThemeProvider, createTheme } from '@mui/material';
+import AppRoutes from './Routes/AppRoutes';
+import { AdminProvider } from './Contexts/AdminContext';
+import { UserProvider } from './Contexts/UserContext';
+import { ProductProvider } from './Contexts/ProductContext';
 
 function App() {
-
   const theme = createTheme();
-
 
   return (
     <div>
       <ThemeProvider theme={theme}>
-        <Router>
-          <UserProvider>
-            <AdminProvider>
+        <UserProvider>
+          <AdminProvider>
+            <ProductProvider>
               <AppRoutes />
-            </AdminProvider>
-          </UserProvider>
-        </Router>
+            </ProductProvider>
+          </AdminProvider>
+        </UserProvider>
       </ThemeProvider>
     </div>
-  )
+  );
 }
 
 export default App;
