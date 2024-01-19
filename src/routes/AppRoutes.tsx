@@ -14,9 +14,7 @@ import { useAdmin } from '../Contexts/AdminContext';
 import { useUser } from '../Contexts/UserContext';
 
 
-
-
-const ClientRoutes = () => {
+const UnauthenticatedRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -27,16 +25,23 @@ const ClientRoutes = () => {
   );
 };
 
+const ClientRoutes = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/listar-produtos" element={<ListarProdutos />} />
+    </Routes>
+  );
+};
+
 const AdminRoutes = () => {
   return (
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/crud-produto" element={<AdminCrudProduto />} />
-        <Route path="/admin-listar-prd" element={<AdminListarProdutos />} />
-        <Route path="/admin-dashboard" element={<AdminPainel />} />
-      </Routes>
-
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/crud-produto" element={<AdminCrudProduto />} />
+      <Route path="/admin-listar-prd" element={<AdminListarProdutos />} />
+      <Route path="/admin-dashboard" element={<AdminPainel />} />
+    </Routes>
   );
 };
 
@@ -56,18 +61,19 @@ const AppRoutes = () => {
           navigate('/admin');
           break;
         default:
-          navigate('/login');
+          navigate('/unauthenticated');
           break;
       }
     }
   }, [isAuthenticated, user, admin, navigate]);
 
   return (
-      <Routes>
-        <Route path="/" element={<AppAuthenticator userType={initialUserType} />} />
-          <Route path="/admin/*" element={<AdminRoutes />} />
-          <Route path="/cliente/*" element={<ClientRoutes />} />
-      </Routes>
+    <Routes>
+      <Route path="/" element={<AppAuthenticator userType={initialUserType} />} />
+      <Route path="/admin/*" element={<AdminRoutes />} />
+      <Route path="/cliente/*" element={<ClientRoutes />} />
+      <Route path="/unauthenticated/*" element={<UnauthenticatedRoutes />} />
+    </Routes>
   );
 };
 

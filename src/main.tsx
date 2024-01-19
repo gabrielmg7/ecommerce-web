@@ -6,6 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { UserProvider } from './Contexts/UserContext.tsx';
 import { AdminProvider } from './Contexts/AdminContext.tsx';
 
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Router>

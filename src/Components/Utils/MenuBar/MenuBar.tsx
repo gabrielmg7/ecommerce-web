@@ -3,15 +3,58 @@ import { useMediaQuery, AppBar, Toolbar, IconButton, Button, Drawer, List, ListI
 import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
-import theme from '../../Themes/theme';
-import { useUser } from '../../Contexts/UserContext';  
-import { useAdmin } from '../../Contexts/AdminContext'; 
+import theme from '../../../Themes/theme';
+import { useUser } from '../../../Contexts/UserContext';
+import { useAdmin } from '../../../Contexts/AdminContext';
+import CartButton from '../../Cart/CartButton';
+
+//Links da rota do Usuário
+const ClientMenuBarLinks = () => {
+    return (
+        <>
+            <Button color="inherit" component={Link} to="/">
+                Home
+            </Button>
+            <Button color="inherit" component={Link} to="/listar-produtos">
+                Loja
+            </Button>
+        </>
+    );
+};
+//Links da rota do Administrador
+const AdminMenuBarLinks = () => {
+    return (
+        <>
+            <Button color="inherit" component={Link} to="/admin-listar-prd">
+                Cadastrar Produto
+            </Button>
+            <Button color="inherit" component={Link} to="/admin-dashboard">
+                Dashboard
+            </Button>
+            <Button color="inherit" component={Link} to="/admin-listar-prd">
+                Listar Produtos
+            </Button>
+        </>
+    );
+};
+//Links de Usuário deslogado
+const UnloggedMenuBarLinks = () => {
+    return (
+        <>
+            <Button color="inherit" component={Link} to="/listar-produtos">
+                Loja
+            </Button><Button color="inherit" component={Link} to="/logar-cliente">
+                Entrar
+            </Button>
+        </>
+    );
+};
 
 const MenuBar = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-    const { user } = useUser();  
-    const { admin } = useAdmin();  
+    const { user } = useUser();
+    const { admin } = useAdmin();
 
     const toggleDrawer = (open: boolean) => () => {
         setIsDrawerOpen(open);
@@ -31,37 +74,12 @@ const MenuBar = () => {
                     ) : (
                         <>
                             {user ? (( //Usuário é um cliente?
-                                <>
-                                    <Button color="inherit" component={Link} to="/">
-                                        Home
-                                    </Button>
-                                    <Button color="inherit" component={Link} to="/listar-produtos">
-                                        Loja
-                                    </Button>
-                                </>
+                                <ClientMenuBarLinks />
                             )) : null}
-
-
                             {admin ? ( // Usuário é um admin?
-                                <>
-                                    <Button color="inherit" component={Link} to="/admin-listar-prd">
-                                        Cadastrar Produto
-                                    </Button>
-                                    <Button color="inherit" component={Link} to="/admin-dashboard">
-                                        Dashboard
-                                    </Button>
-                                    <Button color="inherit" component={Link} to="/admin-listar-prd">
-                                        Listar Produtos
-                                    </Button>
-                                </>
-
+                                <AdminMenuBarLinks />
                             ) : null}
-                            <Button color="inherit" component={Link} to="/listar-produtos">
-                                Loja
-                            </Button>
-                            <Button color="inherit" component={Link} to="/logar-cliente">
-                                Entrar
-                            </Button>
+                            <UnloggedMenuBarLinks />
                         </>
                     )}
                 </Toolbar>
@@ -71,12 +89,13 @@ const MenuBar = () => {
                 <List>
                     {user ? (
                         <>
-                            <ListItem button component={Link} to="/cadastrar-cliente" onClick={toggleDrawer(false)}>
-                                <ListItemText primary="Cadastrar Cliente" />
+                            <ListItem button component={Link} to="/home" onClick={toggleDrawer(false)}>
+                                <ListItemText primary="Home" />
                             </ListItem>
-                            <ListItem button component={Link} to="/listar-clientes" onClick={toggleDrawer(false)}>
+                            <ListItem button component={Link} to="/" onClick={toggleDrawer(false)}>
                                 <ListItemText primary="Clientes" />
                             </ListItem>
+                            <CartButton itemCount={2} itens={[]}/>
                         </>
                     ) : null}
                     {admin ? (

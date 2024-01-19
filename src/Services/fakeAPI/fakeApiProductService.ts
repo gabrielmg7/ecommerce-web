@@ -1,15 +1,7 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from "axios";
+import { IProduct } from "../../Types/FakeAPI/type";
 
-export interface IProduct {
-  id: number;
-  title: string;
-  price: number;
-  category: string;
-  description: string;
-  image: string;
-}
-
-const apiUrl = 'https://fakestoreapi.com/products';
+const apiUrl = "https://fakestoreapi.com/products";
 
 // Função para obter todos os produtos
 export const getAllProducts = async (): Promise<IProduct[]> => {
@@ -17,15 +9,19 @@ export const getAllProducts = async (): Promise<IProduct[]> => {
     const response: AxiosResponse<IProduct[]> = await axios.get(apiUrl);
     return response.data;
   } catch (error) {
-    console.error('Error fetching products:', error);
+    console.error("Error fetching products:", error);
     throw error;
   }
 };
 
 // Função para obter um produto por ID
-export const getProductById = async (id: number): Promise<IProduct | undefined> => {
+export const getProductById = async (
+  id: number
+): Promise<IProduct | undefined> => {
   try {
-    const response: AxiosResponse<IProduct> = await axios.get(`${apiUrl}/${id}`);
+    const response: AxiosResponse<IProduct> = await axios.get(
+      `${apiUrl}/${id}`
+    );
     return response.data;
   } catch (error) {
     console.error(`Error fetching product with ID ${id}:`, error);
@@ -34,20 +30,31 @@ export const getProductById = async (id: number): Promise<IProduct | undefined> 
 };
 
 // Função para criar um novo produto
-export const createProduct = async (newProduct: Omit<IProduct, 'id'>): Promise<IProduct> => {
+export const createProduct = async (
+  newProduct: Omit<IProduct, "id">
+): Promise<IProduct> => {
   try {
-    const response: AxiosResponse<IProduct> = await axios.post(apiUrl, newProduct);
+    const response: AxiosResponse<IProduct> = await axios.post(
+      apiUrl,
+      newProduct
+    );
     return response.data;
   } catch (error) {
-    console.error('Error creating product:', error);
+    console.error("Error creating product:", error);
     throw error;
   }
 };
 
 // Função para atualizar um produto existente por ID
-export const updateProduct = async (id: number, updatedProductData: Partial<IProduct>): Promise<IProduct> => {
+export const updateProduct = async (
+  id: number,
+  updatedProductData: Partial<IProduct>
+): Promise<IProduct> => {
   try {
-    const response: AxiosResponse<IProduct> = await axios.put(`${apiUrl}/${id}`, updatedProductData);
+    const response: AxiosResponse<IProduct> = await axios.put(
+      `${apiUrl}/${id}`,
+      updatedProductData
+    );
     return response.data;
   } catch (error) {
     console.error(`Error updating product with ID ${id}:`, error);
