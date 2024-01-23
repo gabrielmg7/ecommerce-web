@@ -38,7 +38,7 @@ const AdminMenuBarLinks = () => {
     );
 };
 //Links de Usuário deslogado
-const UnloggedMenuBarLinks = () => {
+const UnauthenticatedMenuBarLinks = () => {
     return (
         <>
             <Button color="inherit" component={Link} to="/listar-produtos">
@@ -63,7 +63,7 @@ const MenuBar = () => {
     return (
         <div>
             <AppBar position="static">
-                <Toolbar>
+                <Toolbar>nao ma
                     <Typography variant="h6" component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit', flexGrow: 2 }}>
                         NomeDaMarca
                     </Typography>
@@ -79,7 +79,7 @@ const MenuBar = () => {
                             {admin ? ( // Usuário é um admin?
                                 <AdminMenuBarLinks />
                             ) : null}
-                            <UnloggedMenuBarLinks />
+                            <UnauthenticatedMenuBarLinks />
                         </>
                     )}
                 </Toolbar>

@@ -1,18 +1,28 @@
 export interface ICliente {
-    id?: string;
-    role: 'client' | 'admin';  
-	nome: string;
-	telefone: string;
-	email: string;
-	cidade: string;
-	endereco: string;
+  id: number;
+  nome: string;
+  sobrenome: string;
+  cpf: string;
+  telefone: string;
+  email: string;
+  password: string;
+  cidade?: string;
+  endereco: string;
+  cep: string;
+  role: "client" | "admin";
+  allowExtraEmails: boolean;
 }
- 
+
 export const initialCliente: ICliente = {
-    nome: "",
-    email: "",
-    telefone: "",
-    cidade: "",
-    endereco: "",
-    role: "client"
+  nome: "",
+  cpf: "",
+  id: 0,
+  sobrenome: "",
+  role: "client",
+  telefone: "",
+  email: "",
+  password: "",
+  endereco: "",
+  cep: "",
+  allowExtraEmails: false
 };

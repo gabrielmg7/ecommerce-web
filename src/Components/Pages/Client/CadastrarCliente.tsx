@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import * as React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,32 +12,39 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { ICliente } from '../../../Types/ICliente';
+import { ICliente, initialCliente } from '../../../Types/ICliente';
+import clienteApiService from '../../../Services/springAPI/clienteApiService';
 
-function Copyright(props: ICliente) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="/">
-                OnlineShopping
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
-
-// TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 export default function CadastrarCliente() {
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const [cliente, setCliente] = useState<ICliente>(initialCliente);
+
+    const createUserData = async (data: ICliente) => {
+        try {
+            await clienteApiService.createCliente(data);
+        } catch (error) {
+            console.error('Erro ao cadastrar clientes:', error);
+        }
+    };
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value, type, checked } = event.target;
+        setCliente((prevCliente) => ({
+            ...prevCliente,
+            [name]: type === 'checkbox' ? checked : value,
+        }));
+    };
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+        try {
+            // Chama a função para criar o usuário
+            await createUserData(cliente);
+            console.log('Usuário cadastrado com sucesso!');
+        } catch (error) {
+            console.error('Erro ao cadastrar usuário:', error);
+        }
     };
 
     return (
@@ -64,33 +69,50 @@ export default function CadastrarCliente() {
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
                                 <TextField
-                                    autoComplete="given-name"
-                                    name="firstName"
+                                    autoComplete="nome"
+                                    name="nome"
                                     required
                                     fullWidth
-                                    id="firstName"
+                                    id="nome"
                                     label="Primeiro Nome"
                                     autoFocus
+                                    value={cliente.nome}
+                                    onChange={handleInputChange}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+
+                                    fullWidth
+                                    id="sobrenome"
+                                    label="Sobrenome"
+                                    name="sobrenome"
+                                    value={cliente.sobrenome}
+                                    onChange={handleInputChange}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
                                     required
                                     fullWidth
-                                    id="lastName"
-                                    label="Sobrenome"
-                                    name="lastName"
-                                    autoComplete="family-name"
+                                    id="cpf"
+                                    label="CPF"
+                                    name="cpf"
+                                    autoComplete="cpf"
+                                    value={cliente.cpf}
+                                    onChange={handleInputChange}
                                 />
                             </Grid>
-                            <Grid item xs={12}>
+                            <Grid item xs={12} sm={6}>
                                 <TextField
-                                    required
+
                                     fullWidth
                                     id="email"
                                     label="Email"
                                     name="email"
                                     autoComplete="email"
+                                    value={cliente.email}
+                                    onChange={handleInputChange}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -102,13 +124,15 @@ export default function CadastrarCliente() {
                                     type="password"
                                     id="password"
                                     autoComplete="new-password"
+                                    value={cliente.password}
+                                    onChange={handleInputChange}
                                 />
                             </Grid>
                             <Grid item xs={12}>
                                 <FormControlLabel
-                                    control={<Checkbox value="allowExtraEmails" color="primary" />}
-                                    label="Desejo receber inspirações, promoções de marketing e atualizações por e-mail."
-                                    />
+                                    control={<Checkbox name="allowExtraEmails" color="primary" checked={cliente.allowExtraEmails} onChange={handleInputChange} />}
+                                    label="Desejo receber ofertas, promoções de marketing e atualizações por e-mail."
+                                />
                             </Grid>
                         </Grid>
                         <Button

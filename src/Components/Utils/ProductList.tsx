@@ -10,7 +10,6 @@ const buttons = [
 
 ];
 
-
 const ProductList: React.FC = () => {
     const { produtos } = useProduct();
 
