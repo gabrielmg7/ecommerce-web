@@ -1,30 +1,45 @@
-# React + TypeScript + Vite
+# Front-End Web - Projeto E-Commerce Online Shopping
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bem-vindo ao projeto! Este repositório contém o código-fonte do frontend de um sistema de comércio eletrônico desenvolvido com as seguintes tecnologias:
 
-Currently, two official plugins are available:
+## ⚒ Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React.js:** Biblioteca JavaScript para construção de interfaces de usuário.
+- **Typescript:** Superset do JavaScript que adiciona tipagem estática.
+- **Vite:** Ferramenta de construção de projetos para React com foco em rapidez.
+- **Material UI:** Biblioteca de componentes React com design baseado no Material Design.
+- **Axios:** Cliente HTTP para realizar requisições ao backend.
+- **React Router Dom:** Roteamento de páginas no lado do cliente.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 💻 Configuração do Ambiente de Desenvolvimento
 
-- Configure the top-level `parserOptions` property like this:
+1. Instale o Node.js: [Node.js](https://nodejs.org/)
+2. Clone o repositório: `git clone https://github.com/gabrielmg7/ecommerce-web`
+3. Acesse o diretório do front-end: `cd ".../ecommerce-web"`
+4. Instale as dependências: `npm install`
+5. Inicie o servidor de desenvolvimento: `npm run dev`
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+---
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## 👍 Uso
+
+Após configurar o ambiente de desenvolvimento, você pode acessar a aplicação em [http://localhost:3000](http://localhost:3000) para a interface do usuário.
+
+---
+
+## 👩‍💻 Contribuindo
+
+Se deseja contribuir para o projeto, por favor, siga o fluxo de trabalho padrão:
+
+1. Crie uma branch para a sua feature: `git checkout -b feature/nome-da-feature`
+2. Faça as alterações e commit: `git commit -m 'Adiciona nova feature'`
+3. Faça o push para a branch: `git push origin feature/nome-da-feature`
+4. Abra um Pull Request
+
+---
+
+## 📃 Licença
+
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
