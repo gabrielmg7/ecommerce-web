@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography, Grid, Button, ButtonGroup, Skeleton } from '@mui/material';
 import { useProduct } from '../../Contexts/ProductContext';
-import { IProduct } from '../../Types/FakeAPI/type';
+import { IProduct } from '../../Types/fakeAPI/type';
 
 const buttons = [
     <Button key="one">Ver</Button>,

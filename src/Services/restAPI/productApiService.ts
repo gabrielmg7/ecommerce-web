@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IProduto } from '../../Types/IProduto';
+import { IProduto } from '../../Types/restAPI/IProduto';
 
 const API_BASE_URL = 'http://localhost:8080';
 

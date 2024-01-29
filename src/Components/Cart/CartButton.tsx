@@ -3,7 +3,7 @@ import { IconButton, Badge, Drawer, Card, CardContent, Typography, Button } from
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { ICart } from '../../Types/ICarrinho';
+import { ICart } from '../../Types/restAPI/ICarrinho';
 
 const CartButton: React.FC<ICart> = ({ itemCount }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ICliente } from "../../Types/ICliente";
+import { ICliente } from "../../Types/restAPI/ICliente";
 
 const API_BASE_URL = "http://localhost:3003/api";
 

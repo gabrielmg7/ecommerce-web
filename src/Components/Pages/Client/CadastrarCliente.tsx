@@ -12,8 +12,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { ICliente, initialCliente } from '../../../Types/ICliente';
-import clienteApiService from '../../../Services/springAPI/clienteApiService';
+import { ICliente, initialCliente } from '../../../Types/restAPI/ICliente';
+import clienteApiService from '../../../Services/restAPI/clienteApiService';
 
 const defaultTheme = createTheme();
 

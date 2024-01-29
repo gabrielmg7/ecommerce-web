@@ -1,7 +1,7 @@
 // ProductContext.tsx
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { getAllProducts } from '../Services/fakeAPI/fakeApiProductService';
-import { IProduct } from '../Types/FakeAPI/type';
+import { IProduct } from '../Types/fakeAPI/type';
 
 interface ProductContextProps {
     produtos: IProduct[] | null;

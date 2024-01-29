@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { IPedido } from "./IPedido";
 import { IProduto } from "./IProduto";
-
-
 
 export interface ItemPedido {
     id?: string;
