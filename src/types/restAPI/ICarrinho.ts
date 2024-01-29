@@ -9,10 +9,3 @@ export interface ICarrinho {
     quantidade: number;
     itens: ItemCarrinho[];
 }
-
-const initialCarrinho: ICarrinho = {
-    id: 0,
-    cliente: 0,
-    quantidade: 0,
-    itens: [],
-}

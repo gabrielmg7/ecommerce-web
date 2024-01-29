@@ -13,13 +13,3 @@ export interface IProduto {
     avaliacoes: IAvaliacao[];
     imagens: IImagemProduto[];
 }
-
-const initialProduto: IProduto = {
-    nome: "",
-    descricao: "",
-    preco: 0,
-    categoria: "",
-    quantidade: 0,
-    avaliacoes: [],
-    imagens: []
-}

@@ -9,9 +9,3 @@ export interface ItemPedido {
     idProduto: IProduto["id"];
     quantidade: number;
 }
-
-const initialPedido: ItemPedido = {
-    idPedido: "",
-    idProduto: undefined,
-    quantidade: 0
-}
