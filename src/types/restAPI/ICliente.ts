@@ -5,15 +5,15 @@ export interface ICliente {
   nome: string;
   sobrenome: string;
   cpf: string;
-  telefone: number;
+  telefone?: number;
   email: string;
   password: string;
   cidade?: string;
-  endereco: string;
-  cep: number;
-  role: "client" | "admin";
+  endereco?: string;
+  cep?: number;
+  role: "client" | "admin" | "unauth";
   allowExtraEmails: boolean;
-  pedidos: IPedido[];
+  pedidos?: IPedido[];
 }
 
 export const initialCliente: ICliente = {

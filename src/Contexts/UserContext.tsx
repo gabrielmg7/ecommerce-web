@@ -27,9 +27,8 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
             console.log('Registrando usuário:', userData);
         } catch (error) {
             console.error('Erro no login:', error);
-        }
+        } 
     };
-
 
     // TODO: Lógica para autenticar o usuário no backend
     const loginUser = async (credentials: { email: string; password: string }) => {

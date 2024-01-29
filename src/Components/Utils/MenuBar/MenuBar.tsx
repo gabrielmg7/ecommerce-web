@@ -41,9 +41,9 @@ const AdminMenuBarLinks = () => {
 const UnauthenticatedMenuBarLinks = () => {
     return (
         <>
-            <Button color="inherit" component={Link} to="/listar-produtos">
+            <Button color="inherit" component={Link} to="/unauthenticated/listar-produtos">
                 Loja
-            </Button><Button color="inherit" component={Link} to="/logar-cliente">
+            </Button><Button color="inherit" component={Link} to="/unauthenticated/logar-cliente">
                 Entrar
             </Button>
         </>

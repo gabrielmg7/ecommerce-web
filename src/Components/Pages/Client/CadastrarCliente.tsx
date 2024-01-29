@@ -23,6 +23,7 @@ export default function CadastrarCliente() {
     const createUserData = async (data: ICliente) => {
         try {
             await clienteApiService.createCliente(data);
+            console.info('Cliente Cadastrado!')
         } catch (error) {
             console.error('Erro ao cadastrar clientes:', error);
         }
@@ -136,16 +137,17 @@ export default function CadastrarCliente() {
                             </Grid>
                         </Grid>
                         <Button
+                            href='/unauthenticated/logar-cliente'
                             type="submit"
                             fullWidth
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
                         >
-                            Sign Up
+                            Cadastrar
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                                <Link href="/logar-cliente" variant="body2">
+                                <Link href="/unauthenticated/logar-cliente" variant="body2">
                                     Já possui uma conta? Faça login
                                 </Link>
                             </Grid>

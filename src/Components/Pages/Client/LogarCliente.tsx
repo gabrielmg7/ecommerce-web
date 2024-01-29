@@ -79,6 +79,7 @@ const LogarCliente = () => {
                             name="email"
                             autoComplete="email"
                             autoFocus
+                            onChange={handleInputChange}
                         />
                         <TextField
                             margin="normal"
@@ -89,6 +90,8 @@ const LogarCliente = () => {
                             type="password"
                             id="password"
                             autoComplete="current-password"
+                            onChange={handleInputChange}
+
                         />
                         <FormControlLabel
                             control={<Checkbox value="remember" color="primary" />}
@@ -109,7 +112,7 @@ const LogarCliente = () => {
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link href="/cadastrar-cliente" variant="body2">
+                                <Link href="/unauthenticated/cadastrar-cliente" variant="body2">
                                     {"Não tem uma conta? Cadastre-se!"}
                                 </Link>
                             </Grid>

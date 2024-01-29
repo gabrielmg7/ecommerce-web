@@ -3,25 +3,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../Contexts/UserContext';
+import { ICliente } from '../Types/restAPI/ICliente';
 
-export type UserType = {
-  id?: string;
-  username: string;
-  email: string;
-  password: string;
-  role: 'cliente' | 'admin';
-};
-
-export const initialUserType: UserType = {
-
-  username: 'teste',
-  email: 'mock@teste.com',
-  password: 'teste123',
-  role: 'cliente'
-}
-
-
-export const AppAuthenticator = ({ userType }: { userType: UserType }) => {
+export const AppAuthenticator = ({ userType }: { userType: ICliente }) => {
   const navigate = useNavigate();
   const { user, loginUser } = useUser();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -33,7 +17,7 @@ export const AppAuthenticator = ({ userType }: { userType: UserType }) => {
           email: userType.email,
           password: userType.password,
         });
-        if (user && user.isLoggedIn) { 
+        if (user && user.isLoggedIn) {
           setIsAuthenticated(true);
         } else {
           setIsAuthenticated(false);
@@ -48,14 +32,20 @@ export const AppAuthenticator = ({ userType }: { userType: UserType }) => {
   useEffect(() => {
     if (isAuthenticated) {
       switch (userType.role) {
-        case 'cliente':
+        case 'client':
           navigate('/cliente');
+          console.info('Navegando para /cliente')
           break;
         case 'admin':
           navigate('/admin');
+          console.info('Navegando para /admin')
+          break;
+        case 'unauth':
+          navigate('/unauthenticated');
+          console.info('Navegando para /unauthenticated')
           break;
         default:
-          navigate('/login');
+          navigate('/home');
           break;
       }
     }

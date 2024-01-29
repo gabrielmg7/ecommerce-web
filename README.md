@@ -25,7 +25,7 @@ Bem-vindo ao projeto! Este repositório contém o código-fonte do frontend de u
 
 ## 👍 Uso
 
-Após configurar o ambiente de desenvolvimento, você pode acessar a aplicação em [http://localhost:3000](http://localhost:3000) para a interface do usuário.
+Após configurar o ambiente de desenvolvimento, você pode acessar a aplicação em [http://localhost:5173](http://localhost:5173) para a interface do usuário.
 
 ---
 
