@@ -1,16 +1,19 @@
+import { IPedido, } from "./IPedido";
+
 export interface ICliente {
   id: number;
   nome: string;
   sobrenome: string;
   cpf: string;
-  telefone: string;
+  telefone: number;
   email: string;
   password: string;
   cidade?: string;
   endereco: string;
-  cep: string;
+  cep: number;
   role: "client" | "admin";
   allowExtraEmails: boolean;
+  pedidos: IPedido[];
 }
 
 export const initialCliente: ICliente = {
@@ -19,10 +22,11 @@ export const initialCliente: ICliente = {
   id: 0,
   sobrenome: "",
   role: "client",
-  telefone: "",
+  telefone: 0,
   email: "",
   password: "",
   endereco: "",
-  cep: "",
-  allowExtraEmails: false
+  cep: 0,
+  allowExtraEmails: false,
+  pedidos: []
 };

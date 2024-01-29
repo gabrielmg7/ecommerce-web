@@ -1,17 +1,18 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { ICliente } from "./ICliente";
-import { IProduto } from "./IProduto";
-
+import { ItemCarrinho } from "./ItemCarrinho";
 
 export interface ICarrinho {
-    idCliente: ICliente["id"];
+    id: number;
+    cliente: ICliente["id"];
     quantidade: number;
-    itens: IProduto[];
+    itens: ItemCarrinho[];
 }
 
 const initialCarrinho: ICarrinho = {
-    idCliente: 0,
+    id: 0,
+    cliente: 0,
     quantidade: 0,
-    itens: []
+    itens: [],
 }

@@ -13,7 +13,7 @@ export interface IPedido {
     itens: ItemPedido[];
 }
 
-const initialPedido: IPedido = {
+export const initialPedido: IPedido = {
     id: "",
     idCliente: 0,
     dataPedido: undefined,
