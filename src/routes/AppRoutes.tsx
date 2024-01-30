@@ -7,7 +7,7 @@ import { useUser } from '../Contexts/UserContext';
 import { UnauthenticatedRoutes } from './UnauthenticatedRoutes';
 import { AdminRoutes } from './AdminRoutes';
 import { ClientRoutes } from './ClientRoutes';
-import { initialCliente } from '../Types/restAPI/ICliente';
+import { initialUser } from '../Types/restAPI/IUser';
 
 const AppRoutes = () => {
   const { user } = useUser();
@@ -17,7 +17,7 @@ const AppRoutes = () => {
 
 
   useEffect(() => {
-    // Verifica se o usuário não está autenticado e redireciona para /unauthenticated apenas se ele tentar acessar uma rota protegida
+    // Verifica se o usuário não está autenticado e redireciona para /unauthenticated se ele tentar acessar uma rota protegida
     if (!isAuthenticated && !window.location.pathname.includes('/unauthenticated')) {
       navigate('/unauthenticated');
     }
@@ -25,7 +25,7 @@ const AppRoutes = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<AppAuthenticator userType={initialCliente} />} />
+      <Route path="/" element={<AppAuthenticator userType={initialUser} />} />
       <Route path="/admin/*" element={<AdminRoutes />} />
       <Route path="/cliente/*" element={<ClientRoutes />} />
       <Route path="/unauthenticated/*" element={<UnauthenticatedRoutes />} />

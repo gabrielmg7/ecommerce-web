@@ -1,24 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { createContext, useContext, useState, useEffect } from 'react';
-
-export interface IAdmin {
-    id?: string;
-    username: string;
-    email: string;
-    role: 'admin';
-    isLoggedIn: boolean;
-}
-
-const initialStateIAdmin: IAdmin = {
-    username: 'teste',
-    email: 'teste@teste.com',
-    role: 'admin',
-    isLoggedIn: false
-}
-
+import { IUser } from '../Types/restAPI/IUser';
 interface AdminContextProps {
-    admin: IAdmin | null;
-    registerAdmin: (adminData: IAdmin) => Promise<void>;
+    admin: IUser | null;
+    registerAdmin: (adminData: IUser) => Promise<void>;
     loginAdmin: (credentials: { email: string; password: string }) => Promise<void>;
     logoutAdmin: () => void;
 }
@@ -26,10 +11,10 @@ interface AdminContextProps {
 const AdminContext = createContext<AdminContextProps | undefined>(undefined);
 
 export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [admin, setAdmin] = useState<IAdmin | null>(null);
+    const [admin, setAdmin] = useState<IUser | null>(null);
 
     // TODO: Lógica para registrar o usuário no backend
-    const registerAdmin = async (adminData: IAdmin) => {
+    const registerAdmin = async (adminData: IUser) => {
         try {
             console.log('Registrando usuário:', adminData);
         } catch (error) {

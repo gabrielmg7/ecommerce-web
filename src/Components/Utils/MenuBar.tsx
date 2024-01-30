@@ -66,9 +66,9 @@ const MenuBar = () => {
     return (
         <div>
             <AppBar position="static">
-                <Toolbar>nao ma
+                <Toolbar>
                     <Typography variant="h6" component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit', flexGrow: 2 }}>
-                        NomeDaMarca
+                        OnlineShopping
                     </Typography>
                     {isSmallScreen ? (
                         <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>

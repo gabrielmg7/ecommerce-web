@@ -1,30 +1,30 @@
 import axios from "axios";
-import { ICliente } from "../../Types/restAPI/ICliente";
+import { IUser } from "../../Types/restAPI/IUser";
 
 const API_BASE_URL = "http://localhost:3003/api";
 
-const clienteApiService = {
+const userApiService = {
   // Função para obter todos os usuários
-  getAllClientes: async (): Promise<ICliente[]> => {
+  getAllUsers: async (): Promise<IUser[]> => {
     const response = await axios.get(`${API_BASE_URL}/clientes`);
     return response.data;
   },
 
   // Função para obter um usuário por ID
-  getClienteById: async (id: string): Promise<ICliente | undefined> => {
+  getUserById: async (id: string): Promise<IUser | undefined> => {
     const response = await axios.get(`${API_BASE_URL}/clientes/${id}`);
     return response.data;
   },
 
   // Função para criar um novo usuário
-  createCliente: async (clienteData: ICliente): Promise<ICliente> => {
+  createUser: async (clienteData: IUser): Promise<IUser> => {
     const response = await axios.post(`${API_BASE_URL}/clientes`, clienteData);
     console.log("createCliente.clientData: ", clienteData)
     return response.data;
   },
 
   // Função para atualizar um usuário existente
-  updateCliente: async (id: string, clienteData: ICliente): Promise<ICliente> => {
+  updateCliente: async (id: string, clienteData: IUser): Promise<IUser> => {
     const response = await axios.put(`${API_BASE_URL}/clientes/${id}`, clienteData);
     return response.data;
   },
@@ -35,4 +35,4 @@ const clienteApiService = {
   },
 };
 
-export default clienteApiService;
+export default userApiService;

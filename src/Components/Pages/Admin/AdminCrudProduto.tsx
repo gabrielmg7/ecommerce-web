@@ -1,8 +1,10 @@
-import React from 'react'
+import AdminLayout from "../../Layouts/Admin/AdminLayout";
 
 const AdminCrudProduto = () => {
     return (
-        <div>AdminCrudProduto</div>
+        <AdminLayout>
+            <div></div>
+        </AdminLayout>
     );
 };
 

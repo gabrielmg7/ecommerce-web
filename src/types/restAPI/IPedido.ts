@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { ICliente } from "./ICliente";
+import { ICliente } from "./IUser";
 import { ItemPedido } from "./ItemPedido";
 
 export interface IPedido {

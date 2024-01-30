@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { TextField, Button, Typography, Box, Grid, Avatar, Checkbox, CssBaseline, FormControlLabel, Link, Paper } from '@mui/material';
-import { ICliente, initialCliente } from '../../../Types/restAPI/ICliente';
+import { IUser, initialUser } from '../../../Types/restAPI/IUser';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 function Copyright(props: any) {
@@ -20,7 +20,7 @@ function Copyright(props: any) {
 }
 
 const LogarCliente = () => {
-    const [formData, setFormData] = useState<ICliente>(initialCliente);
+    const [formData, setFormData] = useState<IUser>(initialUser);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({
@@ -30,10 +30,11 @@ const LogarCliente = () => {
     };
 
     // TODO: Lógica para enviar os dados do formulário para o backend
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log('Dados do cliente:', formData);
-        setFormData(initialCliente);
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        console.info('ℹ handleSubmit()')
+        event.preventDefault();
+
+        setFormData(formData);
     };
 
     return (

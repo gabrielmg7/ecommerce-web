@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../Contexts/UserContext';
-import { ICliente } from '../Types/restAPI/ICliente';
+import { ICliente } from '../Types/restAPI/IUser';
 
 export const AppAuthenticator = ({ userType }: { userType: ICliente }) => {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import { IPedido, } from "./IPedido";
 
-export interface ICliente {
+export interface IUser {
   id: number;
   nome: string;
   sobrenome: string;
@@ -11,22 +11,19 @@ export interface ICliente {
   cidade?: string;
   endereco?: string;
   cep?: number;
-  role: "client" | "admin" | "unauth";
+  role: "CLIENT_ROLE" | "ADMIN_ROLE" | "unauth";
   allowExtraEmails: boolean;
+  isLoggedIn?: boolean;
   pedidos?: IPedido[];
 }
 
-export const initialCliente: ICliente = {
-  nome: "",
-  cpf: "",
+export const initialUser: IUser = {
   id: 0,
+  nome: "",
   sobrenome: "",
-  role: "client",
-  telefone: 0,
+  cpf: "",
   email: "",
   password: "",
-  endereco: "",
-  cep: 0,
-  allowExtraEmails: false,
-  pedidos: []
+  role: "CLIENT_ROLE",
+  allowExtraEmails: false
 };

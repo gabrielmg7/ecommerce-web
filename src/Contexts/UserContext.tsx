@@ -4,7 +4,7 @@ export interface IUser {
     id?: string;
     username: string;
     email: string;
-    role: 'cliente' | 'admin';
+    role: 'user' | 'admin';
     isLoggedIn: boolean;
 }
 

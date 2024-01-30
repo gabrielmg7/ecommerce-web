@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { ICliente } from "./ICliente";
+import { ICliente } from "./IUser";
 import { ItemCarrinho } from "./ItemCarrinho";
 
 export interface ICarrinho {

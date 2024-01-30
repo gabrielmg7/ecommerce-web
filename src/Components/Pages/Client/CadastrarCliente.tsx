@@ -12,24 +12,31 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { ICliente, initialCliente } from '../../../Types/restAPI/ICliente';
-import clienteApiService from '../../../Services/restAPI/clienteApiService';
+import { IUser, initialUser } from '../../../Types/restAPI/IUser';
+import clienteApiService from '../../../Services/restAPI/userApiService';
 
 const defaultTheme = createTheme();
 
 export default function CadastrarCliente() {
-    const [cliente, setCliente] = useState<ICliente>(initialCliente);
+    const [cliente, setCliente] = useState<IUser>(initialUser);
 
-    const createUserData = async (data: ICliente) => {
+
+    const createUserData = async (data: IUser) => {
+
+        console.info('📞 createUserData()')
+
         try {
-            await clienteApiService.createCliente(data);
-            console.info('Cliente Cadastrado!')
+            await clienteApiService.createUser(data);
+            console.info('✔ createUserData() - Usuário Cadastrado!')
         } catch (error) {
-            console.error('Erro ao cadastrar clientes:', error);
+            console.error('❌ createUserData() - Erro ao cadastrar cliente:', error);
         }
     };
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+        console.info('📞 handleInputChange()')
+
         const { name, value, type, checked } = event.target;
         setCliente((prevCliente) => ({
             ...prevCliente,
@@ -38,13 +45,15 @@ export default function CadastrarCliente() {
     };
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+
+        console.info('📞 handleSubmit()')
+
         event.preventDefault();
         try {
-            // Chama a função para criar o usuário
             await createUserData(cliente);
-            console.log('Usuário cadastrado com sucesso!');
+            console.info('✔ handleSubmit() - Usuário cadastrado com sucesso!');
         } catch (error) {
-            console.error('Erro ao cadastrar usuário:', error);
+            console.error('❌ handleSubmit() - Erro ao cadastrar usuário:', error);
         }
     };
 
