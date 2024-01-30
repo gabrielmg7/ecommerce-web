@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -13,48 +14,39 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { IUser, initialUser } from '../../../Types/restAPI/IUser';
-import clienteApiService from '../../../Services/restAPI/userApiService';
+import { useUser } from '../../../Contexts/UserContext';
+import { Navigate } from 'react-router-dom';
 
 const defaultTheme = createTheme();
 
-export default function CadastrarCliente() {
-    const [cliente, setCliente] = useState<IUser>(initialUser);
-
-
-    const createUserData = async (data: IUser) => {
-
-        console.info('📞 createUserData()')
-
-        try {
-            await clienteApiService.createUser(data);
-            console.info('✔ createUserData() - Usuário Cadastrado!')
-        } catch (error) {
-            console.error('❌ createUserData() - Erro ao cadastrar cliente:', error);
-        }
-    };
+export default function CadastrarUsuario() {
+    const [user, setUser] = useState<IUser>(initialUser);
+    const userContext = useUser();
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
         console.info('📞 handleInputChange()')
 
         const { name, value, type, checked } = event.target;
-        setCliente((prevCliente) => ({
-            ...prevCliente,
+        setUser((prevUser) => ({
+            ...prevUser,
             [name]: type === 'checkbox' ? checked : value,
         }));
     };
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 
-        console.info('📞 handleSubmit()')
+        console.info('📞 handleSubmit() - Chamada da função do Context do Usuário')
 
         event.preventDefault();
         try {
-            await createUserData(cliente);
-            console.info('✔ handleSubmit() - Usuário cadastrado com sucesso!');
+            await userContext.registerUser(user);
+            console.info('✔ handleSubmit() - Usuário cadastrado.');
+
         } catch (error) {
             console.error('❌ handleSubmit() - Erro ao cadastrar usuário:', error);
         }
+
     };
 
     return (
@@ -86,7 +78,7 @@ export default function CadastrarCliente() {
                                     id="nome"
                                     label="Primeiro Nome"
                                     autoFocus
-                                    value={cliente.nome}
+                                    value={user.nome}
                                     onChange={handleInputChange}
                                 />
                             </Grid>
@@ -97,7 +89,7 @@ export default function CadastrarCliente() {
                                     id="sobrenome"
                                     label="Sobrenome"
                                     name="sobrenome"
-                                    value={cliente.sobrenome}
+                                    value={user.sobrenome}
                                     onChange={handleInputChange}
                                 />
                             </Grid>
@@ -109,7 +101,7 @@ export default function CadastrarCliente() {
                                     label="CPF"
                                     name="cpf"
                                     autoComplete="cpf"
-                                    value={cliente.cpf}
+                                    value={user.cpf}
                                     onChange={handleInputChange}
                                 />
                             </Grid>
@@ -121,7 +113,7 @@ export default function CadastrarCliente() {
                                     label="Email"
                                     name="email"
                                     autoComplete="email"
-                                    value={cliente.email}
+                                    value={user.email}
                                     onChange={handleInputChange}
                                 />
                             </Grid>
@@ -134,19 +126,19 @@ export default function CadastrarCliente() {
                                     type="password"
                                     id="password"
                                     autoComplete="new-password"
-                                    value={cliente.password}
+                                    value={user.password}
                                     onChange={handleInputChange}
                                 />
                             </Grid>
                             <Grid item xs={12}>
                                 <FormControlLabel
-                                    control={<Checkbox name="allowExtraEmails" color="primary" checked={cliente.allowExtraEmails} onChange={handleInputChange} />}
+                                    control={<Checkbox name="allowExtraEmails" color="primary" checked={user.allowExtraEmails} onChange={handleInputChange} />}
                                     label="Desejo receber ofertas, promoções de marketing e atualizações por e-mail."
                                 />
                             </Grid>
                         </Grid>
                         <Button
-                            href='/unauthenticated/logar-cliente'
+                            href='/unauthenticated/cadastrar-usuario'
                             type="submit"
                             fullWidth
                             variant="contained"
@@ -156,7 +148,7 @@ export default function CadastrarCliente() {
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                                <Link href="/unauthenticated/logar-cliente" variant="body2">
+                                <Link href="/unauthenticated/logar-usuario" variant="body2">
                                     Já possui uma conta? Faça login
                                 </Link>
                             </Grid>

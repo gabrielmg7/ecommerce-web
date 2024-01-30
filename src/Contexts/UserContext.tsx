@@ -1,15 +1,9 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-
-export interface IUser {
-    id?: string;
-    username: string;
-    email: string;
-    role: 'user' | 'admin';
-    isLoggedIn: boolean;
-}
+import { IUser, initialUser } from '../Types/restAPI/IUser';
+import userApiService from '../Services/restAPI/userApiService';
 
 interface UserContextProps {
-    user: IUser | null;
+    userData: IUser | null;
     registerUser: (userData: IUser) => Promise<void>;
     loginUser: (credentials: { email: string; password: string }) => Promise<void>;
     logoutUser: () => void;
@@ -18,22 +12,27 @@ interface UserContextProps {
 const UserContext = createContext<UserContextProps | undefined>(undefined);
 
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [user, setUser] = useState<IUser | null>(null);
+    const [userData, setUserData] = useState<IUser | null>(null);
 
-
-    // TODO: Lógica para registrar o usuário no backend
     const registerUser = async (userData: IUser) => {
+
+        console.info('📞 registerUser() - Chamada da função da Camada de Serviço')
+
         try {
-            console.log('Registrando usuário:', userData);
+            await userApiService.createUser(userData);
+            console.info('✔ createUserData() - Usuário cadastrado.')
         } catch (error) {
-            console.error('Erro no login:', error);
-        } 
+            console.error('❌ createUserData() - Erro ao cadastrar cliente:', error);
+        }
     };
 
     // TODO: Lógica para autenticar o usuário no backend
     const loginUser = async (credentials: { email: string; password: string }) => {
+        
+        console.info('📞 loginUser() - Chamada da função da Camada de Serviço')
+
         try {
-            console.log('Autenticando usuário:', credentials);
+            console.info('Autenticando usuário:', credentials);
         } catch (error) {
             console.error('Erro no registro:', error);
         }
@@ -42,28 +41,21 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     // TODO: Lógica para efetuar logout (limpar o estado do usuário)
     const logoutUser = () => {
-        console.log('Logout do usuário: ', user)
-        setUser(null);
+
+        console.info('📞 logoutUser() - Chamada da função da Camada de Serviço')
+        
+        setUserData(initialUser);
     };
 
 
-    // TODO: UseEffect para simular a persistência de dados
     useEffect(() => {
-        const storedUser = localStorage.getItem('user');
-        if (storedUser) {
-            setUser(JSON.parse(storedUser));
-        }
-    }, []);
-
-
-    // TODO: UseEffect para atualizar o localStorage sempre que o estado do usuário mudar
-    useEffect(() => {
-        localStorage.setItem('user', JSON.stringify(user));
-    }, [user]);
+        // Simular a persistência de dados e atualização do localStorage
+        localStorage.setItem('user', JSON.stringify(userData));
+    }, [userData]);
 
 
     return (
-        <UserContext.Provider value={{ user, registerUser, loginUser, logoutUser }}>
+        <UserContext.Provider value={{ userData, registerUser, loginUser, logoutUser }}>
             {children}
         </UserContext.Provider>
     );

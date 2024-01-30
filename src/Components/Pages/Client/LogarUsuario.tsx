@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { TextField, Button, Typography, Box, Grid, Avatar, Checkbox, CssBaseline, FormControlLabel, Link, Paper } from '@mui/material';
 import { IUser, initialUser } from '../../../Types/restAPI/IUser';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { useUser } from '../../../Contexts/UserContext';
+
 
 function Copyright(props: any) {
     return (
@@ -19,8 +21,9 @@ function Copyright(props: any) {
     );
 }
 
-const LogarCliente = () => {
+const LogarUsuario = () => {
     const [formData, setFormData] = useState<IUser>(initialUser);
+    const userContext = useUser();
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -32,12 +35,14 @@ const LogarCliente = () => {
         });
     };
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-
-        console.info('📞 handleSubmit()')
-
+    // TODO: Lógica para enviar os dados do formulário para o backend
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        setFormData(formData);
+        console.info('📞 handleSubmit()');
+        await userContext.loginUser({
+            email: formData.email,
+            password: formData.password,
+        });
     };
 
     return (
@@ -95,6 +100,7 @@ const LogarCliente = () => {
                             id="password"
                             autoComplete="current-password"
                             onChange={handleInputChange}
+
                         />
                         <FormControlLabel
                             control={<Checkbox value="remember" color="primary" />}
@@ -115,7 +121,7 @@ const LogarCliente = () => {
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link href="/unauthenticated/cadastrar-cliente" variant="body2">
+                                <Link href="/unauthenticated/cadastrar-usuario" variant="body2">
                                     {"Não tem uma conta? Cadastre-se!"}
                                 </Link>
                             </Grid>
@@ -130,4 +136,4 @@ const LogarCliente = () => {
     );
 };
 
-export default LogarCliente;
+export default LogarUsuario;

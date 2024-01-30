@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ReactNode } from 'react'
-import MenuBar from '../../Utils/MenuBar'
 import Footer from '../../Utils/Footer';
 import { useUser } from '../../../Contexts/UserContext';
+import MenuBar from '../../Utils/MenuBar/MenuBar';
 
 type AdminLayoutProps = {
     children: ReactNode;
@@ -10,7 +10,7 @@ type AdminLayoutProps = {
 
 const AdminLayout = ({ children }: AdminLayoutProps) => {
 
-    const { user } = useUser();
+    const userContext  = useUser();
 
     return (
         <div>

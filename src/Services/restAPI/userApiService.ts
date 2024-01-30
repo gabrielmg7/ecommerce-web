@@ -18,10 +18,15 @@ const userApiService = {
 
   // Função para criar um novo usuário
   createUser: async (clienteData: IUser): Promise<IUser> => {
-    const response = await axios.post(`${API_BASE_URL}/clientes`, clienteData);
-    console.log("createCliente.clientData: ", clienteData)
-    return response.data;
-  },
+    try {
+        const response = await axios.post(`${API_BASE_URL}/clientes`, clienteData);
+        console.info('✔ createUser() - Usuário cadastrado.');
+        return response.data;
+    } catch (error) {
+        console.error('❌ createUser() - Erro ao cadastrar usuário:', error);
+        throw error;
+    }
+},
 
   // Função para atualizar um usuário existente
   updateCliente: async (id: string, clienteData: IUser): Promise<IUser> => {
