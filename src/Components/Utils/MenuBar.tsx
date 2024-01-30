@@ -3,10 +3,10 @@ import { useMediaQuery, AppBar, Toolbar, IconButton, Button, Drawer, List, ListI
 import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
-import theme from '../../../Themes/theme';
-import { useUser } from '../../../Contexts/UserContext';
-import { useAdmin } from '../../../Contexts/AdminContext';
-import CartButton from '../../Cart/CartButton';
+import theme from '../../Themes/theme';
+import { useUser } from '../../Contexts/UserContext';
+import { useAdmin } from '../../Contexts/AdminContext';
+import CartButton from '../Cart/CartButton';
 
 //Links da rota do Usuário
 const ClientMenuBarLinks = () => {
@@ -17,6 +17,9 @@ const ClientMenuBarLinks = () => {
             </Button>
             <Button color="inherit" component={Link} to="/listar-produtos">
                 Loja
+            </Button>
+            <Button color="inherit" component={Link} to="/listar-pedidos">
+                Meus Pedidos
             </Button>
         </>
     );

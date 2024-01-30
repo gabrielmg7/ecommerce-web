@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ReactNode } from 'react'
-import MenuBar from '../../Utils/MenuBar/MenuBar'
+import MenuBar from '../../Utils/MenuBar'
 import Footer from '../../Utils/Footer';
 import { useUser } from '../../../Contexts/UserContext';
 
