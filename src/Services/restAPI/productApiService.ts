@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { IProduto } from '../../Types/restAPI/IProduto';
 
-const API_BASE_URL = 'http://localhost:8080';
+const API_BASE_URL = 'http://localhost:3003/api';
 
 const productApiService = {
   // Função para obter todos os produtos

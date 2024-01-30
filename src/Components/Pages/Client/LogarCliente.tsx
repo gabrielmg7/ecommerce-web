@@ -23,17 +23,20 @@ const LogarCliente = () => {
     const [formData, setFormData] = useState<IUser>(initialUser);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+        console.info('📞 handleInputChange()')
+
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
         });
     };
 
-    // TODO: Lógica para enviar os dados do formulário para o backend
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        console.info('ℹ handleSubmit()')
-        event.preventDefault();
 
+        console.info('📞 handleSubmit()')
+
+        event.preventDefault();
         setFormData(formData);
     };
 
@@ -92,7 +95,6 @@ const LogarCliente = () => {
                             id="password"
                             autoComplete="current-password"
                             onChange={handleInputChange}
-
                         />
                         <FormControlLabel
                             control={<Checkbox value="remember" color="primary" />}
