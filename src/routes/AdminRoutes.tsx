@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import AdminCrudProduto from "../Components/Pages/Admin/AdminCrudProduto";
 import AdminListarProdutos from "../Components/Pages/Admin/AdminListarProdutos";
 import AdminDashboard from "../Components/Pages/Admin/AdminDashboard";
+import Sobre from "../Components/Pages/Sobre";
 
 export const AdminRoutes = () => {
     return (
@@ -11,6 +12,8 @@ export const AdminRoutes = () => {
             <Route path="/crud-produto" element={<AdminCrudProduto />} />
             <Route path="/admin-listar-prd" element={<AdminListarProdutos />} />
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
+            <Route path="/sobre" element={<Sobre />} />
+            
         </Routes>
     );
 };

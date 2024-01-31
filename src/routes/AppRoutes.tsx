@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import { AppAuthenticator } from '../Auth/AppAuthenticator';
-import { useAdmin } from '../Contexts/AdminContext';
 import { useUser } from '../Contexts/UserContext';
 import { UnauthenticatedRoutes } from './UnauthenticatedRoutes';
 import { AdminRoutes } from './AdminRoutes';
@@ -10,11 +9,9 @@ import { ClientRoutes } from './ClientRoutes';
 import { initialUser } from '../Types/restAPI/IUser';
 
 const AppRoutes = () => {
-  const { user } = useUser();
-  const { admin } = useAdmin();
+  const { userData } = useUser();
   const navigate = useNavigate();
-  const isAuthenticated = user?.isLoggedIn || admin?.isLoggedIn;
-
+  const isAuthenticated = userData?.isLoggedIn || userData?.isLoggedIn;
 
   useEffect(() => {
     // Verifica se o usuário não está autenticado e redireciona para /unauthenticated se ele tentar acessar uma rota protegida

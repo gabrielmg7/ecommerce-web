@@ -9,6 +9,9 @@ import { AdminMenuBarLinks } from './Links/AdminMenuBarLinks';
 import { ClientMenuBarLinks } from './Links/ClientMenuBarLinks';
 import { UnauthenticatedMenuBarLinks } from './Links/UnauthenticatedMenuBarLinks';
 import { lightTheme } from '../../../Themes/theme';
+import ToggleThemeButton from './Buttons/ToggleThemeButton';
+import ProfileButton from './Buttons/ProfileButton';
+import { useThemeContext } from '../../../Themes/ThemeProviderWrapper';
 
 export interface MenuLinksProps {
     onCloseDrawer: () => void;
@@ -16,14 +19,31 @@ export interface MenuLinksProps {
 
 const MenuBar = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const isSmallScreen = useMediaQuery(lightTheme.breakpoints.down('sm'));
+    const { toggleTheme, theme } = useThemeContext()
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
     const { userData } = useUser();
     const isCliente = userData?.isLoggedIn && userData.role === 'CLIENT_ROLE';
     const isAdmin = userData?.isLoggedIn && userData.role === 'ADMIN_ROLE';
 
+    //==========================| handleChange's |===============================
+
+    const handleLoginClick = () => {
+
+        console.log('Botão de Login clicado!')
+    }
+    const handleProfileClick = () => {
+        // Lógica de perfil
+        console.log('Botão de Perfil clicado!')
+    }
+
+    //==========================| Functions |====================================
+
+
     const toggleDrawer = (open: boolean) => () => {
         setIsDrawerOpen(open);
     };
+
+    //==========================| FC's |=========================================
 
     const ClientDrawerLinks = () => {
         return (
@@ -85,6 +105,14 @@ const MenuBar = () => {
                             {!userData?.isLoggedIn && <UnauthenticatedMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
                         </>
                     )}
+                    <ToggleThemeButton />
+                    <ProfileButton
+                        isLoggedIn={isCliente ? isCliente : isAdmin }
+                        onLoginClick={handleLoginClick}
+                        onProfileClick={handleProfileClick}
+                        themeMode={theme.palette.mode}
+                        onThemeToggle={toggleTheme}
+                    />
                 </Toolbar>
             </AppBar>
 

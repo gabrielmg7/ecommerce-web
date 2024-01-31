@@ -46,6 +46,13 @@ const Footer = () => {
                                 </Link>
                             </Typography>
                         </Grid>
+                        <Grid item>
+                            <Typography variant="subtitle1">
+                                <Link href="/sobre" color="inherit" underline="hover">
+                                    Sobre
+                                </Link>
+                            </Typography>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>

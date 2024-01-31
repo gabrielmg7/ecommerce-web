@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ListarPedidos = () => {
+const Pedidos = () => {
   return (
     <div>ListarPedidos</div>
-  )
-}
+  );
+};
 
-export default ListarPedidos
+export default Pedidos;
