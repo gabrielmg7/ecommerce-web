@@ -28,22 +28,22 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     // TODO: Lógica para autenticar o usuário no backend
     const loginUser = async (credentials: { email: string; password: string }) => {
-        
         console.info('📞 loginUser() - Chamada da função da Camada de Serviço')
-
         try {
-            console.info('Autenticando usuário:', credentials);
+            const response = await userApiService.loginUser(credentials);
+            const { role, ...userDataWithoutRole } = response;
+            setUserData({ ...userDataWithoutRole, role, isLoggedIn: true });
+            console.info('🆗 loginUser() - Usuário autenticado:', response);
         } catch (error) {
-            console.error('Erro no registro:', error);
+            console.error('❌ loginUser() - Erro no login:', error);
         }
     };
-
 
     // TODO: Lógica para efetuar logout (limpar o estado do usuário)
     const logoutUser = () => {
 
         console.info('📞 logoutUser() - Chamada da função da Camada de Serviço')
-        
+
         setUserData(initialUser);
     };
 

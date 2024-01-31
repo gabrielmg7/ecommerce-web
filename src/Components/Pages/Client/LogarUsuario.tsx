@@ -7,7 +7,6 @@ import { IUser, initialUser } from '../../../Types/restAPI/IUser';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useUser } from '../../../Contexts/UserContext';
 
-
 function Copyright(props: any) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>

@@ -4,11 +4,11 @@ import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import { useUser } from '../../../Contexts/UserContext';
-import theme from '../../../Themes/theme';
 import CartButton from '../../Cart/CartButton';
 import { AdminMenuBarLinks } from './Links/AdminMenuBarLinks';
 import { ClientMenuBarLinks } from './Links/ClientMenuBarLinks';
 import { UnauthenticatedMenuBarLinks } from './Links/UnauthenticatedMenuBarLinks';
+import { lightTheme } from '../../../Themes/theme';
 
 export interface MenuLinksProps {
     onCloseDrawer: () => void;
@@ -16,7 +16,7 @@ export interface MenuLinksProps {
 
 const MenuBar = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const isSmallScreen = useMediaQuery(lightTheme.breakpoints.down('sm'));
     const { userData } = useUser();
     const isCliente = userData?.isLoggedIn && userData.role === 'CLIENT_ROLE';
     const isAdmin = userData?.isLoggedIn && userData.role === 'ADMIN_ROLE';
@@ -34,7 +34,7 @@ const MenuBar = () => {
                 <ListItem button component={Link} to="/" onClick={toggleDrawer(false)}>
                     <ListItemText primary="Clientes" />
                 </ListItem>
-                <CartButton itemCount={2} itens={[]} />
+                <CartButton quantidade={2} itens={[]} id={0} cliente={0} />
             </>
         )
     };
