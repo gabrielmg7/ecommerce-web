@@ -31,7 +31,6 @@ export const AppAuthenticator = ({ userType }: { userType: IUser }) => {
   };
 
   useEffect(() => {
-
     authenticate();
   }, [loginUser, userType, userData]);
 
@@ -40,15 +39,15 @@ export const AppAuthenticator = ({ userType }: { userType: IUser }) => {
       switch (userType.role) {
         case 'CLIENT_ROLE':
           navigate('/cliente');
-          console.info('Navegando para /cliente')
+          console.info('Navegando para /cliente/*')
           break;
         case 'ADMIN_ROLE':
           navigate('/admin');
-          console.info('Navegando para /admin')
+          console.info('Navegando para /admin/*')
           break;
         case 'unauth':
           navigate('/unauthenticated');
-          console.info('Navegando para /unauthenticated')
+          console.info('Navegando para /unauthenticated/*')
           break;
         default:
           navigate('/home');

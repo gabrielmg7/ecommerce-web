@@ -49,7 +49,7 @@ const Footer = () => {
                         <Grid item>
                             <Typography variant="subtitle1">
                                 <Link href="/sobre" color="inherit" underline="hover">
-                                    Sobre
+                                    Sobre Nós
                                 </Link>
                             </Typography>
                         </Grid>

@@ -8,7 +8,6 @@ import CartButton from '../../Cart/CartButton';
 import { AdminMenuBarLinks } from './Links/AdminMenuBarLinks';
 import { ClientMenuBarLinks } from './Links/ClientMenuBarLinks';
 import { UnauthenticatedMenuBarLinks } from './Links/UnauthenticatedMenuBarLinks';
-import { lightTheme } from '../../../Themes/theme';
 import ToggleThemeButton from './Buttons/ToggleThemeButton';
 import ProfileButton from './Buttons/ProfileButton';
 import { useThemeContext } from '../../../Themes/ThemeProviderWrapper';
@@ -17,7 +16,7 @@ export interface MenuLinksProps {
     onCloseDrawer: () => void;
 }
 
-const MenuBar = () => {
+const MenuBar: React.FC = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const { toggleTheme, theme } = useThemeContext()
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));

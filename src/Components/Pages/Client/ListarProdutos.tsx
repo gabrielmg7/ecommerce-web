@@ -1,4 +1,4 @@
-import ClientLayout from "../../Layouts/Client/ClientLayout";
+import ClientLayout from "../../Layouts/ClientLayout";
 
 const ListarProdutos = () => {
   return (

@@ -35,7 +35,7 @@ const ProfileButton: React.FC<ProfileButtonProps> = ({
     return (
         <IconButton color="inherit" onClick={handleButtonClick}>
             {isLoggedIn ? (
-                <AccountCircleIcon />
+                <AccountCircleIcon/>
             ) : (
                 <LoginIcon />
             )}

@@ -1,4 +1,4 @@
-import AdminLayout from "../../Layouts/Admin/AdminLayout";
+import AdminLayout from "../../Layouts/AdminLayout";
 
 const AdminCrudProduto = () => {
     return (
