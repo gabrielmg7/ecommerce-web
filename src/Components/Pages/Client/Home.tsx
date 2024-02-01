@@ -1,5 +1,5 @@
-import ClientLayout from "../Layouts/ClientLayout"
-import ProductList from "../Utils/ProductList";
+import ClientLayout from "../../Layouts/ClientLayout"
+import ProductList from "../../Utils/ProductList";
 
 const Home = () => {
 

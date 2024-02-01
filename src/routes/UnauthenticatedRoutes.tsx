@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom"
 import ListarProdutos from "../Components/Pages/Client/ListarProdutos"
-import Home from "../Components/Pages/Home";
+import Home from "../Components/Pages/Client/Home";
 import CadastrarUsuario from "../Components/Pages/Client/CadastrarUsuario";
 import LogarUsuario from "../Components/Pages/Client/LogarUsuario";
 import Sobre from "../Components/Pages/Sobre";

@@ -11,6 +11,7 @@ import { UnauthenticatedMenuBarLinks } from './Links/UnauthenticatedMenuBarLinks
 import ToggleThemeButton from './Buttons/ToggleThemeButton';
 import ProfileButton from './Buttons/ProfileButton';
 import { useThemeContext } from '../../../Themes/ThemeProviderWrapper';
+import { GradientTitle } from './GradientTitle';
 
 export interface MenuLinksProps {
     onCloseDrawer: () => void;
@@ -80,9 +81,7 @@ const MenuBar: React.FC = () => {
         <div>
             <AppBar position="static" >
                 <Toolbar>
-                    <Typography variant="h6" component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit', flexGrow: 2 }}>
-                        OnlineShopping
-                    </Typography>
+                    <GradientTitle />
                     {isSmallScreen ? (
                         <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>
                             <MenuIcon />
@@ -95,7 +94,7 @@ const MenuBar: React.FC = () => {
                         </>
                     )}
                     <ToggleThemeButton />
-                    <ProfileButton isLoggedIn={isCliente ? isCliente : isAdmin}/>
+                    <ProfileButton isLoggedIn={isCliente ? isCliente : isAdmin} />
                 </Toolbar>
             </AppBar>
 
