@@ -21,8 +21,8 @@ export const DarkThemeOptions: ThemeOptions = {
             main: '#4f9050',
         },
         background: {
-            default: 'rgba(39,39,39,0.96)',
-            paper: '#191919',
+            default: '#303030',
+            paper: '#424242',
         },
     },
     shape: {

@@ -7,20 +7,9 @@ import LoginIcon from '@mui/icons-material/Login'
 import { useThemeContext } from '../../../../Themes/ThemeProviderWrapper'
 
 type ProfileButtonProps = {
-    isLoggedIn: boolean | undefined
-    onLoginClick?: () => void
-    onProfileClick?: () => void
-    themeMode: 'light' | 'dark'
-    onThemeToggle?: () => void
-}
+    isLoggedIn: boolean | undefined}
 
-const ProfileButton: React.FC<ProfileButtonProps> = ({
-    isLoggedIn,
-    onLoginClick,
-    onProfileClick,
-    themeMode,
-    onThemeToggle,
-}) => {
+const ProfileButton: React.FC<ProfileButtonProps> = ({isLoggedIn}) => {
     const navigate = useNavigate()
     const { theme } = useThemeContext()
 
@@ -33,9 +22,9 @@ const ProfileButton: React.FC<ProfileButtonProps> = ({
     }
 
     return (
-        <IconButton color="inherit" onClick={handleButtonClick}>
+        <IconButton onClick={handleButtonClick} color='inherit'>
             {isLoggedIn ? (
-                <AccountCircleIcon/>
+                <AccountCircleIcon  />
             ) : (
                 <LoginIcon />
             )}

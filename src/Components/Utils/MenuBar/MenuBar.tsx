@@ -18,22 +18,12 @@ export interface MenuLinksProps {
 
 const MenuBar: React.FC = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const { toggleTheme, theme } = useThemeContext()
+    const { theme } = useThemeContext()
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
     const { userData } = useUser();
     const isCliente = userData?.isLoggedIn && userData.role === 'CLIENT_ROLE';
     const isAdmin = userData?.isLoggedIn && userData.role === 'ADMIN_ROLE';
 
-    //==========================| handleChange's |===============================
-
-    const handleLoginClick = () => {
-
-        console.log('Botão de Login clicado!')
-    }
-    const handleProfileClick = () => {
-        // Lógica de perfil
-        console.log('Botão de Perfil clicado!')
-    }
 
     //==========================| Functions |====================================
 
@@ -88,7 +78,7 @@ const MenuBar: React.FC = () => {
 
     return (
         <div>
-            <AppBar position="static">
+            <AppBar position="static" >
                 <Toolbar>
                     <Typography variant="h6" component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit', flexGrow: 2 }}>
                         OnlineShopping
@@ -105,13 +95,7 @@ const MenuBar: React.FC = () => {
                         </>
                     )}
                     <ToggleThemeButton />
-                    <ProfileButton
-                        isLoggedIn={isCliente ? isCliente : isAdmin }
-                        onLoginClick={handleLoginClick}
-                        onProfileClick={handleProfileClick}
-                        themeMode={theme.palette.mode}
-                        onThemeToggle={toggleTheme}
-                    />
+                    <ProfileButton isLoggedIn={isCliente ? isCliente : isAdmin}/>
                 </Toolbar>
             </AppBar>
 

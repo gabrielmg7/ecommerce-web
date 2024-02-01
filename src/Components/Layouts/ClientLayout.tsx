@@ -3,6 +3,7 @@ import { ReactNode } from 'react'
 import Footer from '../Utils/Footer';
 import { useUser } from '../../Contexts/UserContext';
 import MenuBar from '../Utils/MenuBar/MenuBar';
+import { useThemeContext } from '../../Themes/ThemeProviderWrapper';
 
 type ClientLayoutProps = {
     children: ReactNode;
@@ -11,6 +12,7 @@ type ClientLayoutProps = {
 const ClientLayout = ({ children }: ClientLayoutProps) => {
 
     const userContext = useUser();
+    const { theme } = useThemeContext();
 
     return (
         <div>
