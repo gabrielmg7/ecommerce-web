@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext, useState } from 'react';
+import React, { createContext, ReactNode, useContext, useState, useEffect } from 'react';
 import { ThemeProvider, Theme } from '@mui/material/styles';
 import { convertToTheme, DarkThemeOptions, LightThemeOptions } from './ThemeOptions';
 
@@ -14,11 +14,25 @@ type ThemeProviderProps = {
 };
 
 export const ThemeProviderWrapper: React.FC<ThemeProviderProps> = ({ children }) => {
-    const [darkMode, setDarkMode] = useState<boolean>(false);
+    const [darkMode, setDarkMode] = useState<boolean>(window.matchMedia('(prefers-color-scheme: dark)').matches);
 
     const toggleTheme = () => {
         setDarkMode(prevMode => !prevMode);
     };
+
+    useEffect(() => { //coletar o tema do sistema do usuário - altera apenas inicialmente
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+        const handleThemeChange = (e: MediaQueryListEvent) => {
+            setDarkMode(e.matches);
+        };
+
+        mediaQuery.addEventListener('change', handleThemeChange);
+
+        return () => {
+            mediaQuery.removeEventListener('change', handleThemeChange);
+        };
+    }, []);
 
     const selectedTheme = darkMode ? convertToTheme(DarkThemeOptions) : convertToTheme(LightThemeOptions);
 
