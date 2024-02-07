@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useMediaQuery, AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemText, Typography } from '@mui/material';
+import { useMediaQuery, AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemText, Typography, Grid } from '@mui/material';
 import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
@@ -79,33 +79,35 @@ const MenuBar: React.FC = () => {
 
     return (
         <div>
-            <AppBar position="static" >
+            <AppBar position="static">
                 <Toolbar>
                     <GradientTitle />
-                    {isSmallScreen ? (
-                        <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>
-                            <MenuIcon />
-                        </IconButton>
-                    ) : (
-                        <>
-                            {isCliente && <ClientMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
-                            {isAdmin && <AdminMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
-                            {!userData?.isLoggedIn && <UnauthenticatedMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
-                        </>
-                    )}
-                    <ToggleThemeButton />
-                    <ProfileButton isLoggedIn={isCliente ? isCliente : isAdmin} />
+                    <Grid container direction="row" justifyContent="flex-end" alignItems="center">
+                        {isSmallScreen ? (
+                            <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>
+                                <MenuIcon />
+                            </IconButton>
+                        ) : (
+                            <>
+                                {isCliente && <ClientMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
+                                {isAdmin && <AdminMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
+                                {!userData?.isLoggedIn && <UnauthenticatedMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
+                                <ToggleThemeButton />
+                                <ProfileButton isLoggedIn={isCliente ? isCliente : isAdmin} />
+                            </>
+                        )}
+                    </Grid>
                 </Toolbar>
             </AppBar>
 
-            <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer(false)}>
+            <Drawer anchor="right" open={isDrawerOpen} onClose={toggleDrawer(false)}>
                 <List>
                     {isCliente && <ClientDrawerLinks />}
                     {isAdmin && <AdminDrawerLinks />}
                     {!userData?.isLoggedIn && <UnauthenticatedDrawerLinks />}
                 </List>
             </Drawer>
-        </div>
+        </div >
     );
 };
 

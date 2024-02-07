@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // ProductList.tsx
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography, Grid, Button, ButtonGroup, Skeleton } from '@mui/material';
 import { useProduct } from '../../Contexts/ProductContext';
 import { IProduct } from '../../Types/fakeAPI/type';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 const buttons = [
     <Button key="one">Ver</Button>,
@@ -20,12 +23,12 @@ const ProductList: React.FC = () => {
                     <Card>
                         <Skeleton variant="rounded" height={230} />
                         <CardContent>
-                            <Skeleton variant="text" width="80%" />
-                            <Skeleton variant="text" width="60%" />
-                            <Skeleton variant="text" width="40%" />
-                            <Skeleton variant="text" width="80%" />
-                            <Skeleton variant="text" width="60%" />
-                            <Skeleton variant="text" width="40%" />
+                            <Skeleton variant="text" width="50%" />
+                            <Skeleton variant="text" width="50%" />
+                            <Skeleton variant="text" width="50%" />
+                            <Skeleton variant="text" width="50%" />
+                            <Skeleton variant="text" width="50%" />
+                            <Skeleton variant="text" width="50%" />
                         </CardContent>
                     </Card>
                 </Grid>
@@ -38,39 +41,44 @@ const ProductList: React.FC = () => {
     }
 
     return (
-        <Grid container spacing={2} mt = '1vh'>
-            {produtos.map((produto: IProduct) => (
-                <Grid item key={produto.id} xs={12} sm={6} md={4} lg={3}>
-                    <Card>
-                        <CardMedia
-                            component="img"
-                            height="230"
-                            image={produto.image}
-                            alt={produto.title}
-                        />
-                        <CardContent>
-                            <Typography variant="h6" component="div">
-                                {produto.title}
+<Grid container spacing={2} mt="1vh" style={{ display: 'flex', flexWrap: 'wrap' }}>
+    {produtos.map((produto: IProduct) => (
+        <Grid item key={produto.id} xs={12} sm={6} md={4} lg={3} style={{ flexGrow: 1 }}>
+            <Card style={{ height: '100%', display: 'flex', flexDirection: 'column'}}>
+                <CardMedia
+                    component="img"
+                    height="230"
+                    image={produto.image}
+                    alt={produto.title}
+                    style={{ objectFit: 'cover' }}
+                />
+                <CardContent style={{ flex: 1 }}>
+                <Typography variant="h6" component="div" style={{ display: '-webkit-box', WebkitBoxOrient: 'vertical', overflow: 'hidden', WebkitLineClamp: 3, textOverflow: 'ellipsis' }}>
+                        {produto.title}
+                    </Typography>
+                    <Typography variant="subtitle1" color="text.secondary">
+                        {produto.category}
+                    </Typography>
+                    <Grid container justifyContent="space-between" direction={'row'} alignItems={'flex-end'}>
+                        <Grid item>
+                            <Typography variant="h6" color="primary">
+                                R$ {produto.price.toFixed(2)}
                             </Typography>
-                            <Typography variant="subtitle1" color="text.secondary">
-                                {produto.category}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {produto.description}
-                            </Typography>
-                            <Grid container justifyContent="space-between" alignItems="center" mt={2}>
-                                <Typography variant="h6" color="primary">
-                                    R$ {produto.price.toFixed(2)}
-                                </Typography>
-                                <ButtonGroup size="small" aria-label="small button group">
-                                    {buttons}
-                                </ButtonGroup>
-                            </Grid>
-                        </CardContent>
-                    </Card>
-                </Grid>
-            ))}
+                        </Grid>
+                        <Grid item>
+                            <ButtonGroup size="small" aria-label="small button group">
+                                {buttons}
+                            </ButtonGroup>
+                        </Grid>
+                    </Grid>
+                </CardContent>
+            </Card>
         </Grid>
+    ))}
+</Grid>
+
+
+
     );
 };
 
