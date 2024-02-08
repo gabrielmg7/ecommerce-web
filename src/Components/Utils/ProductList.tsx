@@ -41,41 +41,41 @@ const ProductList: React.FC = () => {
     }
 
     return (
-<Grid container spacing={2} mt="1vh" style={{ display: 'flex', flexWrap: 'wrap' }}>
-    {produtos.map((produto: IProduct) => (
-        <Grid item key={produto.id} xs={12} sm={6} md={4} lg={3} style={{ flexGrow: 1 }}>
-            <Card style={{ height: '100%', display: 'flex', flexDirection: 'column'}}>
-                <CardMedia
-                    component="img"
-                    height="230"
-                    image={produto.image}
-                    alt={produto.title}
-                    style={{ objectFit: 'cover' }}
-                />
-                <CardContent style={{ flex: 1 }}>
-                <Typography variant="h6" component="div" style={{ display: '-webkit-box', WebkitBoxOrient: 'vertical', overflow: 'hidden', WebkitLineClamp: 3, textOverflow: 'ellipsis' }}>
-                        {produto.title}
-                    </Typography>
-                    <Typography variant="subtitle1" color="text.secondary">
-                        {produto.category}
-                    </Typography>
-                    <Grid container justifyContent="space-between" direction={'row'} alignItems={'flex-end'}>
-                        <Grid item>
-                            <Typography variant="h6" color="primary">
-                                R$ {produto.price.toFixed(2)}
+        <Grid container spacing={2} mt="1vh" style={{ display: 'flex', flexWrap: 'wrap' }}>
+            {produtos.map((produto: IProduct) => (
+                <Grid item key={produto.id} xs={12} sm={6} md={4} lg={3} style={{ flexGrow: 1 }}>
+                    <Card style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                        <CardMedia
+                            component="img"
+                            height="230"
+                            image={produto.image}
+                            alt={produto.title}
+                            style={{ objectFit: 'cover' }}
+                        />
+                        <CardContent style={{ flex: 1 }}>
+                            <Typography id="productTitle" style={{ display: '-webkit-box', WebkitBoxOrient: 'vertical', overflow: 'hidden', WebkitLineClamp: 3, textOverflow: 'ellipsis' }} variant="h6" component="div">
+                                {produto.title}
                             </Typography>
-                        </Grid>
-                        <Grid item>
-                            <ButtonGroup size="small" aria-label="small button group">
-                                {buttons}
-                            </ButtonGroup>
-                        </Grid>
-                    </Grid>
-                </CardContent>
-            </Card>
+                            <Typography id="productCategory" variant="subtitle1" color="text.secondary">
+                                {produto.category}
+                            </Typography>
+                            <Grid container justifyContent="space-between" direction={'row'} alignItems={'flex-end'}>
+                                <Grid item>
+                                    <Typography id="productPrice" variant="h6" color="primary">
+                                        R$ {produto.price.toFixed(2)}
+                                    </Typography>
+                                </Grid>
+                                <Grid item>
+                                    <ButtonGroup size="small" aria-label="small button group">
+                                        {buttons}
+                                    </ButtonGroup>
+                                </Grid>
+                            </Grid>
+                        </CardContent>
+                    </Card>
+                </Grid>
+            ))}
         </Grid>
-    ))}
-</Grid>
 
 
 

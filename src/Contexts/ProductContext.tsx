@@ -23,9 +23,8 @@ export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({ child
     };
 
     useEffect(() => {
-        // Chame a função para carregar produtos assim que o componente for montado
         carregarProdutos();
-    }, []); // A dependência vazia garante que isso só acontecerá uma vez
+    }, []); 
 
     return (
         <ProductContext.Provider value={{ produtos, carregarProdutos }}>

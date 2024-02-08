@@ -73,4 +73,3 @@ export const convertToTheme = (themeOptions: ThemeOptions): Theme => {
     const theme = createTheme(themeOptions);
         return theme;
 };
-

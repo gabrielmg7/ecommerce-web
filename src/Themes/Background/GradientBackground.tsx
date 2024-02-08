@@ -19,7 +19,7 @@ const GradientBackgroundContainer = styled.div<{ height: number }>`
     top: 0;
     left: 0;                  
     background: linear-gradient(
-        to right,
+        to left,
         #00D7DF,
         #003F8A,
         #006DF0,

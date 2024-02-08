@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { IconButton } from '@mui/material'
 import { useThemeContext } from '../../../../Themes/ThemeProviderWrapper'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
@@ -9,12 +9,11 @@ const ToggleThemeButton: React.FC = () => {
 
     const handleToggle = () => {
         toggleTheme();
-        console.log('📞 handleToggle() - 🌙🌞 Theme Mode:', theme.palette.mode);
       };
-
-    // useEffect(() => {
-    //     console.log('📞 handleToggle() - 🌙🌞 Theme Mode:', theme.palette.mode);
-    // }, [theme]);
+    
+     useEffect(() => {
+         console.log('📞 handleToggle() - 🌙🌞 Theme Mode:', theme.palette.mode);
+     }, [theme]);
 
     return (
         <div>

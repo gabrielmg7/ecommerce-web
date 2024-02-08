@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../Contexts/UserContext';
+import { useUserContext } from '../Contexts/UserContext';
 import { IUser } from '../Types/restAPI/IUser';
 
 export const AppAuthenticator = ({ userType }: { userType: IUser }) => {
   const navigate = useNavigate();
-  const { userData, loginUser } = useUser();
+  const { userData, loginUser } = useUserContext();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const authenticate = async () => {
@@ -16,13 +16,13 @@ export const AppAuthenticator = ({ userType }: { userType: IUser }) => {
         password: userType.password,
       });
       if (userData && userData.isLoggedIn) {
-        console.info('🆗 authenticate() - Uuário autenticado com sucesso!')
+        console.info('🆗 authenticate() - Usuário autenticado com sucesso!')
         setIsAuthenticated(true);
       } else {
         setIsAuthenticated(false);
       }
     } catch (error) {
-      console.error('❌ authenticate() - Uuário não autenticado!')
+      console.error('❌ authenticate() - Usuário não autenticado!')
 
       setIsAuthenticated(false);
     }

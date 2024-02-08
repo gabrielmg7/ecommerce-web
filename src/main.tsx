@@ -6,7 +6,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { UserProvider } from './Contexts/UserContext.tsx';
 import { ThemeProviderWrapper } from './Themes/ThemeProviderWrapper.tsx';
 
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProviderWrapper>
@@ -16,5 +15,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </UserProvider>
       </Router>
     </ThemeProviderWrapper>
+
   </React.StrictMode>,
 );

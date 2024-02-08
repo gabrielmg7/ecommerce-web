@@ -1,15 +1,10 @@
 import ClientLayout from "../../Layouts/ClientLayout"
 import ProductList from "../../Utils/ProductList";
 
-const Home = () => {
-
-    
-
+export default function Home() {
     return (
         <ClientLayout>
-            <ProductList/>
+            <ProductList />
         </ClientLayout>
     );
-};
-
-export default Home;
+}

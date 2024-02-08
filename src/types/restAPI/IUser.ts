@@ -1,3 +1,4 @@
+import { ICarrinho } from "./ICarrinho";
 import { IPedido, } from "./IPedido";
 
 export interface IUser {
@@ -14,7 +15,8 @@ export interface IUser {
   role: "CLIENT_ROLE" | "ADMIN_ROLE" | "unauth";
   allowExtraEmails: boolean;
   isLoggedIn?: boolean;
-  pedidos?: IPedido[];
+  pedidos: IPedido[];
+  carrinho: ICarrinho["id"];
 }
 
 export const initialUser: IUser = {
@@ -25,5 +27,7 @@ export const initialUser: IUser = {
   email: "",
   password: "",
   role: "CLIENT_ROLE",
-  allowExtraEmails: false
+  allowExtraEmails: false,
+  pedidos: [],
+  carrinho: 0, 
 };

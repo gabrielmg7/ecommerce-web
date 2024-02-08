@@ -12,16 +12,15 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { IUser, initialUser } from '../../../Types/restAPI/IUser';
-import { useUser } from '../../../Contexts/UserContext';
-import { Navigate } from 'react-router-dom';
-
-const defaultTheme = createTheme();
+import { useUserContext } from '../../../Contexts/UserContext';
+import { useThemeContext } from '../../../Themes/ThemeProviderWrapper';
+import { ThemeProvider } from '@mui/material';
 
 export default function CadastrarUsuario() {
+    const { theme } = useThemeContext()
     const [user, setUser] = useState<IUser>(initialUser);
-    const userContext = useUser();
+    const userContext = useUserContext();
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -50,7 +49,7 @@ export default function CadastrarUsuario() {
     };
 
     return (
-        <ThemeProvider theme={defaultTheme}>
+        <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box

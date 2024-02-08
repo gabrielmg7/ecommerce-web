@@ -2,7 +2,7 @@
 import React from 'react';
 import { Container, Grid, Typography, Breadcrumbs, Link, Divider } from '@mui/material';
 import MenuBar from '../Utils/MenuBar/MenuBar';
-import Footer from '../Utils/Footer';
+import Footer from '../Utils/Footer/Footer';
 import { useThemeContext } from '../../Themes/ThemeProviderWrapper';
 
 const Sobre = () => {

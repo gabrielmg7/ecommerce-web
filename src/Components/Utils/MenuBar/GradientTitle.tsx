@@ -1,11 +1,18 @@
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import { Box, Typography } from '@mui/material';
+import { useThemeContext } from '../../../Themes/ThemeProviderWrapper';
+import React from 'react';
 
-export const GradientTitle = () => {
+const GradientTitle: React.FC = () => {
+    const { theme } = useThemeContext();
+
+    const gradientColors = theme.palette.mode === 'light'
+        ? '#bbd0ff, #00D7DF, #00D7DF, #bbd0ff,#00D7DF, #bbd0ff' 
+        : '#00D7DF, #006DF0, #006DF0, #00D7DF, #006DF0';
+
     return (
         <Box
             sx={{
-                backgroundImage: 'linear-gradient(to right, #00D7DF, #003F8A, #006DF0, #006DF0, #00D7DF,#006DF0)',
+                backgroundImage: `linear-gradient(to right, ${gradientColors})`,
                 WebkitBackgroundClip: 'text',
                 color: 'transparent',
                 display: 'inline-block',
@@ -16,3 +23,5 @@ export const GradientTitle = () => {
         </Box>
     );
 };
+
+export default GradientTitle;

@@ -3,7 +3,7 @@ import { useMediaQuery, AppBar, Toolbar, IconButton, Drawer, List, ListItem, Lis
 import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
-import { useUser } from '../../../Contexts/UserContext';
+import { useUserContext } from '../../../Contexts/UserContext';
 import CartButton from '../../Cart/CartButton';
 import { AdminMenuBarLinks } from './Links/AdminMenuBarLinks';
 import { ClientMenuBarLinks } from './Links/ClientMenuBarLinks';
@@ -11,23 +11,21 @@ import { UnauthenticatedMenuBarLinks } from './Links/UnauthenticatedMenuBarLinks
 import ToggleThemeButton from './Buttons/ToggleThemeButton';
 import ProfileButton from './Buttons/ProfileButton';
 import { useThemeContext } from '../../../Themes/ThemeProviderWrapper';
-import { GradientTitle } from './GradientTitle';
-
+import GradientTitle from './GradientTitle';
+import { initialUser } from '../../../Types/restAPI/IUser';
 export interface MenuLinksProps {
     onCloseDrawer: () => void;
 }
 
 const MenuBar: React.FC = () => {
+    const { theme } = useThemeContext();
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const { theme } = useThemeContext()
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-    const { userData } = useUser();
+    const { userData } = useUserContext();
     const isCliente = userData?.isLoggedIn && userData.role === 'CLIENT_ROLE';
     const isAdmin = userData?.isLoggedIn && userData.role === 'ADMIN_ROLE';
 
-
     //==========================| Functions |====================================
-
 
     const toggleDrawer = (open: boolean) => () => {
         setIsDrawerOpen(open);
@@ -35,7 +33,7 @@ const MenuBar: React.FC = () => {
 
     //==========================| FC's |=========================================
 
-    const ClientDrawerLinks = () => {
+    const ClientDrawerLinks: React.FC = () => {
         return (
             <>
                 <ListItem button component={Link} to="/home" onClick={toggleDrawer(false)}>
@@ -49,7 +47,7 @@ const MenuBar: React.FC = () => {
         )
     };
 
-    const AdminDrawerLinks = () => {
+    const AdminDrawerLinks: React.FC = () => {
         return (
 
             <>
@@ -63,7 +61,7 @@ const MenuBar: React.FC = () => {
         )
     };
 
-    const UnauthenticatedDrawerLinks = () => {
+    const UnauthenticatedDrawerLinks: React.FC = () => {
         return (
 
             <>
@@ -78,8 +76,8 @@ const MenuBar: React.FC = () => {
     };
 
     return (
-        <div>
-            <AppBar position="static">
+        <>
+            <AppBar position="static" >
                 <Toolbar>
                     <GradientTitle />
                     <Grid container direction="row" justifyContent="flex-end" alignItems="center">
@@ -99,15 +97,19 @@ const MenuBar: React.FC = () => {
                     </Grid>
                 </Toolbar>
             </AppBar>
-
             <Drawer anchor="right" open={isDrawerOpen} onClose={toggleDrawer(false)}>
+                <Grid container>
+                    <ToggleThemeButton />
+                    <CartButton id={initialUser.carrinho} cliente={initialUser.id} quantidade={0} itens={[]}/>
+                    <ProfileButton isLoggedIn={isCliente ? isCliente : isAdmin} />
+                </Grid>
                 <List>
                     {isCliente && <ClientDrawerLinks />}
                     {isAdmin && <AdminDrawerLinks />}
                     {!userData?.isLoggedIn && <UnauthenticatedDrawerLinks />}
                 </List>
             </Drawer>
-        </div >
+        </>
     );
 };
 

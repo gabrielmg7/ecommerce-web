@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { ICliente } from "./IUser";
+import { IUser } from "./IUser";
 import { ItemPedido } from "./ItemPedido";
 
 export interface IPedido {
     id: string,
-    idCliente: ICliente["id"]
+    idCliente: IUser["id"]
     dataPedido: any;
     total: number;
     status: string;
