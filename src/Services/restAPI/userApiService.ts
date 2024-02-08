@@ -17,22 +17,22 @@ const userApiService = {
   },
 
   // Função para criar um novo usuário
-  createUser: async (userData: IUser): Promise<IUser> => {
+  create: async (userData: IUser): Promise<IUser> => {
     try {
       const response = await axios.post(
         `${API_BASE_URL}/clientes`,
         userData
       );
-      console.info("✔ createUser() - Usuário cadastrado.");
+      console.info("✔ userApiService.create() - Usuário cadastrado.");
       return response.data;
     } catch (error) {
-      console.error("❌ createUser() - Erro ao cadastrar usuário:", error);
+      console.error("❌ userApiService.create() - Erro ao cadastrar usuário:", error);
       throw error;
     }
   },
 
   // Função para logar um usuário
-  loginUser: async (credentials: {
+  login: async (credentials: {
     email: string;
     password: string;
   }): Promise<IUser> => {
@@ -41,7 +41,7 @@ const userApiService = {
         `${API_BASE_URL}/auth/login`,
         credentials
       );
-      console.info("✔ loginUser() - Usuário autenticado.");
+      console.info("✔ userApiService.login() - Usuário autenticado.");
 
       const user: IUser = {
         id: response.data.id,
@@ -58,17 +58,18 @@ const userApiService = {
         allowExtraEmails: response.data.allowExtraEmails,
         isLoggedIn: true, // Marcamos como logado após autenticação
         pedidos: response.data.pedidos,
+        carrinho: 0
       };
 
       return user;
     } catch (error) {
-      console.error("❌ loginUser() - Erro ao autenticar usuário:", error);
+      console.error("❌ userApiService.login() - Erro ao logar usuário:", error);
       throw error;
     }
   },
 
   // Função para atualizar um usuário existente
-  updateUser: async (id: string, userData: IUser): Promise<IUser> => {
+  update: async (id: string, userData: IUser): Promise<IUser> => {
     const response = await axios.put(
       `${API_BASE_URL}/clientes/${id}`,
       userData
@@ -77,7 +78,7 @@ const userApiService = {
   },
 
   // Função para excluir um usuário por ID
-  deleteUser: async (id: string): Promise<void> => {
+  delete: async (id: string): Promise<void> => {
     await axios.delete(`${API_BASE_URL}/clientes/${id}`);
   },
 };

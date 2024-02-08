@@ -6,7 +6,6 @@ import { useUserContext } from '../Contexts/UserContext';
 import { UnauthenticatedRoutes } from './UnauthenticatedRoutes';
 import { AdminRoutes } from './AdminRoutes';
 import { ClientRoutes } from './ClientRoutes';
-import { initialUser } from '../Types/restAPI/IUser';
 
 const AppRoutes = () => {
   const { userData } = useUserContext();
@@ -21,7 +20,7 @@ const AppRoutes = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<AppAuthenticator userType={initialUser} />} />
+      <Route path="/" element={<AppAuthenticator />} />
       <Route path="/admin/*" element={<AdminRoutes />} />
       <Route path="/cliente/*" element={<ClientRoutes />} />
       <Route path="/unauthenticated/*" element={<UnauthenticatedRoutes />} />

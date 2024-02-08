@@ -6,15 +6,15 @@ export interface IUser {
   nome: string;
   sobrenome: string;
   cpf: string;
-  telefone?: number;
+  telefone: number;
   email: string;
   password: string;
-  cidade?: string;
-  endereco?: string;
-  cep?: number;
+  cidade: string;
+  endereco: string;
+  cep: number;
   role: "CLIENT_ROLE" | "ADMIN_ROLE" | "unauth";
   allowExtraEmails: boolean;
-  isLoggedIn?: boolean;
+  isLoggedIn: boolean;
   pedidos: IPedido[];
   carrinho: ICarrinho["id"];
 }
@@ -28,6 +28,11 @@ export const initialUser: IUser = {
   password: "",
   role: "CLIENT_ROLE",
   allowExtraEmails: false,
+  isLoggedIn: false,
   pedidos: [],
-  carrinho: 0, 
+  carrinho: 0,
+  telefone: 0,
+  cidade: "",
+  endereco: "",
+  cep: 0
 };

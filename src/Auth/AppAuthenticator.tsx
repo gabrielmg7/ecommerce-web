@@ -1,58 +1,42 @@
-import { useState, useEffect } from 'react';
+import {  useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../Contexts/UserContext';
-import { IUser } from '../Types/restAPI/IUser';
 
-export const AppAuthenticator = ({ userType }: { userType: IUser }) => {
+export const AppAuthenticator = () => {
   const navigate = useNavigate();
-  const { userData, loginUser } = useUserContext();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  const authenticate = async () => {
-    console.info('📞 authenticate() - Chamada da função da camada de Autenticação')
-    try {
-      await loginUser({
-        email: userType.email,
-        password: userType.password,
-      });
-      if (userData && userData.isLoggedIn) {
-        console.info('🆗 authenticate() - Usuário autenticado com sucesso!')
-        setIsAuthenticated(true);
-      } else {
-        setIsAuthenticated(false);
-      }
-    } catch (error) {
-      console.error('❌ authenticate() - Usuário não autenticado!')
-
-      setIsAuthenticated(false);
-    }
-  };
+  const { userData, checkAuthentication } = useUserContext();
 
   useEffect(() => {
-    authenticate();
-  }, [loginUser, userType, userData]);
+    console.log('userData mudou:', userData);
+    checkAuthentication();
+  }, [userData]);
 
   useEffect(() => {
-    if (isAuthenticated) {
-      switch (userType.role) {
+    console.log('userData mudou:', userData);
+  }, [userData]);
+
+  useEffect(() => {
+    if (userData?.isLoggedIn === true) {
+      switch (userData.role) {
         case 'CLIENT_ROLE':
           navigate('/cliente');
-          console.info('Navegando para /cliente/*')
+          console.info('📞 AppAuthenticator -> Navegando para /cliente/*')
           break;
         case 'ADMIN_ROLE':
           navigate('/admin');
-          console.info('Navegando para /admin/*')
+          console.info('📞 AppAuthenticator -> Navegando para /admin/*')
           break;
         case 'unauth':
           navigate('/unauthenticated');
-          console.info('Navegando para /unauthenticated/*')
+          console.info('📞 AppAuthenticator -> Navegando para /unauthenticated/*')
           break;
         default:
           navigate('/home');
           break;
       }
     }
-  }, [isAuthenticated, userType.role, navigate]);
+  }, [userData?.role, navigate]);
 
   return null;
+
 }
