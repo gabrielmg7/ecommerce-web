@@ -25,7 +25,7 @@ const BannerFooter: React.FC = () => {
             Escolha como pagar
             </Typography>
           <Typography align="center" variant="body2" color="text.secondary">
-            Com o OnlineShopping, você paga com cartão, boleto ou Pix. Você também tem sua Carteira onde pode cadastrar cartões e gerenciar sua quantia.
+            Com o OnlineStore, você paga com cartão, boleto ou Pix. Você também tem sua Carteira onde pode cadastrar cartões e gerenciar sua quantia.
           </Typography>
           <Typography align="center" variant="body2" color="primary" mt={2}>
             Ver Mais
@@ -48,7 +48,7 @@ const BannerFooter: React.FC = () => {
             Frete grátis a partir de R$ 79
           </Typography>
           <Typography align="center" variant="body2" color="text.secondary">
-            Ao se cadastrar no OnlineShopping, você tem frete grátis em milhares de produtos, baseado na sua localização.
+            Ao se cadastrar no OnlineStore, você tem frete grátis em milhares de produtos, baseado na sua localização.
           </Typography>
           <Typography align="center" variant="body2" color="primary" mt={2}>
             Calcule seu Frete
@@ -72,7 +72,7 @@ const BannerFooter: React.FC = () => {
             Segurança, do início ao fim
             </Typography>
           <Typography align="center" variant="body2" color="text.primary">
-            Você não gostou do que comprou? Devolva! No OnlineShopping não há nada que você não possa fazer, porque você está sempre protegido.
+            Você não gostou do que comprou? Devolva! No OnlineStore não há nada que você não possa fazer, porque você está sempre protegido.
           </Typography>
           <Typography align="center" variant="body2" color="primary" mt={2}>
             Como te protegemos

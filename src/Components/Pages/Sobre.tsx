@@ -21,7 +21,7 @@ const Sobre = () => {
                             <span>Você está em: </span>
                             <Breadcrumbs separator="›" aria-label="breadcrumb">
                                 <Link href="/">Home</Link>
-                                <Link href="/">OnlineShopping</Link>
+                                <Link href="/">OnlineStore</Link>
                                 <Link href="/sobre">
                                     Quem Somos
                                 </Link>

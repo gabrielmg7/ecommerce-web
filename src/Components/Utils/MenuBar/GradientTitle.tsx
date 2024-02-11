@@ -19,7 +19,7 @@ const GradientTitle: React.FC = () => {
                 textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
             }}
         >
-            <Typography variant="h5">OnlineShopping</Typography>
+            <Typography variant="h5">OnlineStore</Typography>
         </Box>
     );
 };

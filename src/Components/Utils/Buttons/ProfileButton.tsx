@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { IconButton } from '@mui/material'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import LoginIcon from '@mui/icons-material/Login'
-import { useThemeContext } from '../../../../Themes/ThemeProviderWrapper'
+import { useThemeContext } from '../../../Themes/ThemeProviderWrapper'
 
 type ProfileButtonProps = {
     isLoggedIn: boolean | undefined}
@@ -24,7 +24,7 @@ const ProfileButton: React.FC<ProfileButtonProps> = ({isLoggedIn}) => {
     return (
         <IconButton onClick={handleButtonClick} color='inherit'>
             {isLoggedIn ? (
-                <AccountCircleIcon  />
+                <AccountCircleIcon />
             ) : (
                 <LoginIcon />
             )}
