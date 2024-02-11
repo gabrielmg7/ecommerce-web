@@ -1,59 +1,23 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { createContext, useContext, useState } from 'react';
-import userApiService from '../Services/restAPI/userApiService';
+import userApiService from '../Services/restAPI/userService';
 import { ICarrinho } from '../Types/restAPI/ICarrinho';
 import { IPedido } from '../Types/restAPI/IPedido';
+import { IUser, initialUser } from '../Types/restAPI/IUser';
 
-interface IUser {
-    id: number;
-    nome: string;
-    sobrenome: string;
-    cpf: string;
-    telefone: number;
-    email: string;
-    password: string;
-    cidade: string;
-    endereco: string;
-    cep: number;
-    role: "CLIENT_ROLE" | "ADMIN_ROLE" | "unauth";
-    allowExtraEmails: boolean;
-    isLoggedIn: boolean;
-    pedidos: IPedido[];
-    carrinho: ICarrinho["id"];
-  }
-  
-  export const initialUser: IUser = {
-    id: 0,
-    nome: "",
-    sobrenome: "",
-    cpf: "",
-    email: "",
-    password: "",
-    role: "unauth",
-    allowExtraEmails: false,
-    isLoggedIn: false,
-    pedidos: [],
-    carrinho: 0,
-    telefone: 0,
-    cidade: "",
-    endereco: "",
-    cep: 0
-  };
-
-
-  interface UserContextProps {
+interface UserContextProps {
     userData: IUser | null;
     registerUser: (userData: IUser) => Promise<void>;
     loginUser: (credentials: { email: string; password: string }) => Promise<void>;
     logoutUser: () => void;
-    setUserData: React.Dispatch<React.SetStateAction<IUser | null>>;
-    checkAuthentication: () => void; 
+    setUserData: React.Dispatch<React.SetStateAction<IUser>>;
+    checkAuthentication: () => void;
 }
 
 const UserContext = createContext<UserContextProps | undefined>(undefined);
 
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [userData, setUserData] = useState<IUser | null>(initialUser);
+    const [userData, setUserData] = useState<IUser>(initialUser);
 
     const registerUser = async (userData: IUser) => {
         try {
@@ -63,6 +27,22 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
             console.error('❌ UserProvider.createUserData() - Erro ao cadastrar cliente:', error);
         }
     };
+
+    const checkAuthentication = () => {
+        if (userData.isLoggedIn && userData.role !== 'unauth') {
+            console.info('🆗 checkAuthentication() - Usuário autenticado com sucesso!')
+            setUserData(prevState => ({
+                ...prevState,
+                isLoggedIn: true,
+            }));
+        } else {
+            console.info('❌ checkAuthentication() - Usuário não autenticado!')
+            setUserData(prevState => ({
+                ...prevState,
+                isLoggedIn: false,
+            }));
+        }
+    }
 
     const loginUser = async (credentials: { email: string; password: string }) => {
         try {
@@ -76,37 +56,8 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
 
     const logoutUser = () => {
-
         console.info('📞 UserProvider.logoutUser() - Chamada da função da Camada de Serviço')
-
         setUserData(initialUser);
-    };
-
-    const checkAuthentication = () => {
-        const loggedInUser = localStorage.getItem('loggedInUser');
-        if (loggedInUser) {
-            console.info('🆗 UserProvider.checkAuthentication() - Usuário autenticado com sucesso!')
-            setUserData(prevState => ({
-                ...prevState,
-                isLoggedIn: true,
-                id: prevState?.id ?? 0,
-                nome: prevState?.nome ?? '',
-                sobrenome: prevState?.sobrenome ?? '',
-                cpf: prevState?.cpf ?? '',
-                telefone: prevState?.telefone ?? 0,
-                email: prevState?.email ?? '',
-                password: prevState?.password ?? '',
-                cidade: prevState?.cidade ?? '',
-                endereco: prevState?.endereco ?? '',
-                cep: prevState?.cep ?? 0,
-                role: prevState?.role ?? 'unauth',
-                allowExtraEmails: prevState?.allowExtraEmails ?? false,
-                pedidos: prevState?.pedidos ?? [],
-                carrinho: prevState?.carrinho ?? 0,
-            }));
-        } else {
-            console.info('❌ UserProvider.checkAuthentication() - Usuário não autenticado!')
-        }
     };
 
     return (

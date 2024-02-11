@@ -3,7 +3,7 @@ import { IUser } from "../../Types/restAPI/IUser";
 
 const API_BASE_URL = "http://localhost:3003/api";
 
-const userApiService = {
+const userService = {
   // Função para obter todos os usuários
   getAllUsers: async (): Promise<IUser[]> => {
     const response = await axios.get(`${API_BASE_URL}/clientes`);
@@ -83,4 +83,4 @@ const userApiService = {
   },
 };
 
-export default userApiService;
+export default userService;

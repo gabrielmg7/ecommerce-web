@@ -5,19 +5,16 @@ import { useUserContext } from '../Contexts/UserContext';
 export const AppAuthenticator = () => {
   const navigate = useNavigate();
   const { userData, checkAuthentication } = useUserContext();
+  const isAuthenticated = userData?.isLoggedIn || userData?.isLoggedIn;
 
   useEffect(() => {
-    console.log('userData mudou:', userData);
     checkAuthentication();
-  }, [userData]);
+  }, []);
+
 
   useEffect(() => {
-    console.log('userData mudou:', userData);
-  }, [userData]);
-
-  useEffect(() => {
-    if (userData?.isLoggedIn === true) {
-      switch (userData.role) {
+    if (userData) {
+      switch (userData?.role) {
         case 'CLIENT_ROLE':
           navigate('/cliente');
           console.info('📞 AppAuthenticator -> Navegando para /cliente/*')
@@ -35,7 +32,7 @@ export const AppAuthenticator = () => {
           break;
       }
     }
-  }, [userData?.role, navigate]);
+  }, [isAuthenticated, navigate]);
 
   return null;
 

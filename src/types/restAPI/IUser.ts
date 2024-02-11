@@ -26,13 +26,13 @@ export const initialUser: IUser = {
   cpf: "",
   email: "",
   password: "",
-  role: "CLIENT_ROLE",
-  allowExtraEmails: false,
-  isLoggedIn: false,
   pedidos: [],
   carrinho: 0,
   telefone: 0,
   cidade: "",
   endereco: "",
-  cep: 0
+  cep: 0,
+  allowExtraEmails: false,
+  isLoggedIn: false,
+  role: "unauth",
 };
