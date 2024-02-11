@@ -26,6 +26,12 @@ export const DarkThemeOptions: ThemeOptions = {
             default: '#303030',
             paper: '#424242',
         },
+        text: {
+            primary: '#FFFFFF',
+            secondary: '#FFFFFF',
+        },
+        divider: '#424242',
+
     },
     shape: {
         borderRadius: 4,
@@ -57,9 +63,14 @@ export const LightThemeOptions: ThemeOptions = {
             main: '#4f9050',
         },
         background: {
-            default: 'rgb(216, 216, 216)',
-            paper: 'rgb(230, 230, 230)',
+            default: '#FFFFFF',
+            paper: '#F5F5F5',
         },
+        text: {
+            primary: '#000000',
+            secondary: '#000000',
+        },
+        divider: '#F5F5F5',
     },
     shape: {
         borderRadius: 4,

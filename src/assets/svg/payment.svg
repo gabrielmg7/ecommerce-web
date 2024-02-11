@@ -4,7 +4,7 @@
             <g clip-path="url(#clip2_1_680)">
                 <path fill-rule="evenodd" clip-rule="evenodd"
                     d="M0.910339 4.56598C0.910339 2.90786 2.28769 1.56348 3.98457 1.56348H61.941C63.6388 1.56348 65.0152 2.90341 65.0152 4.56598V41.7467C65.0152 43.4049 63.6379 44.7493 61.941 44.7493H3.98457C2.28678 44.7493 0.910339 43.4093 0.910339 41.7467V4.56598Z"
-                    fill="white" />
+                    fill="none" />
                 <mask id="mask0_1_680" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0"
                     y="0" width="66" height="46">
                     <path d="M65.9255 45.6387H0V0.674316H65.9255V45.6387Z" fill="white" />

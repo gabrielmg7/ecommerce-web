@@ -1,59 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { ReactNode } from 'react'
+import styled from 'styled-components'
+import { useThemeContext } from '../../../Themes/ThemeProviderWrapper';
 
-import styles from './style.scss';
+const StyledBackground = styled.div<{ background: string }>`
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: ${props => props.background};
+`;
 
+interface BackgroundProps {
+    children: ReactNode;
+}
 
-const Background = () => {
-    useEffect(() => {
-        const interBubble = document.querySelector<HTMLDivElement>('.interactive')!;
-        let curX = 0;
-        let curY = 0;
-        let tgX = 0;
-        let tgY = 0;
-
-        function move() {
-            curX += (tgX - curX) / 20;
-            curY += (tgY - curY) / 20;
-            interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
-            requestAnimationFrame(move);
-        }
-
-        function handleMouseMove(event: MouseEvent) {
-            tgX = event.clientX;
-            tgY = event.clientY;
-        }
-
-        window.addEventListener('mousemove', handleMouseMove);
-        move();
-
-        // Cleanup function to remove event listener when component unmounts
-        return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
-        };
-    }, []);
+const Background: React.FC<BackgroundProps> = ({ children }) => {
+    const { theme } = useThemeContext();
 
     return (
+        <StyledBackground background={theme.palette.background.default}>
+            {children}
+        </StyledBackground>
+    )
+}
 
-        <div className={styles.gradientBg}>
-            <svg xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <filter id="goo">
-                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
-                        <feBlend in="SourceGraphic" in2="goo" />
-                    </filter>
-                </defs>
-            </svg>
-            <div className={styles.gradientsContainer}>
-                <div className={styles.g1}></div>
-                <div className={styles.g2}></div>
-                <div className={styles.g3}></div>
-                <div className={styles.g4}></div>
-                <div className={styles.g5}></div>
-                <div className={styles.interactive}></div>
-            </div>
-        </div>
-    );
-};
-
-export default Background;
+export default Background

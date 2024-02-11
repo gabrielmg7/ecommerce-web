@@ -41,17 +41,16 @@ const ProductList: React.FC = () => {
     }
 
     return (
+        //================= | container principal | ================= //
         <Grid container spacing={2} mt="1vh" style={{ display: 'flex', flexWrap: 'wrap' }}>
             {produtos.map((produto: IProduct) => (
+                //================= | container de cada card | ================= //
                 <Grid item key={produto.id} xs={12} sm={6} md={4} lg={3} style={{ flexGrow: 1 }}>
+                    {/*================= | card | ================= */}
                     <Card style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                        <CardMedia
-                            component="img"
-                            height="230"
-                            image={produto.image}
-                            alt={produto.title}
-                            style={{ objectFit: 'cover' }}
-                        />
+                        {/*================= | imagem do produto | ================= */}
+                        <CardMedia component="img" height="230" image={produto.image} alt={produto.title} style={{ objectFit: 'cover' }}/>
+                        {/*================= | conteúdo do card | ================= */}
                         <CardContent style={{ flex: 1 }}>
                             <Typography id="productTitle" style={{ display: '-webkit-box', WebkitBoxOrient: 'vertical', overflow: 'hidden', WebkitLineClamp: 3, textOverflow: 'ellipsis' }} variant="h6" component="div">
                                 {produto.title}
@@ -59,6 +58,7 @@ const ProductList: React.FC = () => {
                             <Typography id="productCategory" variant="subtitle1" color="text.secondary">
                                 {produto.category}
                             </Typography>
+                            {/*================= | preço e botões | ================= */}
                             <Grid container justifyContent="space-between" direction={'row'} alignItems={'flex-end'}>
                                 <Grid item>
                                     <Typography id="productPrice" variant="h6" color="primary">
