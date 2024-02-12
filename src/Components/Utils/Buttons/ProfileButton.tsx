@@ -22,7 +22,7 @@ const ProfileButton: React.FC<ProfileButtonProps> = ({isLoggedIn}) => {
     }
 
     return (
-        <IconButton onClick={handleButtonClick} color='inherit'>
+        <IconButton style={{ color: theme.palette.text.primary }} onClick={handleButtonClick}>
             {isLoggedIn ? (
                 <AccountCircleIcon />
             ) : (

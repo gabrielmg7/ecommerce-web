@@ -5,7 +5,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
 
 const ToggleThemeButton: React.FC = () => {
-    const { toggleTheme, theme } = useThemeContext()
+    const { toggleTheme, theme } = useThemeContext();
 
     const handleToggle = () => {
         toggleTheme();
@@ -17,8 +17,8 @@ const ToggleThemeButton: React.FC = () => {
 
     return (
         <div>
-            <IconButton color="inherit" onClick={handleToggle}>
-                {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+            <IconButton style={{ color: theme.palette.text.primary }} onClick={handleToggle}>
+                {theme.palette.mode === 'dark' ? <Brightness7Icon  /> : <Brightness4Icon />}
             </IconButton>
         </div>
     )

@@ -4,10 +4,13 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { ICarrinho } from '../../Types/restAPI/ICarrinho';
+import { useThemeContext } from '../../Themes/ThemeProviderWrapper';
 
-const CartButton: React.FC<ICarrinho> = ({ quantidade }) => {
+const Cart: React.FC<ICarrinho> = ({ quantidade }) => {
+  const { theme } = useThemeContext();
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState<string[]>(['']); 
+  const [cartItems, setCartItems] = useState<string[]>(['']);
+
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
@@ -30,11 +33,13 @@ const CartButton: React.FC<ICarrinho> = ({ quantidade }) => {
 
   return (
     <div>
-      <IconButton color="inherit" onClick={toggleCart}>
+
+      <IconButton style={{ color: theme.palette.text.primary }} onClick={toggleCart}>
         <Badge badgeContent={quantidade} color="error">
           <ShoppingCartIcon />
         </Badge>
       </IconButton>
+
       <Drawer anchor="right" open={isCartOpen} onClose={toggleCart}>
         <div style={{ width: 300 }}>
           <CardContent>
@@ -68,4 +73,4 @@ const CartButton: React.FC<ICarrinho> = ({ quantidade }) => {
   );
 };
 
-export default CartButton;
+export default Cart;

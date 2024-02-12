@@ -18,35 +18,35 @@ const Footer = () => {
                     <Grid container direction="column">
                         <Grid item>
                             <Typography variant="subtitle2">
-                                <Link href="/" color="inherit" underline="hover">
+                                <Link href="/" color="text.primary"  underline="hover">
                                     Home
                                 </Link>
                             </Typography>
                         </Grid>
                         <Grid item>
                             <Typography variant="subtitle2">
-                                <Link href="/listar-produtos" color="inherit" underline="hover">
+                                <Link href="/listar-produtos" color="text.primary" underline="hover">
                                     Produtos
                                 </Link>
                             </Typography>
                         </Grid>
                         <Grid item>
                             <Typography variant="subtitle2">
-                                <Link href="/carrinho" color="inherit" underline="hover">
+                                <Link href="/carrinho" color="text.primary" underline="hover">
                                     Meu Carrinho
                                 </Link>
                             </Typography>
                         </Grid>
                         <Grid item>
                             <Typography variant="subtitle2">
-                                <Link href="#" color="inherit" underline="hover">
+                                <Link href="#" color="text.primary" underline="hover">
                                     Contato
                                 </Link>
                             </Typography>
                         </Grid>
                         <Grid item>
                             <Typography variant="subtitle2">
-                                <Link href="/sobre" color="inherit" underline="hover">
+                                <Link href="/sobre" color="text.primary" underline="hover">
                                     Sobre Nós
                                 </Link>
                             </Typography>
