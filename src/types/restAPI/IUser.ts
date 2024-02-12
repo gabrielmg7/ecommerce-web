@@ -34,5 +34,5 @@ export const initialUser: IUser = {
   cep: 0,
   allowExtraEmails: false,
   isLoggedIn: false,
-  role: "unauth",
+  role: "CLIENT_ROLE",
 };
