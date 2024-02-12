@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useMediaQuery, AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemText, Typography, Grid, Button } from '@mui/material';
+import { useMediaQuery, AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemText, Typography, Grid, Button, Box, Stack } from '@mui/material';
 import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
@@ -59,9 +59,14 @@ const MenuBar: React.FC = () => {
 
     const UnauthenticatedMenuBarLinks: React.FC<MenuLinksProps> = ({ onCloseDrawer }) => (
         <>
+
             <Button style={{ color: theme.palette.text.primary }} component={Link} to="/unauthenticated/listar-produtos" onClick={onCloseDrawer}>
                 Loja
             </Button>
+            <Button style={{ color: theme.palette.text.primary }} onClick={onCloseDrawer}>
+                Categorias
+            </Button>
+
         </>
     );
 
@@ -87,8 +92,6 @@ const MenuBar: React.FC = () => {
         return (
 
             <>
-                import {Button} from '@mui/material';
-
                 <Button component={Link} to="/cadastrar-produto" onClick={toggleDrawer(false)}>
                     Cadastrar Produto
                 </Button>
@@ -103,16 +106,15 @@ const MenuBar: React.FC = () => {
         return (
             <>
                 <Grid container>
+                    <Button component={Link} to="/login" onClick={toggleDrawer(false)}>
+                        Login
+                    </Button>
+                    <Button component={Link} to="/cadastrar-usuario" onClick={toggleDrawer(false)}>
+                        Cadastre-se
+                    </Button>
                     <ToggleThemeButton />
-                    <CartButton id={initialUser.carrinho} cliente={initialUser.id} quantidade={0} itens={[]} />
-                    <ProfileButton isLoggedIn={isCliente ? isCliente : isAdmin} />
                 </Grid>
-                <Button component={Link} to="/login" onClick={toggleDrawer(false)}>
-                    Login
-                </Button>
-                <Button component={Link} to="/cadastrar-usuario" onClick={toggleDrawer(false)}>
-                    Cadastre-se
-                </Button>
+
             </>
         )
     };
@@ -129,34 +131,41 @@ const MenuBar: React.FC = () => {
         );
     };
 
-    const DesktopLinks: React.FC = () => {
+    const DesktopMenuBar: React.FC = () => {
         return (
-            <>
-                {isCliente && <ClientMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
-                {isAdmin && <AdminMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
-                {!userData?.isLoggedIn && <UnauthenticatedMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
-                <ToggleThemeButton />
-                <CartButton id={0} cliente={0} quantidade={0} itens={[]} />
-                <ProfileButton isLoggedIn={isCliente ? isCliente : isAdmin} />
-            </>
+            <Box display="flex" justifyContent="space-between" alignItems="center" width="100%">
+                <GradientTitle />
+                <Box display="flex" justifyContent="center" alignItems="center" flexGrow={1}>
+                    {isCliente && <ClientMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
+                    {isAdmin && <AdminMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
+                    {!userData?.isLoggedIn && <UnauthenticatedMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
+                </Box>
+
+                <Stack direction="row" justifyContent={'flex-end'}>
+                    <ToggleThemeButton />
+                    <CartButton id={0} cliente={0} quantidade={0} itens={[]} />
+                    <ProfileButton isLoggedIn={isCliente ? isCliente : isAdmin} />
+                </Stack>
+            </Box>
         );
     };
 
+    const MobileMenuBar: React.FC = () => {
+        return (
+            <Box display="flex" justifyContent="space-between" width="100%" alignItems={'center'}>
+                <GradientTitle />
+                <IconButton edge="end" aria-label="menu" onClick={toggleDrawer(true)}>
+                    <MenuIcon />
+                </IconButton>
+            </Box>
+        );
+    }
+
     return (
         <>
-            <AppBar position="static" color='transparent' >
+            <AppBar position="static" color='transparent'>
                 <Toolbar>
-                    <GradientTitle />
-                    <Grid container direction="row" justifyContent="flex-end" alignItems="center">
-                        {isSmallScreen ? (
-                            <IconButton edge="start" aria-label="menu" onClick={toggleDrawer(true)}>
-                                <MenuIcon />
-                            </IconButton>
-                        ) : (
-                            <DesktopLinks />
-                        )
-                        }
-                    </Grid>
+                    {isSmallScreen ? (<MobileMenuBar />) : (<DesktopMenuBar />)}
                 </Toolbar>
             </AppBar>
             <DrawerLinks />
