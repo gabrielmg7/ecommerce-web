@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
-import { useThemeContext } from '../../../Themes/ThemeProviderWrapper';
+import { useThemeContext } from '../../Themes/ThemeProviderWrapper';
 
 const StyledBackground = styled.div<{ background: string }>`
     width: 100%;

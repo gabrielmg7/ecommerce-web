@@ -10,7 +10,7 @@ const Footer = () => {
             <Grid container justifyContent="center" alignItems="center" spacing={50}>
                 <Grid item>
                     <Link component={RouterLink} to="/" color="inherit" underline="none">
-                        <img src="src\assets\img\logo-light.png" alt="Logo" style={{ maxWidth: '120px' }} />
+                        <img src="src\assets\svg\Logo.svg" alt="Logo" style={{ maxWidth: '120px' }} />
                     </Link>
                 </Grid>
 
