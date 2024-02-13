@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import Footer from '../Utils/Footer/Footer';
+import Footer from '../Utils/Footer';
 import MenuBar from '../Utils/MenuBar';
 
 type AdminLayoutProps = {

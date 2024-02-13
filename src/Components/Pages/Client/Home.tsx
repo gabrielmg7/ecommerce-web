@@ -1,5 +1,5 @@
 import ClientLayout from "../../Layouts/ClientLayout"
-import BannerFooter from "../../Utils/Footer/ShoppingInfoBanner";
+import BannerFooter from "../../Utils/ShoppingInfoBanner";
 import ProductList from "../../Utils/ProductList";
 
 export default function Home() {
