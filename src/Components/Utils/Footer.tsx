@@ -1,5 +1,5 @@
 import { Box, Divider, Grid, Link, Typography } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
+import Logo from './Logo';
 
 const Footer = () => {
     return (
@@ -9,9 +9,7 @@ const Footer = () => {
             </Box>
             <Grid container justifyContent="center" alignItems="center" spacing={50}>
                 <Grid item>
-                    <Link component={RouterLink} to="/" color="inherit" underline="none">
-                        <img src="src\assets\svg\Logo.svg" alt="Logo" style={{ maxWidth: '120px' }} />
-                    </Link>
+                    <Logo width='150px' height='150px' />
                 </Grid>
 
                 <Grid item>
