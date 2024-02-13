@@ -6,7 +6,7 @@ import protectedSVG from "../../../assets/svg/protected.svg";
 import shippingSVG from "../../../assets/svg/shipping.svg";
 
 
-const BannerFooter: React.FC = () => {
+const ShoppingInfoBanner: React.FC = () => {
 
   return (
 
@@ -85,4 +85,4 @@ const BannerFooter: React.FC = () => {
   );
 };
 
-export default BannerFooter;
+export default ShoppingInfoBanner;
