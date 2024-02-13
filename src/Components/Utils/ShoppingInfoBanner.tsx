@@ -31,6 +31,7 @@ const ShoppingInfoBanner: React.FC = () => {
             Ver Mais
           </Typography>
         </Grid>
+        
       </Grid>
 
       <Divider orientation="vertical" flexItem />

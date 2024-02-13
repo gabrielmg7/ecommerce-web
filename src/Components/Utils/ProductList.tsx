@@ -1,11 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 // ProductList.tsx
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography, Grid, Button, ButtonGroup, Skeleton } from '@mui/material';
 import { useProduct } from '../../Contexts/ProductContext';
 import { IProduct } from '../../Types/fakeAPI/type';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+
 
 const buttons = [
     <Button key="one">Ver</Button>,
@@ -13,33 +11,33 @@ const buttons = [
 
 ];
 
+// 
+const renderSkeleton = () => (
+    <Grid container spacing={2}>
+        {[1, 2, 3, 4].map((index) => (
+            <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
+                <Card>
+                    <Skeleton variant="rounded" height={230} />
+                    <CardContent>
+                        <Skeleton variant="text" width="50%" />
+                        <Skeleton variant="text" width="50%" />
+                        <Skeleton variant="text" width="50%" />
+                        <Skeleton variant="text" width="50%" />
+                        <Skeleton variant="text" width="50%" />
+                        <Skeleton variant="text" width="50%" />
+                    </CardContent>
+                </Card>
+            </Grid>
+        ))}
+    </Grid>
+);
+
 const ProductList: React.FC = () => {
     const { produtos } = useProduct();
-
-    const renderSkeleton = () => (
-        <Grid container spacing={2}>
-            {[1, 2, 3, 4].map((index) => (
-                <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
-                    <Card>
-                        <Skeleton variant="rounded" height={230} />
-                        <CardContent>
-                            <Skeleton variant="text" width="50%" />
-                            <Skeleton variant="text" width="50%" />
-                            <Skeleton variant="text" width="50%" />
-                            <Skeleton variant="text" width="50%" />
-                            <Skeleton variant="text" width="50%" />
-                            <Skeleton variant="text" width="50%" />
-                        </CardContent>
-                    </Card>
-                </Grid>
-            ))}
-        </Grid>
-    );
 
     if (!produtos) {
         return renderSkeleton();
     }
-
     return (
         //================= | container principal | ================= //
         <Grid container spacing={2} mt="1vh" style={{ display: 'flex', flexWrap: 'wrap' }}>
@@ -49,7 +47,7 @@ const ProductList: React.FC = () => {
                     {/*================= | card | ================= */}
                     <Card style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                         {/*================= | imagem do produto | ================= */}
-                        <CardMedia component="img" height="230" image={produto.image} alt={produto.title} style={{ objectFit: 'cover' }}/>
+                        <CardMedia component="img" height="230" image={produto.image} alt={produto.title} style={{ objectFit: 'cover' }} />
                         {/*================= | conteúdo do card | ================= */}
                         <CardContent style={{ flex: 1 }}>
                             <Typography id="productTitle" style={{ display: '-webkit-box', WebkitBoxOrient: 'vertical', overflow: 'hidden', WebkitLineClamp: 3, textOverflow: 'ellipsis' }} variant="h6" component="div">
