@@ -1,9 +1,9 @@
 import React from "react";
 import { Divider, Grid, Link, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import paymentSVG from "../../../assets/svg/payment.svg";
-import protectedSVG from "../../../assets/svg/protected.svg";
-import shippingSVG from "../../../assets/svg/shipping.svg";
+import paymentSVG from "../../assets/svg/payment.svg";
+import protectedSVG from "../../assets/svg/protected.svg";
+import shippingSVG from "../../assets/svg/shipping.svg";
 
 
 const ShoppingInfoBanner: React.FC = () => {
