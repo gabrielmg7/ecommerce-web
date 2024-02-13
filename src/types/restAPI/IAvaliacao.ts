@@ -1,7 +1,10 @@
+import { IProduct } from "../fakeAPI/type";
+import { IUser } from "./IUser";
+
 export interface IAvaliacao {
   id: number;
-  pontuacao: number;
-  comentario: string;
-  produto: number; // ID do Produto
-  cliente: number; // ID do Cliente
+  score: number;
+  description: string;
+  product: IProduct["id"];
+  user: IUser["id"];
 }
