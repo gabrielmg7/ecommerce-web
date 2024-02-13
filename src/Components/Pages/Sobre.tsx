@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { Container, Grid, Typography, Breadcrumbs, Link, Divider } from '@mui/material';
-import MenuBar from '../Utils/MenuBar/MenuBar';
+import MenuBar from '../Utils/MenuBar';
 import Footer from '../Utils/Footer/Footer';
 import { useThemeContext } from '../../Themes/ThemeProviderWrapper';
 

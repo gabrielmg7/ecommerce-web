@@ -2,13 +2,13 @@ import { useMediaQuery, AppBar, Toolbar, IconButton, Drawer, List, Grid, Button,
 import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
-import { useUserContext } from '../../../Contexts/UserContext';
-import CartButton from '../../Cart/CartButton';
-import ToggleThemeButton from '../Buttons/ToggleThemeButton';
-import ProfileButton from '../Buttons/ProfileButton';
-import { useThemeContext } from '../../../Themes/ThemeProviderWrapper';
+import { useUserContext } from '../../Contexts/UserContext';
+import CartButton from '../Cart/CartButton';
+import ToggleThemeButton from './Buttons/ToggleThemeButton';
+import ProfileButton from './Buttons/ProfileButton';
+import { useThemeContext } from '../../Themes/ThemeProviderWrapper';
 import GradientTitle from './GradientTitle';
-import { initialUser } from '../../../Types/restAPI/IUser';
+import { initialUser } from '../../Types/restAPI/IUser';
 export interface MenuLinksProps {
     onCloseDrawer: () => void;
 }

@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { useThemeContext } from '../../../Themes/ThemeProviderWrapper';
+import { useThemeContext } from '../../Themes/ThemeProviderWrapper';
 import React from 'react';
 
 const GradientTitle: React.FC = () => {
