@@ -131,7 +131,7 @@ const MenuBar: React.FC = () => {
     const DesktopMenuBar: React.FC = () => {
         return (
             <Box display="flex" justifyContent="space-between" alignItems="center" width="100%">
-                <Logo width='50px' height='50px' logo='Logo3' />
+                <Logo width='60px' height='60px' logo='Logo3' />
                 <Box display="flex" justifyContent="center" alignItems="center" flexGrow={1}>
                     {isCliente && <ClientMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
                     {isAdmin && <AdminMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
@@ -149,9 +149,9 @@ const MenuBar: React.FC = () => {
 
     const MobileMenuBar: React.FC = () => {
         return (
-            <Grid display="flex" justifyContent="space-between" alignItems={'center'}>
+            <Grid container justifyContent="space-between" alignItems={'center'}>
                 <Box>
-                    <Logo width='50px' height='50px' logo={'Logo4'} />
+                    <Logo width='60px' height='60px' logo={'Logo3'} />
                 </Box>
                 <Box>
                     <IconButton edge="end" aria-label="menu" onClick={toggleDrawer(true)}>
