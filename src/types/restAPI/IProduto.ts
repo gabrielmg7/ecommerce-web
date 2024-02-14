@@ -8,6 +8,7 @@ export interface IProduto {
     nome: string;
     descricao: string;
     preco: number;
+    desconto: number;
     categoria: string;
     quantidade: number;   
     avaliacoes: IAvaliacao[];
