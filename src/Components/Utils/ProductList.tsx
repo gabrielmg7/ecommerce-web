@@ -11,6 +11,7 @@ const buttons = [
 
 ];
 
+//================= | Skeleton | ================= //
 // 
 const renderSkeleton = () => (
     <Grid container spacing={2}>
@@ -50,14 +51,16 @@ const ProductList: React.FC = () => {
                         <CardMedia component="img" height="230" image={produto.image} alt={produto.title} style={{ objectFit: 'cover' }} />
                         {/*================= | conteúdo do card | ================= */}
                         <CardContent style={{ flex: 1 }}>
-                            <Typography id="productTitle" style={{ display: '-webkit-box', WebkitBoxOrient: 'vertical', overflow: 'hidden', WebkitLineClamp: 3, textOverflow: 'ellipsis' }} variant="h6" component="div">
+                            <Typography id="productTitle" variant="h6" color={"text.primary"}>
                                 {produto.title}
                             </Typography>
                             <Typography id="productCategory" variant="subtitle1" color="text.secondary">
                                 {produto.category}
                             </Typography>
-                            {/*================= | preço e botões | ================= */}
-                            <Grid container justifyContent="space-between" direction={'row'} alignItems={'flex-end'}>
+                        </CardContent>
+                        {/*================= | preço e botões | ================= */}
+                        <CardContent>
+                            <Grid container justifyContent="space-between">
                                 <Grid item>
                                     <Typography id="productPrice" variant="h6" color="primary">
                                         R$ {produto.price.toFixed(2)}
@@ -65,7 +68,7 @@ const ProductList: React.FC = () => {
                                 </Grid>
                                 <Grid item>
                                     <ButtonGroup size="small" aria-label="small button group">
-                                        {buttons}
+                                    {buttons}
                                     </ButtonGroup>
                                 </Grid>
                             </Grid>
