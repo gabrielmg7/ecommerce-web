@@ -33,6 +33,6 @@ export const initialUser: IUser = {
   endereco: "",
   cep: 0,
   allowExtraEmails: false,
-  isLoggedIn: false,
+  isLoggedIn: true,
   role: "CLIENT_ROLE",
 };

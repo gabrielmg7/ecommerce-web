@@ -3,12 +3,13 @@ import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import { useUserContext } from '../../Contexts/UserContext';
-import CartButton from '../Cart/CartButton';
+import CartButton from '../Pages/Client/Cart/CartDrawer';
 import ToggleThemeButton from '../Buttons/ToggleThemeButton';
 import ProfileButton from '../Buttons/ProfileButton';
 import { useThemeContext } from '../../Themes/ThemeProviderWrapper';
-import GradientTitle from './GradientTitle';
+import GradientTitle from './Title';
 import { initialUser } from '../../Types/restAPI/IUser';
+import AnimatedGrid from './AnimatedGrid';
 export interface MenuLinksProps {
     onCloseDrawer: () => void;
 }
@@ -161,14 +162,14 @@ const MenuBar: React.FC = () => {
     }
 
     return (
-        <>
+        <AnimatedGrid>
             <AppBar position="static" color='transparent'>
                 <Toolbar>
                     {isSmallScreen ? (<MobileMenuBar />) : (<DesktopMenuBar />)}
                 </Toolbar>
             </AppBar>
             <DrawerLinks />
-        </>
+        </AnimatedGrid>
     );
 };
 

@@ -20,7 +20,7 @@ function Copyright(props: any) {
     );
 }
 
-const LogarUsuario = () => {
+const Login = () => {
     const [formData, setFormData] = useState<IUser>(initialUser);
     const userContext = useUserContext();
 
@@ -135,4 +135,4 @@ const LogarUsuario = () => {
     );
 };
 
-export default LogarUsuario;
+export default Login;

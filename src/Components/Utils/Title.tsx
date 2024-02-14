@@ -6,8 +6,8 @@ const GradientTitle: React.FC = () => {
     const { theme } = useThemeContext();
 
     const gradientColors = theme.palette.mode === 'light'
-        ? '#bbd0ff, #00D7DF, #00D7DF, #bbd0ff,#00D7DF, #bbd0ff' 
-        : '#00D7DF, #006DF0, #006DF0, #00D7DF, #006DF0';
+        ? '#006DF0, #006DF0'
+        : '#00D7DF, #00D7DF';
 
     return (
         <Box
@@ -16,10 +16,10 @@ const GradientTitle: React.FC = () => {
                 WebkitBackgroundClip: 'text',
                 color: 'transparent',
                 display: 'inline-block',
-                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+                textShadow: '2px 2px 4px rgba(0,0,0,0.4)',
             }}
         >
-            <Typography variant="h5">OnlineStore</Typography>
+            <Typography variant="h5" >OnlineStore</Typography>
         </Box>
     );
 };

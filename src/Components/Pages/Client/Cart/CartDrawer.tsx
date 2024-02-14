@@ -3,8 +3,8 @@ import { IconButton, Badge, Drawer, Card, CardContent, Typography, Button } from
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { ICarrinho } from '../../Types/restAPI/ICarrinho';
-import { useThemeContext } from '../../Themes/ThemeProviderWrapper';
+import { ICarrinho } from '../../../../Types/restAPI/ICarrinho';
+import { useThemeContext } from '../../../../Themes/ThemeProviderWrapper';
 
 const Cart: React.FC<ICarrinho> = ({ quantidade }) => {
   const { theme } = useThemeContext();

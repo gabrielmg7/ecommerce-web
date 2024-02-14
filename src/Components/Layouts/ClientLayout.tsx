@@ -10,9 +10,9 @@ const ClientLayout = ({ children }: ClientLayoutProps) => {
 
     return (
         <>
-            <MenuBar />
-            {children}
-            <Footer />
+                <MenuBar />
+                {children}
+                <Footer />
         </>
     );
 };

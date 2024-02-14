@@ -17,7 +17,7 @@ import { useUserContext } from '../../../Contexts/UserContext';
 import { useThemeContext } from '../../../Themes/ThemeProviderWrapper';
 import { ThemeProvider } from '@mui/material';
 
-export default function CadastrarUsuario() {
+export default function SignIn() {
     const { theme } = useThemeContext()
     const [user, setUser] = useState<IUser>(initialUser);
     const userContext = useUserContext();

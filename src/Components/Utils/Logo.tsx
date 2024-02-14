@@ -14,7 +14,11 @@ const Logo: React.FC<LogoProps> = ({ width = '100%', height = '100%' }) => {
     <img 
       src={theme.palette.mode === 'dark' ? DarkLogo : LightLogo} 
       alt="Logo" 
-      style={{ width, height }}
+      style={{ 
+        width, 
+        height, 
+        filter: 'drop-shadow(0 0 5px rgba(0,0,0,0.7))' 
+      }}
     />
   );
 };
