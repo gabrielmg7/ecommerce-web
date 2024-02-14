@@ -11,7 +11,6 @@ export const UnauthenticatedRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/sobre" element={<Sobre />} />
-
       </Routes>
     );
   };

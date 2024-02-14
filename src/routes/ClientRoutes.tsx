@@ -2,8 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../Components/Pages/Client/Home";
 import Orders from "../Components/Pages/Client/Order/Orders";
 import Cart from "../Components/Pages/Client/Cart/Cart";
-import Checkout from "../Components/Pages/Client/Checkout";
-import Configuration from "../Components/Pages/Client/Configuration";
+import Checkout from "../Components/Pages/Client/Order/Checkout";
+import Configuration from "../Components/Pages/Client/Configuration/Configuration";
 import About from "../Components/Pages/Sobre";
 
 export const ClientRoutes = () => {
