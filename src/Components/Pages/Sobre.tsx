@@ -5,7 +5,7 @@ import MenuBar from '../Utils/MenuBar';
 import Footer from '../Utils/Footer';
 import { useThemeContext } from '../../Themes/ThemeProviderWrapper';
 
-const Sobre = () => {
+const About = () => {
     const { theme } = useThemeContext();
 
     return (
@@ -42,4 +42,4 @@ const Sobre = () => {
     );
 };
 
-export default Sobre;
+export default About;
