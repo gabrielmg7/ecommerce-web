@@ -11,7 +11,7 @@ const Footer = () => {
                 </Box>
                 <Grid container justifyContent="center" alignItems="center" spacing={50}>
                     <Grid item>
-                        <Logo width='150px' height='150px' />
+                        <Logo logo='Logo1' width='150px' height='150px' />
                     </Grid>
 
                     <Grid item>
