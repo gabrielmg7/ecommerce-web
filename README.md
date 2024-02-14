@@ -8,6 +8,7 @@ Bem-vindo ao projeto! Este repositório contém o código-fonte do frontend de u
 - **Typescript:** Superset do JavaScript que adiciona tipagem estática.
 - **Vite:** Ferramenta de construção de projetos para React com foco em rapidez.
 - **Material UI:** Biblioteca de componentes React com design baseado no Material Design.
+- **Styled-Components**: Biblioteca para estilizar componentes usando a técnica de 'CSS-in-JS'.
 - **Axios:** Cliente HTTP para realizar requisições ao backend.
 - **React Router Dom:** Roteamento de páginas no lado do cliente.
 
