@@ -9,6 +9,7 @@ import ProfileButton from '../Buttons/ProfileButton';
 import { useThemeContext } from '../../Themes/ThemeProviderWrapper';
 import { initialUser } from '../../Types/restAPI/IUser';
 import AnimatedGrid from './AnimatedGrid';
+import Logo from './Logo/Logo';
 export interface MenuLinksProps {
     onCloseDrawer: () => void;
 }
@@ -27,7 +28,7 @@ const MenuBar: React.FC = () => {
 
     const ClientMenuBarLinks: React.FC<MenuLinksProps> = ({ onCloseDrawer }) => (
         <>
-            <Button style={{ color: theme.palette.text.primary }}  component={Link} to="/" onClick={onCloseDrawer}>
+            <Button style={{ color: theme.palette.text.primary }} component={Link} to="/" onClick={onCloseDrawer}>
                 Home
             </Button>
             <Button style={{ color: theme.palette.text.primary }} component={Link} to="/cliente/listar-produtos" onClick={onCloseDrawer}>
@@ -79,7 +80,7 @@ const MenuBar: React.FC = () => {
                     Home
                 </Button>
                 <Button component={Link} to="/" onClick={toggleDrawer(false)}>
-                    Clientes
+                    Categorias
                 </Button>
             </>
         );
@@ -87,7 +88,6 @@ const MenuBar: React.FC = () => {
 
     const AdminDrawerLinks: React.FC = () => {
         return (
-
             <>
                 <Button component={Link} to="/cadastrar-produto" onClick={toggleDrawer(false)}>
                     Cadastrar Produto
@@ -131,7 +131,7 @@ const MenuBar: React.FC = () => {
     const DesktopMenuBar: React.FC = () => {
         return (
             <Box display="flex" justifyContent="space-between" alignItems="center" width="100%">
-
+                <Logo width='50px' height='50px' logo='Logo3' />
                 <Box display="flex" justifyContent="center" alignItems="center" flexGrow={1}>
                     {isCliente && <ClientMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
                     {isAdmin && <AdminMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
@@ -149,19 +149,23 @@ const MenuBar: React.FC = () => {
 
     const MobileMenuBar: React.FC = () => {
         return (
-            <Box display="flex" justifyContent="space-between" width="100%" alignItems={'center'}>
-
-                <IconButton edge="end" aria-label="menu" onClick={toggleDrawer(true)}>
-                    <MenuIcon />
-                </IconButton>
-            </Box>
+            <Grid display="flex" justifyContent="space-between" alignItems={'center'}>
+                <Box>
+                    <Logo width='50px' height='50px' logo={'Logo4'} />
+                </Box>
+                <Box>
+                    <IconButton edge="end" aria-label="menu" onClick={toggleDrawer(true)}>
+                        <MenuIcon />
+                    </IconButton>
+                </Box>
+            </Grid>
         );
     }
 
     return (
         <AnimatedGrid>
             <AppBar position="static" color='transparent'>
-                <Toolbar>
+                <Toolbar >
                     {isSmallScreen ? (<MobileMenuBar />) : (<DesktopMenuBar />)}
                 </Toolbar>
             </AppBar>

@@ -1,5 +1,5 @@
 import { Box, Divider, Grid, Link, Typography } from '@mui/material';
-import Logo from './Logo/Logo';
+import Logo from './Logo/Logo.tsx';
 import AnimatedGrid from './AnimatedGrid';
 
 const Footer = () => {
