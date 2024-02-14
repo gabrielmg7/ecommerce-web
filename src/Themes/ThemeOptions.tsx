@@ -6,7 +6,7 @@ export const DarkThemeOptions: ThemeOptions = {
         primary: {
             light: '#009cf9',
             main: '#0083f9',
-            dark: '#0056a4',
+            dark: '#003F8A',
             contrastText: '#fff'
         },
         secondary: {
@@ -47,7 +47,7 @@ export const LightThemeOptions: ThemeOptions = {
         primary: {
             main: '#0083f9',
             light: '#009cf9',
-            dark: '#0056a4',
+            dark: '#003F8A',
             contrastText: '#000000'
         },
         secondary: {
