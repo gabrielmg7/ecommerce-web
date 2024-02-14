@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import Sobre from "../Components/Pages/Sobre";
 import Home from "../Components/Pages/Client/Home";
-import Orders from "../Components/Pages/Client/Orders";
+import Orders from "../Components/Pages/Client/Order/Orders";
 import Cart from "../Components/Pages/Client/Cart/Cart";
+import Checkout from "../Components/Pages/Client/Checkout";
 
 export const ClientRoutes = () => {
     return (
