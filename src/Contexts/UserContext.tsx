@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { createContext, useContext, useState } from 'react';
 import userApiService from '../Services/restAPI/userService';
 import { ICarrinho } from '../Types/restAPI/ICarrinho';
