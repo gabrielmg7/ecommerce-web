@@ -12,11 +12,11 @@ export interface IUser {
   cidade: string;
   endereco: string;
   cep: number;
+  carrinho: ICarrinho["id"];
+  pedidos: IPedido[];
   role: "CLIENT_ROLE" | "ADMIN_ROLE" | "unauth";
   allowExtraEmails: boolean;
   isLoggedIn: boolean;
-  pedidos: IPedido[];
-  carrinho: ICarrinho["id"];
 }
 
 export const initialUser: IUser = {
