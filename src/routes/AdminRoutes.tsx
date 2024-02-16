@@ -8,10 +8,9 @@ export const AdminRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/crud-produto" element={<AdminCrudProduto />} />
-            <Route path="/admin-listar-prd" element={<AdminListarProdutos />} />
+            <Route path="/produto" element={<AdminCrudProduto />} />
+            <Route path="/produtos" element={<AdminListarProdutos />} />
             <Route path="/sobre" element={<Sobre />} />
-            
         </Routes>
     );
 };
