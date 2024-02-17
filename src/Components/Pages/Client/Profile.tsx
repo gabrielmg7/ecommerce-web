@@ -1,9 +1,54 @@
-import React, { useContext, useState } from "react";
-import { Grid, TextField, Button, ToggleButton, Typography, ButtonGroup, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from "@mui/material";
+import React, { ChangeEvent, useState } from "react";
+import { Grid, TextField, Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Typography } from "@mui/material";
 import { useUserContext } from "../../../Contexts/UserContext";
 import { IUser, initialUser } from "../../../Types/restAPI/IUser";
 import ClientLayout from "../../Layouts/ClientLayout";
-import { VisibilityOff, Visibility } from "@mui/icons-material";
+import { VisibilityOff, Visibility, } from "@mui/icons-material";
+
+interface DateOfBirthInputProps {
+    value: string;
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+}
+
+const DateOfBirthInput: React.FC<DateOfBirthInputProps> = ({ value, onChange }) => {
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const inputValue = event.target.value;
+        const formattedValue = formatDateString(inputValue);
+
+        onChange({
+            target: {
+                name: 'dataNascimento',
+                value: formattedValue,
+            },
+        } as ChangeEvent<HTMLInputElement>);
+    };
+
+    const formatDateString = (inputValue: string): string => {
+        // Remove caracteres não numéricos
+        const numericValue = inputValue.replace(/\D/g, '');
+
+        // Adiciona a máscara dd/mm/aaaa
+        if (numericValue.length >= 3 && numericValue.length < 5) {
+            return `${numericValue.slice(0, 2)}/${numericValue.slice(2)}`;
+        } else if (numericValue.length >= 5) {
+            return `${numericValue.slice(0, 2)}/${numericValue.slice(2, 4)}/${numericValue.slice(4, 8)}`;
+        }
+
+        return numericValue;
+    };
+
+    return (
+        <TextField
+            name="dataNascimento"
+            label="Data de Nascimento"
+            placeholder="dd/mm/aaaa"
+            value={value}
+            onChange={handleInputChange}
+            fullWidth
+        />
+    );
+};
+
 
 const Profile = () => {
     const { userData, setUserData } = useUserContext();
@@ -15,6 +60,7 @@ const Profile = () => {
         const re = /\S+@\S+\.\S+/;
         return re.test(email);
     };
+
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
@@ -40,54 +86,84 @@ const Profile = () => {
         setUserData(formState);
     };
 
-
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
     };
 
+
     return (
         <ClientLayout>
             <form onSubmit={handleSubmit}>
-
-                <Grid container justifyContent="space-around" alignItems="center" sx={{ mt: 2, mb: 2 }}>
-                    <Grid item container margin={1}>
+                {/* Container principal ==========================================*/}
+                <Grid container direction={"column"} spacing={2} justifyContent={"center"} alignItems={"center"}>
+                    {/* Container do título da página ==========================================*/}
+                    <Grid item container xs sm md lg xl
+                        direction={"row"}
+                        justifyContent={"center"}
+                        alignItems={"center"}
+                        spacing={1}
+                        mt={2}
+                        mb={1}
+                    >
                         <Typography color={"text.primary"} variant="h4">
-                            Meu Perfil
+                            Minha Conta
                         </Typography>
                     </Grid>
+                    {/* Container do formulário ==========================================*/}
+                    <Grid item container xs sm md lg xl
+                        gap={1}
+                        spacing={1}
+                        direction={"row"}
+                        justifyContent={"space-evenly"}
+                        alignItems={"flex-start"}
+                        width={"100%"}
+                        height={"100%"}
+                    >
+                        {/* Container dos Dados Pessoais ==========================================*/}
+                        <Grid item container xs sm md lg xl
+                            direction={"column"}
+                            boxSizing={"content-box"}
+                            bgcolor={"background.paper"}
+                            borderRadius={2}
+                            boxShadow={3}
+                            width={"100%"}
+                            height={"100%"}
 
-                    <Grid item container spacing={2} bgcolor={"background.paper"} boxShadow={3}>
-                        <Grid item container>
-                            <Typography color={"text.primary"} variant="h5">
-                                Dados Básicos
-                            </Typography>
-
-
-                            <Grid item container direction="row" justifyContent="start" alignItems="center">
-                                <Grid item>
+                        >
+                            {/* Container do título do formulário ==========================================*/}
+                            <Grid item container>
+                                <Typography color={"text.primary"} variant="h5">
+                                    Dados Básicos
+                                </Typography>
+                            </Grid>
+                            {/* Container dos campos do formulário ==========================================*/}
+                            <Grid item container direction={"row"} justifyContent={"flex-start"} alignItems="center" spacing={1}>
+                                <Grid item xs={11} sm={10} md={6} lg={5}> {/*  Container do campo de nome */}
                                     <TextField
                                         name="name"
                                         label="Nome"
                                         type="text"
                                         value={formState.nome}
                                         onChange={handleInputChange}
+                                        error={Boolean(errors.name)}
                                         fullWidth
                                         required
                                     />
                                 </Grid>
-                                <Grid item>
+                                <Grid item xs={11} sm={10} md={6} lg={6}>{/*  Container do campo de sobrenome */}
                                     <TextField
                                         name="sobrenome"
                                         label="Sobrenome"
                                         type="text"
                                         value={formState.sobrenome}
                                         onChange={handleInputChange}
+                                        error={Boolean(errors.sobrenome)}
                                         fullWidth
                                     />
                                 </Grid>
-                                <Grid item>
+                                <Grid item xs={11} sm={10} md={4} lg={4}>{/*  Container do campo de CPF */}
                                     <TextField
                                         name="cpf"
                                         label="CPF"
@@ -97,7 +173,13 @@ const Profile = () => {
                                         fullWidth
                                     />
                                 </Grid>
-                                <Grid item>
+                                <Grid item xs={11} sm={10} md={6} lg={5}>{/*  Container do campo de data de nascimento */}
+                                    <DateOfBirthInput
+                                        value={formState.dataNascimento}
+                                        onChange={handleInputChange}
+                                    />
+                                </Grid>
+                                <Grid item xs={11} sm={10} md={6} lg={4}>{/*  Container do campo de telefone */}
                                     <TextField
                                         name="telefone"
                                         label="Telefone"
@@ -108,7 +190,7 @@ const Profile = () => {
 
                                     />
                                 </Grid>
-                                <Grid item>
+                                <Grid item xs={11} sm={10} md={6} lg={7}> {/*  Container do campo de email */}
                                     <TextField
                                         name="email"
                                         label="Email"
@@ -121,65 +203,147 @@ const Profile = () => {
                                         helperText={errors.email}
                                     />
                                 </Grid>
-                                <Grid item>
-                                    <FormControl sx={{ width: '25ch' }} variant="outlined">
-                                        <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
-                                        <OutlinedInput
-                                            name="password"
-                                            id="outlined-adornment-password"
-                                            type={showPassword ? 'text' : 'password'}
-                                            value={formState.password}
-                                            onChange={handleInputChange}
-                                            endAdornment={
-                                                <InputAdornment position="end">
-                                                    <IconButton
-                                                        aria-label="toggle password visibility"
-                                                        onClick={handleClickShowPassword}
-                                                        onMouseDown={handleMouseDownPassword}
-                                                        edge="end"
-                                                    >
-                                                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                                                    </IconButton>
-                                                </InputAdornment>
-                                            }
-                                            label="Senha"
-                                        />
-                                    </FormControl>
+                                <Grid item container direction={"column"}> {/*  Container do campo de senha */}
+                                    <Grid item container>
+                                        <Typography color={"text.primary"} variant="h6">
+                                            Alterar Senha
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item container direction={"row"} spacing={1}>
+                                        <Grid item xs={11} sm={10} md={6} lg={5}>
+                                            <FormControl fullWidth variant="outlined">
+                                                <InputLabel htmlFor="outlined-adornment-password">
+                                                    Senha
+                                                </InputLabel>
+                                                <OutlinedInput
+                                                    name="password"
+                                                    id="outlined-adornment-password"
+                                                    type={showPassword ? 'text' : 'password'}
+                                                    value={formState.password}
+                                                    onChange={handleInputChange}
+                                                    fullWidth
+                                                    endAdornment={
+                                                        <InputAdornment position="end">
+                                                            <IconButton
+                                                                aria-label="toggle password visibility"
+                                                                onClick={handleClickShowPassword}
+                                                                onMouseDown={handleMouseDownPassword}
+                                                                edge="end"
+                                                            >
+                                                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                                                            </IconButton>
+                                                        </InputAdornment>
+                                                    }
+                                                    label="Senha"
+                                                />
+                                            </FormControl>
+                                        </Grid>
+                                        <Grid item xs={11} sm={10} md={6} lg={5}>
+                                            <FormControl fullWidth variant="outlined">
+                                                <InputLabel htmlFor="outlined-adornment-password">
+                                                    Nova Senha
+                                                </InputLabel>
+                                                <OutlinedInput
+                                                    name="password"
+                                                    id="outlined-adornment-password"
+                                                    type={showPassword ? 'text' : 'password'}
+                                                    value={formState.password}
+                                                    onChange={handleInputChange}
+                                                    fullWidth
+                                                    endAdornment={
+                                                        <InputAdornment position="end">
+                                                            <IconButton
+                                                                aria-label="toggle password visibility"
+                                                                onClick={handleClickShowPassword}
+                                                                onMouseDown={handleMouseDownPassword}
+                                                                edge="end"
+                                                            >
+                                                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                                                            </IconButton>
+                                                        </InputAdornment>
+                                                    }
+                                                    label="Senha"
+                                                />
+                                            </FormControl>
+                                        </Grid>
+                                    </Grid>
                                 </Grid>
                             </Grid>
                         </Grid>
-                        <Grid item container direction={'column'}>
-                            <Typography color={"text.primary"} variant="h5">
-                                Endereço
-                            </Typography>
+                        {/*  Container dos Dados de Endereço ==========================================*/}
+                        <Grid item container xs sm md lg xl
+                            direction={"column"}
+                            boxSizing={"content-box"}
+                            bgcolor={"background.paper"}
+                            borderRadius={2}
+                            boxShadow={3}
+                            width={"100%"}
+                            height={"100%"}
 
-                            <Grid item container direction="row" justifyContent="start" alignItems="center">
-                                <Grid item>
+                        >
+                            {/*  Container do título do formulário ==========================================*/}
+                            <Grid item margin={1}>
+                                <Typography color={"text.primary"} variant="h5">
+                                    Endereço
+                                </Typography>
+                            </Grid>
+                            {/*  Container dos campos do formulário ==========================================*/}
+                            <Grid item container direction={"row"} justifyContent={"flex-start"} alignItems="center" spacing={1}>
+                                <Grid item xs={11} sm={10} md={6} lg={4}> {/*  Container do campo de cidade */}
                                     <TextField
                                         name="cidade"
                                         label="Cidade"
                                         type="city"
-                                        value={formState.cidade}
+                                        value={formState.endereco.cidade}
                                         onChange={handleInputChange}
                                         fullWidth
                                     />
                                 </Grid>
-                                <Grid item>
+                                <Grid item xs={11} sm={10} md={6} lg={7}> {  /*  Container do campo de bairro */}
                                     <TextField
-                                        name="endereco"
-                                        label="Endereço"
-                                        type="address"
-                                        value={formState.endereco}
+                                        name="bairro"
+                                        label="Bairro"
+                                        type="text"
+                                        value={formState.endereco.bairro}
                                         onChange={handleInputChange}
                                         fullWidth
                                     />
                                 </Grid>
-                                <Grid item>
+                                <Grid item xs={11} sm={10} md={6} lg={9}> {/*  Container do campo de rua */}
+                                    <TextField name="rua"
+                                        label="Rua"
+                                        type="text"
+                                        value={formState.endereco.rua}
+                                        onChange={handleInputChange}
+                                        fullWidth
+                                    />
+                                </Grid>
+                                <Grid item xs={11} sm={10} md={6} lg={2}> {/*  Container do campo de número */}
+                                    <TextField
+                                        name="numero"
+                                        label="Número"
+                                        type="number"
+                                        value={formState.endereco.numero}
+                                        onChange={handleInputChange}
+                                        fullWidth
+                                    />
+                                </Grid>
+                                <Grid item xs={11} sm={10} md={6} lg={8}> {/*  Container do campo de complemento */}
+                                    <TextField
+                                        name="complemento"
+                                        label="Complemento"
+                                        type="text"
+                                        value={formState.endereco.complemento}
+                                        onChange={handleInputChange}
+                                        fullWidth
+                                    />
+                                </Grid>
+                                <Grid item xs={11} sm={10} md={6} lg={3}> {/*  Container do campo de CEP */}
                                     <TextField
                                         name="cep"
                                         label="CEP"
                                         type="zip"
-                                        value={formState.cep}
+                                        value={formState.endereco.cep}
                                         onChange={handleInputChange}
                                         fullWidth
 
@@ -188,16 +352,18 @@ const Profile = () => {
                             </Grid>
                         </Grid>
                     </Grid>
-
-                    <Grid item container>
-                        <ButtonGroup>
-                            <Button type="submit" color="primary">
-                                Salvar
-                            </Button>
-                            <Button type="reset" color="error">
-                                Cancelar
-                            </Button>
-                        </ButtonGroup>
+                    {/*  Container dos botões ==========================================*/}
+                    <Grid item container xs sm md lg xl
+                        direction={"row"}
+                        justifyContent={"center"}
+                        alignItems={"center"}
+                        spacing={2}
+                        mt={2}
+                        mb={2}
+                    >
+                        <Button type="submit" color="primary">
+                            Salvar
+                        </Button>
                     </Grid>
                 </Grid>
             </form >
