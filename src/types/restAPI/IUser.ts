@@ -4,14 +4,20 @@ import { IPedido, } from "./IPedido";
 export interface IUser {
   id: number;
   nome: string;
-  sobrenome: string;
+  sobrenome?: string;
   cpf: string;
   telefone: number;
   email: string;
+  dataNascimento: string;
   password: string;
-  cidade: string;
-  endereco: string;
-  cep: number;
+  endereco: {
+    rua: string;
+    numero: number;
+    bairro: string;
+    complemento?: string;
+    cidade: string;
+    cep: number;
+  };
   carrinho: ICarrinho["id"];
   pedidos: IPedido[];
   role: "CLIENT_ROLE" | "ADMIN_ROLE" | "unauth";
@@ -26,13 +32,19 @@ export const initialUser: IUser = {
   cpf: "",
   email: "",
   password: "",
-  pedidos: [],
+  dataNascimento: "",
   carrinho: 0,
   telefone: 0,
-  cidade: "",
-  endereco: "",
-  cep: 0,
+  endereco: {
+    rua: "",
+    numero: 0,
+    bairro: "",
+    complemento: undefined,
+    cidade: "",
+    cep: 0
+  },
+  role: "CLIENT_ROLE",
   allowExtraEmails: false,
   isLoggedIn: true,
-  role: "CLIENT_ROLE",
+  pedidos: [],
 };
