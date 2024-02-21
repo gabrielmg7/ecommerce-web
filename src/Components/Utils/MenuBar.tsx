@@ -130,7 +130,7 @@ const MenuBar: React.FC = () => {
 
     const DesktopMenuBar: React.FC = () => {
         return (
-            <Box display="flex" justifyContent="space-between" alignItems="center" width="100%">
+            <Grid display="flex" justifyContent="space-between" alignItems="center" width="100%">
                 <Logo width='60px' height='60px' logo='Logo3' />
                 <Box display="flex" justifyContent="center" alignItems="center" flexGrow={1}>
                     {isCliente && <ClientMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
@@ -143,7 +143,7 @@ const MenuBar: React.FC = () => {
                     <CartButton id={0} cliente={0} quantidade={0} itens={[]} />
                     <ProfileButton isLoggedIn={isCliente ? isCliente : isAdmin} />
                 </Stack>
-            </Box>
+            </Grid>
         );
     };
 

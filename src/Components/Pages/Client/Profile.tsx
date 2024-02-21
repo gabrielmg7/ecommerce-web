@@ -17,7 +17,6 @@ const Profile = () => {
         return re.test(email);
     };
 
-
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
 
@@ -53,49 +52,35 @@ const Profile = () => {
         <ClientLayout>
             <form onSubmit={handleSubmit}>
                 {/* Container principal ==========================================*/}
-                <Grid container direction={"column"} spacing={2} justifyContent={"center"} alignItems={"center"}>
+                <Grid container direction={"column"} justifyContent={"center"} alignItems={"center"}  style={{ padding: '0', margin: '0' }}>
                     {/* Container do título da página ==========================================*/}
-                    <Grid item container xs sm md lg xl
-                        direction={"row"}
-                        justifyContent={"center"}
-                        alignItems={"center"}
-                        spacing={1}
-                        mt={2}
-                        mb={1}
-                    >
-                        <Typography color={"text.primary"} variant="h4">
+                    <Grid item xs sm md lg xl>
+                        <Typography color={"text.primary"} variant="h4" style={{ padding: '0' }}>
                             Minha Conta
                         </Typography>
                     </Grid>
                     {/* Container do formulário ==========================================*/}
-                    <Grid item container xs sm md lg xl
-                        gap={1}
-                        spacing={1}
-                        direction={"row"}
-                        justifyContent={"space-evenly"}
-                        alignItems={"flex-start"}
-                        width={"100%"}
-                        height={"100%"}
-                    >
+                    <Grid container xs sm md lg xl style={{ padding: '0', margin: '0'}}>
                         {/* Container dos Dados Pessoais ==========================================*/}
-                        <Grid item container xs sm md lg xl
-                            direction={"column"}
-                            boxSizing={"content-box"}
-                            bgcolor={"background.paper"}
-                            borderRadius={2}
-                            boxShadow={3}
-                            width={"100%"}
-                            height={"100%"}
-
+                        <Grid xs sm md lg xl bgcolor={"background.paper"}
+                            style={{
+                                margin: '0',
+                                padding: '0',
+                                boxSizing: 'content-box',
+                                width: '100%',
+                                height: '100%',
+                                borderRadius: '2',
+                                boxShadow: '3'
+                            }}
                         >
                             {/* Container do título do formulário ==========================================*/}
-                            <Grid item container>
+                            <Grid>
                                 <Typography color={"text.primary"} variant="h5">
                                     Dados Básicos
                                 </Typography>
                             </Grid>
                             {/* Container dos campos do formulário ==========================================*/}
-                            <Grid item container direction={"row"} justifyContent={"flex-start"} alignItems="center" spacing={1}>
+                            <Grid item container direction={"row"} spacing={1}>
                                 <Grid item xs={11} sm={10} md={6} lg={5}> {/*  Container do campo de nome */}
                                     <TextField
                                         name="name"
@@ -227,24 +212,25 @@ const Profile = () => {
                             </Grid>
                         </Grid>
                         {/*  Container dos Dados de Endereço ==========================================*/}
-                        <Grid item container xs sm md lg xl
-                            direction={"column"}
-                            boxSizing={"content-box"}
-                            bgcolor={"background.paper"}
-                            borderRadius={2}
-                            boxShadow={3}
-                            width={"100%"}
-                            height={"100%"}
-
+                        <Grid xs sm md lg xl bgcolor={"background.paper"}
+                            style={{
+                                margin: '0',
+                                padding: '0',
+                                boxSizing: 'content-box',
+                                width: '100%',
+                                height: '100%',
+                                borderRadius: '2',
+                                boxShadow: '3'
+                            }}
                         >
                             {/*  Container do título do formulário ==========================================*/}
-                            <Grid item margin={1}>
+                            <Grid >
                                 <Typography color={"text.primary"} variant="h5">
                                     Endereço
                                 </Typography>
                             </Grid>
                             {/*  Container dos campos do formulário ==========================================*/}
-                            <Grid item container direction={"row"} justifyContent={"flex-start"} alignItems="center" spacing={1}>
+                            <Grid item container direction={"row"} spacing={1}>
                                 <Grid item xs={11} sm={10} md={6} lg={4}> {/*  Container do campo de cidade */}
                                     <TextField
                                         name="cidade"
@@ -323,7 +309,7 @@ const Profile = () => {
                     </Grid>
                 </Grid>
             </form >
-        </ClientLayout >
+        </ClientLayout>
     );
 };
 
