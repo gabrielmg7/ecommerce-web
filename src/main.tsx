@@ -9,15 +9,13 @@ import Background from './Components/Utils/Background.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProviderWrapper>
-      <Router>
-        <UserProvider>
+    <Router>
+        <ThemeProviderWrapper>
           <Background>
             <App />
           </Background>
-        </UserProvider>
-      </Router>
-    </ThemeProviderWrapper>
+        </ThemeProviderWrapper>
+    </Router>
 
   </React.StrictMode>,
 );
