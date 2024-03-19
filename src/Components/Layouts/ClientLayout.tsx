@@ -1,18 +1,19 @@
 import { ReactNode } from 'react'
 import Footer from '../Utils/Footer';
 import MenuBar from '../Utils/MenuBar';
+import { Grid } from '@mui/material';
 
 type ClientLayoutProps = {
-    children: ReactNode; //Isso significa que você pode passar qualquer elemento React como filho para o componente ClientLayout.
+    children: ReactNode;
 };
 
 const ClientLayout = ({ children }: ClientLayoutProps) => {
 
     return (
         <>
-                <MenuBar />
+            <MenuBar />
                 {children}
-                <Footer />
+            <Footer />
         </>
     );
 };

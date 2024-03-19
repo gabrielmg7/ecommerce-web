@@ -4,7 +4,7 @@ import AnimatedGrid from './AnimatedGrid';
 
 const Footer = () => {
     return (
-        <Box>
+        <Box >
             <Box mt={1} mb={1}>
                 <Divider orientation="horizontal" />
             </Box>
