@@ -10,10 +10,6 @@ const ToggleThemeButton: React.FC = () => {
     const handleToggle = () => {
         toggleTheme();
       };
-    
-     useEffect(() => {
-         console.log('📞 handleToggle() - 🌙🌞 Theme Mode:', theme.palette.mode);
-     }, [theme]);
 
     return (
         <div>
