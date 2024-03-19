@@ -21,12 +21,17 @@ const Profile = () => {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setFormState({ ...formState, [name]: value });
+        setFormState({
+            ...formState,
+            [name]: value
+        });
     };
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
         setUserData(formState);
+
+        //TODO: inserir comunicação com o back end
     };
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -77,16 +82,24 @@ const Profile = () => {
         };
 
         return (
-            <Grid item container direction={"column"} xs sm md lg xl bgcolor={"background.paper"} sx={gridStyle} >
-                {/* Título do formulário ==========================================*/}
-                <Grid item marginBlock={1} paddingInline={1}>
+            <Grid item container
+                xs sm md lg xl
+                direction={"column"}
+                bgcolor={"background.paper"}
+                sx={gridStyle}
+            >
+                <Grid item marginBlock={2} paddingInline={1}> {/* Título do formulário */}
                     <Typography color={"text.primary"} variant="h5">
                         Dados Básicos
                     </Typography>
                 </Grid>
-                {/* Campos do formulário ==========================================*/}
-                <Grid>
-                    <Grid item container direction={"row"} rowSpacing={2} columnSpacing={1}>
+                <Grid item> {/* Dados Pessoais */}
+                    <Grid item container
+                        direction={"row"}
+                        rowSpacing={2}
+                        columnSpacing={1}
+                        justifyContent={"center"}
+                    >
                         <Grid item xs={11} sm={10} md={6} lg={5}> {/*  Campo de nome */}
                             <TextField
                                 name="name"
@@ -152,15 +165,19 @@ const Profile = () => {
                         </Grid>
                     </Grid>
                 </Grid>
-                {/*  Campo de senha */}
-                <Grid item container direction={"column"}>
-                    <Grid item container>
-                        <Typography color={"text.primary"} variant="h6">
-                            Alterar Senha
-                        </Typography>
-                    </Grid>
-                    <Grid item container direction={"row"} spacing={1}>
-                        <Grid item xs={11} sm={10} md={6} lg={5.5}>
+                <Grid item marginTop={2} paddingInline={1} > {/*  Título do formulário*/}
+                    <Typography color={"text.primary"} variant="h5">
+                        Alterar Senha
+                    </Typography>
+                </Grid>
+                <Grid item marginBlock={2} > {/*  Alterar a senha */}
+
+                    <Grid item container
+                        direction={"row"}
+                        spacing={1}
+                        justifyContent={"center"}
+                    >
+                        <Grid item xs={11} sm={10} md={6} lg={5.5}> {/*  Campo de nova senha */}
                             <FormControl fullWidth variant="outlined">
                                 <InputLabel htmlFor="outlined-adornment-password">
                                     Senha
@@ -188,7 +205,7 @@ const Profile = () => {
                                 />
                             </FormControl>
                         </Grid>
-                        <Grid item xs={11} sm={10} md={6} lg={5.5}>
+                        <Grid item xs={11} sm={10} md={6} lg={5.5}> {/*  Repetir nova senha */}
                             <FormControl fullWidth variant="outlined">
                                 <InputLabel htmlFor="outlined-adornment-password">
                                     Nova Senha
@@ -231,45 +248,85 @@ const Profile = () => {
             boxShadow: '3px 3px 10px rgba(0, 0, 0, 0.1)'
         };
 
-        const contentContainerStyle = {
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-        };
-
         return (
-            <Grid item container direction={"column"} xs sm md lg xl bgcolor={"background.paper"} sx={gridStyle} >
+            <Grid item container
+                xs sm md lg xl
+                direction={"column"}
+                bgcolor={"background.paper"}
+                sx={gridStyle}
+            >
                 {/* Título do formulário ==========================================*/}
-                <Grid item marginBlock={1} paddingInline={1}>
+                <Grid item marginBlock={2 } paddingInline={1}>
                     <Typography color={"text.primary"} variant="h5">
                         Endereço
                     </Typography>
                 </Grid>
                 {/* Campos do formulário ==========================================*/}
-                <Grid item container direction={"row"} rowSpacing={2} columnSpacing={1}>
+                <Grid item container
+                    direction={"row"}
+                    rowSpacing={2}
+                    columnSpacing={1}
+                    justifyContent={"center"}
+                >
                     <Grid item xs={11} sm={10} md={6} lg={4}>
-                        <TextField name="cidade" label="Cidade" type="city" value={formState.endereco.cidade} onChange={handleInputChange} fullWidth />
+                        <TextField
+                            name="cidade"
+                            label="Cidade"
+                            type="city"
+                            value={formState.endereco.cidade}
+                            onChange={handleInputChange}
+                            fullWidth
+                        />
                     </Grid>
                     <Grid item xs={11} sm={10} md={6} lg={7}>
-                        <TextField name="bairro" label="Bairro" type="text" value={formState.endereco.bairro} onChange={handleInputChange} fullWidth />
+                        <TextField
+                            name="bairro"
+                            label="Bairro"
+                            type="text"
+                            value={formState.endereco.bairro}
+                            onChange={handleInputChange}
+                            fullWidth
+                        />
                     </Grid>
                     <Grid item xs={11} sm={10} md={6} lg={9}>
-                        <TextField name="rua" label="Rua" type="text" value={formState.endereco.rua} onChange={handleInputChange} fullWidth />
+                        <TextField
+                            name="rua"
+                            label="Rua"
+                            type="text"
+                            value={formState.endereco.rua}
+                            onChange={handleInputChange}
+                            fullWidth
+                        />
                     </Grid>
                     <Grid item xs={11} sm={10} md={6} lg={2}>
-                        <TextField name="numero" label="Número" type="number" value={formState.endereco.numero} onChange={handleInputChange} fullWidth />
+                        <TextField
+                            name="numero"
+                            label="Número"
+                            type="number"
+                            value={formState.endereco.numero}
+                            onChange={handleInputChange}
+                            fullWidth
+                        />
                     </Grid>
                     <Grid item xs={11} sm={10} md={6} lg={8}>
-                        <TextField name="complemento" label="Complemento" type="text" value={formState.endereco.complemento} onChange={handleInputChange} fullWidth />
+                        <TextField
+                            name="complemento"
+                            label="Complemento"
+                            type="text"
+                            value={formState.endereco.complemento}
+                            onChange={handleInputChange}
+                            fullWidth
+                        />
                     </Grid>
                     <Grid item xs={11} sm={10} md={6} lg={3}>
                         <TextField
+
                             name="cep"
+
                             label="CEP"
+
                             type="text"
+
                             value={formState.endereco.cep}
                             onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
                                 const inputElement = e.target as HTMLInputElement;
@@ -293,11 +350,11 @@ const Profile = () => {
 
     const ButtonGroup = () => {
         return (
-            <Grid item container xs sm md lg xl
+            <Grid item container
+                xs sm md lg xl
                 direction={"row"}
                 justifyContent={"center"}
                 alignItems={"center"}
-                spacing={2}
                 mt={2}
                 mb={2}
             >
@@ -311,17 +368,41 @@ const Profile = () => {
     return (
         <ClientLayout>
             <form onSubmit={handleSubmit}>
-                <Grid container direction={"column"} alignItems={"center"} justifyContent={"space-evenly"}>
-                    <Grid item>
+                <Grid container
+                    direction={"column"}
+                    alignItems={"center"}
+                    justifyContent={"center"}
+                >
+                    <Grid item container // Título
+                        direction={"row"}
+                        alignItems={"center"}
+                        justifyContent={"center"}
+                        marginBlock={1} 
+                        paddingInline={1}
+                    >
                         <Typography color={"text.primary"} variant="h4">
                             Minha Conta
                         </Typography>
                     </Grid>
-                    <Grid item container justifyContent={"center"} xs={12} sm={10} md={8} lg={6} xl={4} spacing={2}>
-                        <Grid item xs={10} sm={5} md={5.3} lg={5.5} xl={7}>
-                            <PersonalData />
+                    <Grid item container // Dados do Cliente
+                        xs={12} sm={10} md={8} lg={6} xl={4}
+                        justifyContent={"center"}
+                        columnSpacing={2}
+                    >
+                        <Grid item // PersonalData
+                            xs={10} sm={5} md={5.3} lg={5.5} xl={7}
+                        >
+                            <Grid item
+                                direction={"row"}
+                                alignItems={"center"}
+                                justifyContent={"center"}
+                            >
+                                <PersonalData />
+                            </Grid>
                         </Grid>
-                        <Grid item xs={10} sm={5} md={5.3} lg={5.5} xl={7}>
+                        <Grid item // AdressData
+                            xs={10} sm={5} md={5.3} lg={5.5} xl={7}
+                        >
                             <AdressData />
                         </Grid>
                     </Grid>
