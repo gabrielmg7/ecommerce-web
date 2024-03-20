@@ -1,11 +1,10 @@
 import React, { ChangeEvent, useState } from "react";
 import { Grid, TextField, Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Typography } from "@mui/material";
-import { useUserContext } from "../../../Contexts/UserContext";
-import { IUser, initialUser } from "../../../Types/restAPI/IUser";
-import ClientLayout from "../../Layouts/ClientLayout";
-import { VisibilityOff, Visibility, } from "@mui/icons-material";
-import { DateOfBirthInput } from "../../Utils/DateOfBirthInput";
-
+import { VisibilityOff, Visibility } from "@mui/icons-material";
+import { IUser, initialUser } from "../../../../Types/restAPI/IUser";
+import ClientLayout from "../../../Layouts/ClientLayout";
+import { DateOfBirthInput } from "../../../Utils/DateOfBirthInput";
+import { useUserContext } from "../../../../Contexts/UserContext";
 
 
 const Profile = () => {
@@ -21,18 +20,34 @@ const Profile = () => {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setFormState({
-            ...formState,
+        setFormState(prevState => ({
+            ...prevState,
             [name]: value
-        });
+        }));
     };
-
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
         setUserData(formState);
 
         //TODO: inserir comunicação com o back end
     };
+
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormState(prevState => ({
+            ...prevState,
+            senha: value // Atualize o estado apenas para o campo de senha
+        }));
+    };
+
+    const handleRepeatPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormState(prevState => ({
+            ...prevState,
+            repetirSenha: value // Atualiza o estado apenas para o campo de repetição de senha
+        }));
+    };
+    
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -187,7 +202,7 @@ const Profile = () => {
                                     id="outlined-adornment-password"
                                     type={showPassword ? 'text' : 'password'}
                                     value={formState.password}
-                                    onChange={handleInputChange}
+                                    onChange={handlePasswordChange}
                                     fullWidth
                                     endAdornment={
                                         <InputAdornment position="end">
@@ -215,7 +230,7 @@ const Profile = () => {
                                     id="outlined-adornment-password"
                                     type={showPassword ? 'text' : 'password'}
                                     value={formState.password}
-                                    onChange={handleInputChange}
+                                    onChange={handleRepeatPasswordChange}
                                     fullWidth
                                     endAdornment={
                                         <InputAdornment position="end">
@@ -247,7 +262,7 @@ const Profile = () => {
             borderRadius: '2px',
             boxShadow: '3px 3px 10px rgba(0, 0, 0, 0.1)'
         };
-
+    
         return (
             <Grid item container
                 xs sm md lg xl
@@ -255,13 +270,13 @@ const Profile = () => {
                 bgcolor={"background.paper"}
                 sx={gridStyle}
             >
-                {/* Título do formulário ==========================================*/}
-                <Grid item marginBlock={2 } paddingInline={1}>
+                {/* Título do formulário */}
+                <Grid item marginBlock={2} paddingInline={1}>
                     <Typography color={"text.primary"} variant="h5">
                         Endereço
                     </Typography>
                 </Grid>
-                {/* Campos do formulário ==========================================*/}
+                {/* Campos do formulário */}
                 <Grid item container
                     direction={"row"}
                     rowSpacing={2}
@@ -320,13 +335,9 @@ const Profile = () => {
                     </Grid>
                     <Grid item xs={11} sm={10} md={6} lg={3}>
                         <TextField
-
                             name="cep"
-
                             label="CEP"
-
                             type="text"
-
                             value={formState.endereco.cep}
                             onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
                                 const inputElement = e.target as HTMLInputElement;
@@ -414,3 +425,4 @@ const Profile = () => {
 };
 
 export default Profile;
+

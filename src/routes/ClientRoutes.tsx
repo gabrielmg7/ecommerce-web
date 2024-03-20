@@ -5,7 +5,7 @@ import Cart from "../Components/Pages/Client/Cart/Cart";
 import Checkout from "../Components/Pages/Client/Checkout/Checkout";
 import Configuration from "../Components/Pages/Client/Configuration/Configuration";
 import About from "../Components/Pages/Sobre";
-import Profile from "../Components/Pages/Client/Profile";
+import Profile from "../Components/Pages/Client/Profile/Profile";
 
 export const ClientRoutes = () => {
     return (

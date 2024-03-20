@@ -1,18 +1,20 @@
 // ProductList.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardMedia, Typography, Grid, Button, ButtonGroup, Skeleton } from '@mui/material';
 import { useProduct } from '../../Contexts/ProductContext';
 import { IProduct } from '../../Types/fakeAPI/type';
+import AddToCartButton from '../Pages/Client/Cart/AddToCart';
+
 
 
 const buttons = [
     <Button key="one">Ver</Button>,
-    <Button key="two">Salvar</Button>,
+    <Button key="two">Salvar</Button>
+    ,
 
 ];
 
 //================= | Skeleton | ================= //
-// 
 const renderSkeleton = () => (
     <Grid container spacing={2}>
         {[1, 2, 3, 4].map((index) => (
@@ -35,6 +37,11 @@ const renderSkeleton = () => (
 
 const ProductList: React.FC = () => {
     const { produtos } = useProduct();
+    const [cartItems, setCartItems] = useState<string[]>(['']);
+
+
+      
+
 
     if (!produtos) {
         return renderSkeleton();

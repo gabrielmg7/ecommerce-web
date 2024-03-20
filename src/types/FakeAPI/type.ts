@@ -16,6 +16,12 @@ export interface ICart {
 }
 
 export interface IUser {
+  nome: unknown;
+  sobrenome: unknown;
+  cpf: unknown;
+  dataNascimento: string;
+  telefone: unknown;
+  endereco: any;
   id: number;
   email: string;
   username: string;
