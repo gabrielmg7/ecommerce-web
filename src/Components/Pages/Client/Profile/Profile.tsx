@@ -47,7 +47,6 @@ const Profile = () => {
             repetirSenha: value // Atualiza o estado apenas para o campo de repetição de senha
         }));
     };
-    
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -262,7 +261,7 @@ const Profile = () => {
             borderRadius: '2px',
             boxShadow: '3px 3px 10px rgba(0, 0, 0, 0.1)'
         };
-    
+
         return (
             <Grid item container
                 xs sm md lg xl
@@ -388,8 +387,8 @@ const Profile = () => {
                         direction={"row"}
                         alignItems={"center"}
                         justifyContent={"center"}
-                        marginBlock={1} 
-                        paddingInline={1}
+                        marginBlock={3}
+                        
                     >
                         <Typography color={"text.primary"} variant="h4">
                             Minha Conta
