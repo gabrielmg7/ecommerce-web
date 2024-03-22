@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
-import { IconButton, Badge, Drawer, Card, CardContent, Typography, Grid, 
-  Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
+import {
+  IconButton, Badge, Drawer, Card, CardContent, Typography, Grid,
+  Dialog, DialogTitle, DialogContent, DialogActions, Button,
+  Box,
+  BottomNavigation,
+  BottomNavigationAction
+} from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import QuantityButton from './QuantityButton';
 import { ICarrinho } from '../../../../Types/restAPI/ICarrinho';
@@ -54,8 +59,19 @@ const Cart: React.FC<ICarrinho> = ({ quantidade }) => {
     setCartItems([...cartItems, newItem]);
   };
 
+  const handleCheckout = () => {
+    // Lógica para processar o checkout
+    console.log("Checkout realizado!");
+  }
+
+  const handleGoToCart = () => {
+    // Navegar para a página do carrinho
+    console.log("Redirecionando para o carrinho...");
+  }
+
+
   return (
-    <div>
+    <Box>
       <IconButton style={{ color: theme.palette.text.primary }} onClick={toggleCart}>
         <Badge badgeContent={quantidade} color="error">
           <ShoppingCartIcon />
@@ -63,46 +79,85 @@ const Cart: React.FC<ICarrinho> = ({ quantidade }) => {
       </IconButton>
 
       <Drawer anchor="right" open={isCartOpen} onClose={toggleCart}>
-        <div style={{ width: 300 }}>
-          <CardContent>
-            {cartItems.map((item, index) => (
-              <Card key={index} style={{ marginBottom: 10 }}>
-                <CardContent>
-                  <Grid container direction="row" justifyContent={"end"}> {/* Preço ====================================*/}
-                    <Typography variant="body1">{item.nome}</Typography>
-                  </Grid>
-                  <Grid container direction={"row"} justifyContent={"end"}>
-                    <Typography variant="body2">R$ {item.preco.toFixed(2)}</Typography>
-                  </Grid>
 
-                  <QuantityButton
-                      quantidade={item.quantidade}
-                      onIncrement={() => incrementCartItem(index)}
-                      onDecrement={() => decrementCartItem(index)}
-                    />
-                </CardContent>
-              </Card>
-            ))}
-          </CardContent>
-          <div>
-            <IconButton onClick={() => addToCart(`Item ${cartItems.length + 1}`, 10)}>
-              <Typography variant="body2">Adicionar Item</Typography>
-            </IconButton>
-          </div>
-        </div>
+          <Box style={{ width: 300 }}>
+            <CardContent>
+              {cartItems.map((item, index) => (
+                <Card key={index} style={{ marginBottom: 10 }}>
+                  <CardContent>
+                    <Grid container direction={"row"} justifyContent={"end"}>
+                      <Box alignSelf={"center"} paddingInline={1}>
+                        <QuantityButton
+                          quantidade={item.quantidade}
+                          onIncrement={() => incrementCartItem(index)}
+                          onDecrement={() => decrementCartItem(index)}
+                        />
+                      </Box>
+                      <Box> {/* Nome ====================================*/}
+                        <Typography variant="body1">
+                          {item.nome}
+                        </Typography>
+                        <Typography variant="body2">
+                          R$ {item.preco.toFixed(2)}
+                        </Typography>
+                      </Box>
+                    </Grid>
+                  </CardContent>
+                </Card>
+              ))}
+            </CardContent>
+            <Box>
+              <IconButton onClick={() => addToCart(`Item ${cartItems.length + 1}`, 10)}>
+                <Typography variant="body2">
+                  Adicionar Item
+                </Typography>
+              </IconButton>
+            </Box>
+
+            {/* Botões  */}
+            <Grid container
+              direction={"row"}
+              alignItems={"center"}
+              justifyContent={"space-evenly"}
+              marginBottom={2}
+              width="100%"
+              textAlign="center"
+            >
+              {cartItems.length > 0 && (
+                <Button onClick={handleCheckout} variant="outlined">
+                  Checkout
+                </Button>
+              )}
+              <Button onClick={handleGoToCart} variant="outlined" color={"primary"}>
+                Ver Carrinho
+              </Button>
+            </Grid>
+          </Box>
+
       </Drawer>
 
-      <Dialog open={itemToRemoveIndex !== null} onClose={handleCancelRemove}>
-        <DialogTitle>Remover Item</DialogTitle>
+
+      <Dialog open={itemToRemoveIndex !== null} onClose={handleCancelRemove}> {/* Caixa de diálogo  */}
+        <DialogTitle>
+          Remover Item
+        </DialogTitle>
         <DialogContent>
-          <Typography variant="body1">Tem certeza que deseja remover este item do carrinho?</Typography>
+          <Typography variant="body1">
+            Tem certeza que deseja remover este item do carrinho?
+          </Typography>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCancelRemove}>Cancelar</Button>
-          <Button onClick={() => confirmRemoveItem(itemToRemoveIndex as number)} color="error">Remover</Button>
+          <Button onClick={handleCancelRemove}>
+            Cancelar
+          </Button>
+          <Button onClick={() => confirmRemoveItem(itemToRemoveIndex as number)} color="error">
+            Remover
+          </Button>
         </DialogActions>
       </Dialog>
-    </div>
+
+
+    </Box>
   );
 };
 

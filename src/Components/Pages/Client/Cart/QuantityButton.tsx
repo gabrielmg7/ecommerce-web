@@ -11,7 +11,7 @@ interface QuantityButtonProps {
 
 const QuantityButton: React.FC<QuantityButtonProps> = ({ quantidade, onIncrement, onDecrement }) => {
   return (
-    <Grid container direction={"row"} alignContent={"end"} alignItems="center" justifyContent={"flex-end"} >
+    <Grid container direction={"row"} alignItems="center">
       <IconButton onClick={onDecrement} size='small'>
         <RemoveIcon />
       </IconButton>

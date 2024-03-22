@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { useThemeContext } from '../../Themes/ThemeProviderWrapper';
+import ParticleBackground from './ParticleBackground';
 
 const StyledBackground = styled.div<{ background: string }>`
     width: 100%;
@@ -19,8 +20,9 @@ const Background: React.FC<BackgroundProps> = ({ children }) => {
 
     return (
         <StyledBackground background={theme.palette.background.default}>
-            {children}
-        </StyledBackground>
+                
+                {children}
+            </StyledBackground>
     )
 }
 
