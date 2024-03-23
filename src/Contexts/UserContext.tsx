@@ -5,38 +5,38 @@ import { IPedido } from '../Types/restAPI/IPedido';
 import { IUser, initialUser } from '../Types/restAPI/IUser';
 
 interface UserContextProps {
-    userData: IUser | null;
-    registerUser: (userData: IUser) => Promise<void>;
+    data: IUser | null;
+    registerUser: (data: IUser) => Promise<void>;
     loginUser: (credentials: { email: string; password: string }) => Promise<void>;
     logoutUser: () => void;
-    setUserData: React.Dispatch<React.SetStateAction<IUser>>;
+    setData: React.Dispatch<React.SetStateAction<IUser>>;
     checkAuthentication: () => void;
 }
 
 const UserContext = createContext<UserContextProps | undefined>(undefined);
 
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [userData, setUserData] = useState<IUser>(initialUser);
+    const [data, setData] = useState<IUser>(initialUser);
 
-    const registerUser = async (userData: IUser) => {
+    const registerUser = async (data: IUser) => {
         try {
-            await userApiService.create(userData);
-            console.info('✔ UserProvider.createUserData() - Usuário cadastrado.')
+            await userApiService.create(data);
+            console.info('✔ UserProvider.createdata() - Usuário cadastrado.')
         } catch (error) {
-            console.error('❌ UserProvider.createUserData() - Erro ao cadastrar cliente:', error);
+            console.error('❌ UserProvider.createdata() - Erro ao cadastrar cliente:', error);
         }
     };
 
     const checkAuthentication = () => {
-        if (userData.isLoggedIn && userData.role !== 'unauth') {
+        if (data.isLoggedIn && data.role !== 'unauth') {
             console.info('🆗 checkAuthentication() - Usuário autenticado com sucesso!')
-            setUserData(prevState => ({
+            setData(prevState => ({
                 ...prevState,
                 isLoggedIn: true,
             }));
         } else {
             console.info('❌ checkAuthentication() - Usuário não autenticado!')
-            setUserData(prevState => ({
+            setData(prevState => ({
                 ...prevState,
                 isLoggedIn: false,
             }));
@@ -46,8 +46,8 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const loginUser = async (credentials: { email: string; password: string }) => {
         try {
             const response = await userApiService.login(credentials);
-            const { role, ...userDataWithoutRole } = response;
-            setUserData({ ...userDataWithoutRole, role, isLoggedIn: true });
+            const { role, ...dataWithoutRole } = response;
+            setData({ ...dataWithoutRole, role, isLoggedIn: true });
             console.info('🆗 UserProvider.loginUser() - Usuário autenticado:', response);
         } catch (error) {
             console.error('❌ UserProvider.loginUser() - Erro no login:', error);
@@ -56,11 +56,11 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     const logoutUser = () => {
         console.info('📞 UserProvider.logoutUser() - Chamada da função da Camada de Serviço')
-        setUserData(initialUser);
+        setData(initialUser);
     };
 
     return (
-        <UserContext.Provider value={{ userData, setUserData, checkAuthentication, registerUser, loginUser, logoutUser }}>
+        <UserContext.Provider value={{ data, setData, checkAuthentication, registerUser, loginUser, logoutUser }}>
             {children}
         </UserContext.Provider>
     );

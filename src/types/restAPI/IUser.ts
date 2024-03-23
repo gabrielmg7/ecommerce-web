@@ -1,5 +1,6 @@
 import { ICarrinho } from "./ICarrinho";
-import { IPedido, } from "./IPedido";
+import { IPedido } from "./IPedido";
+
 
 export interface IUser {
   id: number;

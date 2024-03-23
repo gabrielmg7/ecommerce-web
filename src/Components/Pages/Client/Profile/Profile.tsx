@@ -8,8 +8,8 @@ import { useUserContext } from "../../../../Contexts/UserContext";
 
 
 const Profile = () => {
-    const { userData, setUserData } = useUserContext();
-    const [formState, setFormState] = useState<IUser>(userData || initialUser);
+    const { data, setData } = useUserContext();
+    const [formState, setFormState] = useState<IUser>(data || initialUser);
     const [showPassword, setShowPassword] = React.useState(false);
     const [errors, setErrors] = useState({ email: '', name: '', sobrenome: '' });
 
@@ -27,7 +27,7 @@ const Profile = () => {
     };
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        setUserData(formState);
+        setData(formState);
 
         //TODO: inserir comunicação com o back end
     };

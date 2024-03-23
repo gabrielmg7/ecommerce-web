@@ -5,13 +5,13 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
-export default function AddressForm() {
+export default function AddAddressForm() {
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Endereço de entrega 
-      </Typography>
-      <Grid container spacing={3}>
+        <Typography variant="h6">
+          Endereço de entrega
+        </Typography>
+      <Grid container direction={"row"} spacing={3}>
         <Grid item xs={12} sm={6}>
           <TextField
             required

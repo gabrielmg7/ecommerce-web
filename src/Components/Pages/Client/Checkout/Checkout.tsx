@@ -13,6 +13,9 @@ import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
 import ClientLayout from '../../../Layouts/ClientLayout';
+import ChoiceAddressForm from './ChoiceAddressForm';
+import { useUserContext } from '../../../../Contexts/UserContext';
+import AddAddressForm from './AddressForm';
 
 function Copyright() {
   return (
@@ -29,20 +32,9 @@ function Copyright() {
 
 const steps = ['Endereço de Entrega', 'Detalhes do Pagamento', 'Revise seu Pedido'];
 
-function getStepContent(step: number) {
-  switch (step) {
-    case 0:
-      return <AddressForm />;
-    case 1:
-      return <PaymentForm />;
-    case 2:
-      return <Review />;
-    default:
-      throw new Error('Unknown step');
-  }
-}
 
 export default function Checkout() {
+  const user = useUserContext();
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
@@ -53,8 +45,27 @@ export default function Checkout() {
     setActiveStep(activeStep - 1);
   };
 
+  
+function getStepContent(step: number) {
+  switch (step) {
+    case 0:
+      if (user.data?.endereco)
+      return <AddressForm/>
+      else return <AddAddressForm />;
+    case 1:
+      return <PaymentForm />;
+    case 2:
+      return <Review />;
+    default:
+      throw new Error('Unknown step');
+  }
+}
+
   return (
+
+
     <React.Fragment>
+    
       <ClientLayout>
         <CssBaseline />
         <Container component="main" maxWidth="sm" sx={{ mb: 4 }} >
