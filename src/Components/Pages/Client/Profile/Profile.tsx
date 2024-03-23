@@ -400,7 +400,7 @@ const Profile = () => {
                         columnSpacing={2}
                     >
                         <Grid item // PersonalData
-                            xs={10} sm={5} md={5.3} lg={5.5} xl={7}
+                            xs={10} sm={5} md={5.3} lg={5.5} xl={6}
                         >
                             <Grid item
                                 direction={"row"}
@@ -411,7 +411,7 @@ const Profile = () => {
                             </Grid>
                         </Grid>
                         <Grid item // AdressData
-                            xs={10} sm={5} md={5.3} lg={5.5} xl={7}
+                            xs={10} sm={5} md={5.3} lg={5.5} xl={6}
                         >
                             <AdressData />
                         </Grid>
