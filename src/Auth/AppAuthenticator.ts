@@ -4,8 +4,8 @@ import { useUserContext } from '../Contexts/UserContext';
 
 export const AppAuthenticator = () => {
   const navigate = useNavigate();
-  const { userData, checkAuthentication } = useUserContext();
-  const isAuthenticated = userData?.isLoggedIn || userData?.isLoggedIn;
+  const { data, checkAuthentication } = useUserContext();
+  const isAuthenticated = data?.isLoggedIn || data?.isLoggedIn;
 
   useEffect(() => {
     checkAuthentication();
@@ -13,8 +13,8 @@ export const AppAuthenticator = () => {
 
 
   useEffect(() => {
-    if (userData) {
-      switch (userData?.role) {
+    if (data) {
+      switch (data?.role) {
         case 'CLIENT_ROLE':
           navigate('/cliente');
           console.info('📞 AppAuthenticator -> Navegando para /cliente/*')
