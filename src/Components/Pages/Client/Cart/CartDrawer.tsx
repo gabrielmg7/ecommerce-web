@@ -10,6 +10,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import QuantityButton from './QuantityButton';
 import { ICarrinho } from '../../../../Types/restAPI/ICarrinho';
 import { useThemeContext } from '../../../../Themes/ThemeProviderWrapper';
+import { useNavigate } from 'react-router-dom';
 
 interface CartItem {
   nome: string;
@@ -22,6 +23,8 @@ const Cart: React.FC<ICarrinho> = ({ quantidade }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [itemToRemoveIndex, setItemToRemoveIndex] = useState<number | null>(null);
+  const navigate = useNavigate();
+
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
@@ -65,8 +68,8 @@ const Cart: React.FC<ICarrinho> = ({ quantidade }) => {
   }
 
   const handleGoToCart = () => {
-    // Navegar para a página do carrinho
-    console.log("Redirecionando para o carrinho...");
+    console.log("📞 handleGoToCart - Redirecionando para o carrinho...");
+    navigate('/carrinho');  
   }
 
 
@@ -81,6 +84,7 @@ const Cart: React.FC<ICarrinho> = ({ quantidade }) => {
       <Drawer anchor="right" open={isCartOpen} onClose={toggleCart}>
 
           <Box style={{ width: 300 }}>
+
             <CardContent>
               {cartItems.map((item, index) => (
                 <Card key={index} style={{ marginBottom: 10 }}>
@@ -106,6 +110,7 @@ const Cart: React.FC<ICarrinho> = ({ quantidade }) => {
                 </Card>
               ))}
             </CardContent>
+
             <Box>
               <IconButton onClick={() => addToCart(`Item ${cartItems.length + 1}`, 10)}>
                 <Typography variant="body2">
