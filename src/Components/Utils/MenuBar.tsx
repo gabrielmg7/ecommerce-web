@@ -18,9 +18,9 @@ const MenuBar: React.FC = () => {
     const { theme } = useThemeContext();
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-    const { userData } = useUserContext();
-    const isCliente = userData?.isLoggedIn && userData.role === 'CLIENT_ROLE';
-    const isAdmin = userData?.isLoggedIn && userData.role === 'ADMIN_ROLE';
+    const { data } = useUserContext();
+    const isCliente = data?.isLoggedIn && data.role === 'CLIENT_ROLE';
+    const isAdmin = data?.isLoggedIn && data.role === 'ADMIN_ROLE';
 
     const toggleDrawer = (open: boolean) => () => {
         setIsDrawerOpen(open);
@@ -122,7 +122,7 @@ const MenuBar: React.FC = () => {
                 <List>
                     {isCliente && <ClientDrawerLinks />}
                     {isAdmin && <AdminDrawerLinks />}
-                    {!userData?.isLoggedIn && <UnauthenticatedDrawerLinks />}
+                    {!data?.isLoggedIn && <UnauthenticatedDrawerLinks />}
                 </List>
             </Drawer>
         );
@@ -135,7 +135,7 @@ const MenuBar: React.FC = () => {
                 <Box display="flex" justifyContent="center" alignItems="center" flexGrow={1}>
                     {isCliente && <ClientMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
                     {isAdmin && <AdminMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
-                    {!userData?.isLoggedIn && <UnauthenticatedMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
+                    {!data?.isLoggedIn && <UnauthenticatedMenuBarLinks onCloseDrawer={() => setIsDrawerOpen(false)} />}
                 </Box>
 
                 <Stack direction="row" justifyContent={'flex-end'}>
