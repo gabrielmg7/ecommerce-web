@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import {
   IconButton, Badge, Drawer, Card, CardContent, Typography, Grid,
   Dialog, DialogTitle, DialogContent, DialogActions, Button,
-  Box,
-  BottomNavigation,
-  BottomNavigationAction
+  Box
 } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import QuantityButton from './QuantityButton';
 import { ICarrinho } from '../../../../Types/restAPI/ICarrinho';
 import { useThemeContext } from '../../../../Themes/ThemeProviderWrapper';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 interface CartItem {
   nome: string;
@@ -23,8 +21,6 @@ const Cart: React.FC<ICarrinho> = ({ quantidade }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [itemToRemoveIndex, setItemToRemoveIndex] = useState<number | null>(null);
-  const navigate = useNavigate();
-
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
@@ -61,16 +57,6 @@ const Cart: React.FC<ICarrinho> = ({ quantidade }) => {
     const newItem: CartItem = { nome, quantidade: 1, preco };
     setCartItems([...cartItems, newItem]);
   };
-
-  const handleCheckout = () => {
-    // Lógica para processar o checkout
-    console.log("Checkout realizado!");
-  }
-
-  const handleGoToCart = () => {
-    console.log("📞 handleGoToCart - Redirecionando para o carrinho...");
-    navigate('/carrinho');  
-  }
 
 
   return (
@@ -129,11 +115,11 @@ const Cart: React.FC<ICarrinho> = ({ quantidade }) => {
               textAlign="center"
             >
               {cartItems.length > 0 && (
-                <Button onClick={handleCheckout} variant="outlined">
+                <Button component={Link} to="/cliente/checkout" variant="outlined">
                   Checkout
                 </Button>
               )}
-              <Button onClick={handleGoToCart} variant="outlined" color={"primary"}>
+              <Button component={Link} to="/cliente/carrinho" variant="outlined" color={"primary"}>
                 Ver Carrinho
               </Button>
             </Grid>
