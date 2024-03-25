@@ -1,16 +1,11 @@
 import React from 'react';
-import { IconButton, IconButtonProps } from '@mui/material';
+import { IconButton } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
-interface AddToCartButtonProps extends IconButtonProps {
-  addToCart: () => void;
-}
-
-const AddToCartButton: React.FC<AddToCartButtonProps> = ({ addToCart, ...props }) => {
-
+const AddToCartButton: React.FC<{ onClick: () => void }> = ({ onClick, ...props }) => {
 
   return (
-    <IconButton color="primary" onClick={addToCart} {...props}>
+    <IconButton color="primary" onClick={onClick} {...props}>
       <AddShoppingCartIcon />
     </IconButton>
   );

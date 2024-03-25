@@ -5,14 +5,11 @@ import { useProduct } from '../../Contexts/ProductContext';
 import { IProduct } from '../../Types/fakeAPI/type';
 import AddToCartButton from '../Pages/Client/Cart/AddToCart';
 
+// TODO: Lógica para adicionar o item ao carrinho aqui
+const addToCart = () => {
+    console.log('Item adicionado ao carrinho!');
+};
 
-
-const buttons = [
-    <Button key="one">Ver</Button>,
-    <Button key="two">Salvar</Button>
-    ,
-
-];
 
 //================= | Skeleton | ================= //
 const renderSkeleton = () => (
@@ -39,10 +36,6 @@ const ProductList: React.FC = () => {
     const { produtos } = useProduct();
     const [cartItems, setCartItems] = useState<string[]>(['']);
 
-
-      
-
-
     if (!produtos) {
         return renderSkeleton();
     }
@@ -61,7 +54,7 @@ const ProductList: React.FC = () => {
                             <Typography id="productTitle" variant="h6" color={"text.primary"}>
                                 {produto.title}
                             </Typography>
-                            <Typography id="productCategory" variant="subtitle1" color="text.secondary">
+                            <Typography id="productCategory" variant="subtitle2" color="text.secondary">
                                 {produto.category}
                             </Typography>
                         </CardContent>
@@ -74,9 +67,9 @@ const ProductList: React.FC = () => {
                                     </Typography>
                                 </Grid>
                                 <Grid item>
-                                    <ButtonGroup size="small" aria-label="small button group">
-                                    {buttons}
-                                    </ButtonGroup>
+                                        <Button>Ver</Button>
+                                        <Button>Salvar</Button>
+                                        <AddToCartButton onClick={addToCart} />
                                 </Grid>
                             </Grid>
                         </CardContent>
