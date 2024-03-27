@@ -1,5 +1,5 @@
 // App.tsx
-import AppRoutes from './routes/AppRoutes';
+import AppRoutes from './Routes/AppRoutes';
 import { ProductProvider } from './Contexts/ProductContext';
 import { UserProvider } from './Contexts/UserContext';
 
