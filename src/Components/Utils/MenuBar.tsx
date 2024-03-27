@@ -163,14 +163,16 @@ const MenuBar: React.FC = () => {
     }
 
     return (
-        <AnimatedGrid>
+        <Grid mb={1}>
             <AppBar position="static" color='transparent'>
-                <Toolbar >
-                    {isSmallScreen ? (<MobileMenuBar />) : (<DesktopMenuBar />)}
-                </Toolbar>
+                <AnimatedGrid>
+                    <Toolbar>
+                        {isSmallScreen ? (<MobileMenuBar />) : (<DesktopMenuBar />)}
+                    </Toolbar>
+                </AnimatedGrid>
             </AppBar>
             <DrawerLinks />
-        </AnimatedGrid>
+        </Grid>
     );
 };
 

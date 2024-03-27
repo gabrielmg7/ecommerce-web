@@ -74,6 +74,7 @@ const Cart: React.FC<ICarrinho> = ({ quantidade }) => {
             <CardContent>
               {cartItems.map((item, index) => (
                 <Card key={index} style={{ marginBottom: 10 }}>
+                  
                   <CardContent>
                     <Grid container direction={"row"} justifyContent={"end"}>
                       <Box alignSelf={"center"} paddingInline={1}>
