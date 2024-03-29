@@ -14,11 +14,11 @@ const Cart = () => {
           {/* Endereço de Entrega ===================================== */}
           <Grid item container bgcolor={"background.paper"}>
             {/* Título da Seção ===================================== */}
-            <Grid item container 
-            direction={"row"}
-            alignItems={"center"} 
-            justifyContent={"flex-start"} 
-            columnGap={1}
+            <Grid item container
+              direction={"row"}
+              alignItems={"center"}
+              justifyContent={"flex-start"}
+              columnGap={1}
             >
               <MarkunreadMailboxTwoToneIcon color='action' />
               <Typography color={"text.primary"} variant="h5">Endereço de Entrega</Typography>
@@ -38,7 +38,9 @@ const Cart = () => {
               columnGap={1}
             >
               <LocalMallTwoToneIcon color='action' />
-              <Typography color={"text.primary"} variant="h5">Produtos</Typography>
+              <Typography color={"text.primary"} variant="h5">
+                Produtos
+              </Typography>
             </Grid>
             {/* Conteúdo da Seção ===================================== */}
             <Grid>
@@ -51,7 +53,9 @@ const Cart = () => {
         <Grid item direction={"column"} bgcolor={"background.paper"} sm={1} md={2} lg={4} xl={5}>
           <Grid container direction={"row"} alignItems={"center"} justifyContent={"flex-start"} columnGap={1}>
             <FindInPageTwoToneIcon color='action' />
-            <Typography color={"text.primary"} variant="h5">Resumo</Typography>
+            <Typography color={"text.primary"} variant="h5">
+              Resumo
+            </Typography>
           </Grid>
         </Grid>
 

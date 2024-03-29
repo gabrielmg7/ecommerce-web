@@ -402,7 +402,7 @@ const Profile = () => {
                         <Grid item // PersonalData
                             xs={10} sm={5} md={5.3} lg={5.5} xl={6}
                         >
-                            <Grid item
+                            <Grid item container
                                 direction={"row"}
                                 alignItems={"center"}
                                 justifyContent={"center"}
