@@ -67,8 +67,6 @@ const ProductList: React.FC = () => {
                                     </Typography>
                                 </Grid>
                                 <Grid item>
-                                        <Button>Ver</Button>
-                                        <Button>Salvar</Button>
                                         <AddToCartButton onClick={addToCart} />
                                 </Grid>
                             </Grid>
