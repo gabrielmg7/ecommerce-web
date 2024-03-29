@@ -9,6 +9,16 @@ const Cart = () => {
   return (
     <ClientLayout>
       <Grid container direction={"row"} justifyContent={"space-evenly"} alignItems={"flex-start"}>
+        <Grid item container // Título
+          direction={"row"}
+          alignItems={"center"}
+          justifyContent={"center"}
+          marginBlock={3}
+        >
+          <Typography color={"text.primary"} variant="h4">
+            Carrinho
+          </Typography>
+        </Grid>
         {/* Coluna 1 ===================================== */}
         <Grid container direction={"column"} justifyContent="space-evenly" gap={2} alignItems="center" sm={3} md={5} lg={6} xl={6}>
           {/* Endereço de Entrega ===================================== */}
