@@ -1,6 +1,9 @@
 import createTheme, { Theme, ThemeOptions } from "@mui/material/styles/createTheme";
+import { ICustomTheme } from "./ICustomTheme";
 
-export const DarkThemeOptions: ThemeOptions = {
+
+
+export const DarkThemeOptions: ICustomTheme = {
     palette: {
         mode: 'dark',
         primary: {
@@ -25,10 +28,12 @@ export const DarkThemeOptions: ThemeOptions = {
         background: {
             default: '#303030',
             paper: '#424242',
+
+
         },
         text: {
             primary: '#FFFFFF',
-            secondary: '#FFFFFF',
+            secondary: '#ededed',
         },
         divider: '#424242',
 
@@ -41,7 +46,7 @@ export const DarkThemeOptions: ThemeOptions = {
     },
 };
 
-export const LightThemeOptions: ThemeOptions = {
+export const LightThemeOptions: ICustomTheme = {
     palette: {
         mode: 'light',
         primary: {
@@ -63,12 +68,13 @@ export const LightThemeOptions: ThemeOptions = {
             main: '#4f9050',
         },
         background: {
-            default: '#FFFFFF',
-            paper: '#F5F5F5',
+            paper: '#FFFFFF',
+            default: '#f2f3f4',
+            
         },
         text: {
             primary: '#000000',
-            secondary: '#000000',
+            secondary: '#0d0d0d',
         },
         divider: '#F5F5F5',
     },
