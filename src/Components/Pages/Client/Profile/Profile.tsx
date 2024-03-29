@@ -3,7 +3,7 @@ import { Grid, TextField, Button, FormControl, IconButton, InputAdornment, Input
 import { VisibilityOff, Visibility } from "@mui/icons-material";
 import { IUser, initialUser } from "../../../../Types/restAPI/IUser";
 import ClientLayout from "../../../Layouts/ClientLayout";
-import { DateOfBirthInput } from "../../../Utils/DateOfBirthInput";
+import { DateOfBirthInput } from "./DateOfBirthInput";
 import { useUserContext } from "../../../../Contexts/UserContext";
 
 
