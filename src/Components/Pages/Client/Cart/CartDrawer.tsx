@@ -120,7 +120,7 @@ const Cart: React.FC<ICarrinho> = ({ quantidade }) => {
                   Checkout
                 </Button>
               )}
-              <Button component={Link} to="/cliente/carrinho" variant="outlined" color={"primary"}>
+              <Button component={Link} to="/cliente/carrinho" variant="outlined" onClick={toggleCart} color={"primary"}>
                 Ver Carrinho
               </Button>
             </Grid>
