@@ -2,9 +2,7 @@ export interface ICustomTheme {
     palette: {
         mode: 'dark' | 'light';
         primary: {
-            light: string;
             main: string;
-            dark: string;
             contrastText: string;
         };
         secondary: {
@@ -22,6 +20,7 @@ export interface ICustomTheme {
         background: {
             default: string;
             paper: string;
+            card: string;
         };
         text: {
             primary: string;

@@ -7,9 +7,7 @@ export const DarkThemeOptions: ICustomTheme = {
     palette: {
         mode: 'dark',
         primary: {
-            light: '#009cf9',
-            main: '#0083f9',
-            dark: '#003F8A',
+            main: '#009cf9',
             contrastText: '#fff'
         },
         secondary: {
@@ -28,12 +26,11 @@ export const DarkThemeOptions: ICustomTheme = {
         background: {
             default: '#303030',
             paper: '#424242',
-
-
+            card: '#686868'
         },
         text: {
             primary: '#FFFFFF',
-            secondary: '#ededed',
+            secondary: '#cccccc',
         },
         divider: '#424242',
 
@@ -51,8 +48,7 @@ export const LightThemeOptions: ICustomTheme = {
         mode: 'light',
         primary: {
             main: '#0083f9',
-            light: '#009cf9',
-            dark: '#003F8A',
+
             contrastText: '#000000'
         },
         secondary: {
@@ -70,11 +66,12 @@ export const LightThemeOptions: ICustomTheme = {
         background: {
             paper: '#FFFFFF',
             default: '#f2f3f4',
+            card: '#FAFAFB'
             
         },
         text: {
             primary: '#000000',
-            secondary: '#0d0d0d',
+            secondary: '#4c4c4c',
         },
         divider: '#F5F5F5',
     },

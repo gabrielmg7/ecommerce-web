@@ -18,18 +18,18 @@ const AddressComponent: React.FC = () => {
                 <Grid item container direction="row" justifyContent="flex-start" alignItems="center" sx={{ borderLeft: `4px solid ${colors.theme.palette.primary.main}`, paddingLeft: '8px', paddingInline: 2, marginInline: 1 }}>
 
                     <Grid item>
-                        <Typography variant="body2" color="text.secondary">
-                            Rua Luiza Miranda Coelho
+                        <Typography variant="body2" color="text.secondary"> {/* Rua  */}
+                            Rua
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Número: 21, Casa
+                        <Typography variant="body2" color="text.secondary"> {/* Número + Descrição */}
+                            Número
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            CEP 60811110 - FORTALEZA, CE
+                        <Typography variant="body2" color="text.secondary"> {/* CEP + Cidade */}
+                            CEP
                         </Typography>
                     </Grid>
                 </Grid>
-            
+
                 <Grid item container direction="row" justifyContent="flex-end" alignItems="center" marginBottom={1} gap={2}>
                     <Button variant="text" size="small" sx={{ color: colors.theme.palette.text.primary }}>
                         EDITAR
@@ -41,7 +41,7 @@ const AddressComponent: React.FC = () => {
                         NOVO ENDEREÇO
                     </Button>
                 </Grid>
-                
+
             </Grid>
         </Grid>
     );
