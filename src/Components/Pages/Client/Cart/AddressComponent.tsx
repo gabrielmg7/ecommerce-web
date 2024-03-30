@@ -1,38 +1,47 @@
 import React from 'react';
-import { Grid, Typography, Button } from '@mui/material';
+import { Grid, Typography, Button, Divider } from '@mui/material';
+import { useThemeContext } from '../../../../Themes/ThemeProviderWrapper';
+import PlaceIcon from '@mui/icons-material/Place';
 
 const AddressComponent: React.FC = () => {
+    const colors = useThemeContext();
+
     return (
-        <Grid container spacing={2} sx={{ background: '#FAFAFB', padding: '2rem' }}>
-            <Grid item xs={12}>
-                <Typography variant="h6" color={'text.default'}>
-                    Selecione o Endereço
-                </Typography>
-            </Grid>
-            <Grid item xs={12}>
-                <Typography variant="subtitle1" sx={{ color: '#42464D', marginBottom: '1rem' }}>
-                    Endereço Principal
-                </Typography>
-                <div >
-                    <Typography variant="body1">
-                        Rua Luiza Miranda Coelho
+        <Grid container direction="row" justifyContent="center">
+            <Grid container direction="column" justifyContent="space-evenly" alignItems="flex-start" xs={12} bgcolor="background.card" rowGap={1} paddingInline={1}>
+                <Grid item container direction="row" justifyContent="flex-start" alignItems="center" gap={1} marginTop={1} >
+                    <PlaceIcon color="action" fontSize="small" />
+                    <Typography variant="subtitle1" color="text.primary">
+                        Endereço Principal
                     </Typography>
-                    <Typography variant="body1">
-                        Número: 21, Casa
-                    </Typography>
-                    <Typography variant="body1">CEP 60811110 - FORTALEZA, CE</Typography>
-                </div>
-                <Grid>
-                    <Button variant="contained" sx={{ backgroundColor: '#FFFFFF', color: '#42464D', marginRight: '1rem' }}>
+                </Grid>
+                <Grid item container direction="row" justifyContent="flex-start" alignItems="center" sx={{ borderLeft: `4px solid ${colors.theme.palette.primary.main}`, paddingLeft: '8px', paddingInline: 2, marginInline: 1 }}>
+
+                    <Grid item>
+                        <Typography variant="body2" color="text.secondary">
+                            Rua Luiza Miranda Coelho
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            Número: 21, Casa
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            CEP 60811110 - FORTALEZA, CE
+                        </Typography>
+                    </Grid>
+                </Grid>
+            
+                <Grid item container direction="row" justifyContent="flex-end" alignItems="center" marginBottom={1} gap={2}>
+                    <Button variant="text" size="small" sx={{ color: colors.theme.palette.text.primary }}>
                         EDITAR
                     </Button>
-                    <Button variant="contained" sx={{ backgroundColor: '#FFFFFF', color: '#42464D', marginRight: '1rem' }}>
+                    <Button variant="text" size="small" sx={{ color: colors.theme.palette.text.primary }}>
                         SELECIONAR OUTRO
                     </Button>
-                    <Button variant="contained" sx={{ backgroundColor: '#FF6500', color: '#FFFFFF' }}>
+                    <Button variant="text" size="small" sx={{ color: colors.theme.palette.primary.main }}>
                         NOVO ENDEREÇO
                     </Button>
                 </Grid>
+                
             </Grid>
         </Grid>
     );
