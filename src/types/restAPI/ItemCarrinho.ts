@@ -1,12 +1,15 @@
+import { ICarrinho } from "./ICarrinho";
+import { IProduto } from "./IProduto";
+
 export interface ItemCarrinho {
-    id?: string;
-    carrinho: number; // ID Carrinho
-    produto: number; //ID Produto
+    id?: number;
+    idCarrinho: ICarrinho["id"]; // ID Carrinho
+    idProduto: IProduto["id"]; //ID Produto
     quantidade: number;
 }
 
 export const initialItemCarrinho: ItemCarrinho = {
-    carrinho: 0,
-    produto: 0,
+    idCarrinho: 0,
+    idProduto: 0,
     quantidade: 0
 }

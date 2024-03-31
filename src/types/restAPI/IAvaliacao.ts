@@ -1,10 +1,11 @@
-import { IProduct } from "../fakeAPI/type";
-import { IUser } from "./IUser";
+
+import { IProduto } from "./IProduto";
+import { IUsuario } from "./IUsuario";
 
 export interface IAvaliacao {
   id: number;
   score: number;
   description: string;
-  product: IProduct["id"];
-  user: IUser["id"];
+  idProduto: IProduto["id"];
+  idUsuario: IUsuario["id"];
 }

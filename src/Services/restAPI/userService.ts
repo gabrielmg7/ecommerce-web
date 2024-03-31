@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IUser } from "../../Types/restAPI/IUser";
+import { IUser } from "../../types/restAPI/IUsuario";
 
 const API_BASE_URL = "http://localhost:3003/api";
 

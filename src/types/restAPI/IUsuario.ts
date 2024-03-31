@@ -1,8 +1,8 @@
 import { ICarrinho } from "./ICarrinho";
+import { IEndereco } from "./IEndereco";
 import { IPedido } from "./IPedido";
 
-
-export interface IUser {
+export interface IUsuario {
   id: number;
   nome: string;
   sobrenome?: string;
@@ -11,14 +11,7 @@ export interface IUser {
   email: string;
   dataNascimento: string;
   password: string;
-  endereco: {
-    rua: string;
-    numero: number;
-    bairro: string;
-    complemento?: string;
-    cidade: string;
-    cep: number;
-  };
+  endereco: IEndereco[];
   carrinho: ICarrinho["id"];
   pedidos: IPedido[];
   role: "CLIENT_ROLE" | "ADMIN_ROLE" | "unauth";
@@ -26,7 +19,7 @@ export interface IUser {
   isLoggedIn: boolean;
 }
 
-export const initialUser: IUser = {
+export const initialUser: IUsuario = {
   id: 0,
   nome: "",
   sobrenome: "",
@@ -36,14 +29,7 @@ export const initialUser: IUser = {
   dataNascimento: "",
   carrinho: 0,
   telefone: 0,
-  endereco: {
-    rua: "",
-    numero: 0,
-    bairro: "",
-    complemento: undefined,
-    cidade: "",
-    cep: 0
-  },
+  endereco: [],
   role: "CLIENT_ROLE",
   allowExtraEmails: false,
   isLoggedIn: true,

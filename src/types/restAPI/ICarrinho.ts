@@ -1,9 +1,9 @@
-import { IUser } from "./IUser";
+import { IUsuario } from "./IUsuario";
 import { ItemCarrinho } from "./ItemCarrinho";
 
 export interface ICarrinho {
     id: number;
-    cliente: IUser["id"];
+    idUsuario: IUsuario["id"];
     quantidade: number;
     itens: ItemCarrinho[];
 }
