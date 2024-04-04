@@ -1,17 +1,17 @@
 // ProductContext.tsx
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { getAllProducts } from '../Services/fakeAPI/fakeApiProductService';
-import { IProduct } from '../Types/fakeAPI/type';
+import { getAllProducts } from '../services/fakeAPI/fakeApiProductService';
+import { IProduto } from '../types/restAPI/IProduto';
 
 interface ProductContextProps {
-    produtos: IProduct[] | null;
+    produtos: IProduto[] | null;
     carregarProdutos: () => Promise<void>;
 }
 
 const ProductContext = createContext<ProductContextProps | undefined>(undefined);
 
 export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [produtos, setProdutos] = useState<IProduct[] | null>(null);
+    const [produtos, setProdutos] = useState<IProduto[] | null>(null);
 
     const carregarProdutos = async () => {
         try {

@@ -1,24 +1,24 @@
 import React, { createContext, useContext, useState } from 'react';
-import userApiService from '../Services/restAPI/userService';
-import { ICarrinho } from '../Types/restAPI/ICarrinho';
+import userApiService from '../services/restAPI/userService';
+import { ICarrinho } from '../types/restAPI/ICarrinho';
 import { IPedido } from '../types/restAPI/IPedido';
-import { IUser, initialUser } from '../types/restAPI/IUsuario';
+import { IUsuario, initialUser } from '../types/restAPI/IUsuario';
 
 interface UserContextProps {
-    data: IUser | null;
-    registerUser: (data: IUser) => Promise<void>;
+    data: IUsuario | null;
+    registerUser: (data: IUsuario) => Promise<void>;
     loginUser: (credentials: { email: string; password: string }) => Promise<void>;
     logoutUser: () => void;
-    setData: React.Dispatch<React.SetStateAction<IUser>>;
+    setData: React.Dispatch<React.SetStateAction<IUsuario>>;
     checkAuthentication: () => void;
 }
 
 const UserContext = createContext<UserContextProps | undefined>(undefined);
 
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [data, setData] = useState<IUser>(initialUser);
+    const [data, setData] = useState<IUsuario>(initialUser);
 
-    const registerUser = async (data: IUser) => {
+    const registerUser = async (data: IUsuario) => {
         try {
             await userApiService.create(data);
             console.info('✔ UserProvider.createdata() - Usuário cadastrado.')
@@ -28,7 +28,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
 
     const checkAuthentication = () => {
-        if (data.isLoggedIn && data.role !== 'unauth') {
+        if (data.isLoggedIn && data.role !== 'UNAUTHENTICATED') {
             console.info('🆗 checkAuthentication() - Usuário autenticado com sucesso!')
             setData(prevState => ({
                 ...prevState,

@@ -1,12 +1,12 @@
 import axios, { AxiosResponse } from "axios";
-import { IProduct } from "../../Types/fakeAPI/type";
+import { IProduto } from "../../types/restAPI/IProduto";
 
 const apiUrl = "https://fakestoreapi.com/products";
 
 // Função para obter todos os produtos
-export const getAllProducts = async (): Promise<IProduct[]> => {
+export const getAllProducts = async (): Promise<IProduto[]> => {
   try {
-    const response: AxiosResponse<IProduct[]> = await axios.get(apiUrl);
+    const response: AxiosResponse<IProduto[]> = await axios.get(apiUrl);
     return response.data;
   } catch (error) {
     console.error("Error fetching products:", error);
@@ -17,9 +17,9 @@ export const getAllProducts = async (): Promise<IProduct[]> => {
 // Função para obter um produto por ID
 export const getProductById = async (
   id: number
-): Promise<IProduct | undefined> => {
+): Promise<IProduto | undefined> => {
   try {
-    const response: AxiosResponse<IProduct> = await axios.get(
+    const response: AxiosResponse<IProduto> = await axios.get(
       `${apiUrl}/${id}`
     );
     return response.data;
@@ -31,10 +31,10 @@ export const getProductById = async (
 
 // Função para criar um novo produto
 export const createProduct = async (
-  newProduct: Omit<IProduct, "id">
-): Promise<IProduct> => {
+  newProduct: Omit<IProduto, "id">
+): Promise<IProduto> => {
   try {
-    const response: AxiosResponse<IProduct> = await axios.post(
+    const response: AxiosResponse<IProduto> = await axios.post(
       apiUrl,
       newProduct
     );
@@ -48,10 +48,10 @@ export const createProduct = async (
 // Função para atualizar um produto existente por ID
 export const updateProduct = async (
   id: number,
-  updatedProductData: Partial<IProduct>
-): Promise<IProduct> => {
+  updatedProductData: Partial<IProduto>
+): Promise<IProduto> => {
   try {
-    const response: AxiosResponse<IProduct> = await axios.put(
+    const response: AxiosResponse<IProduto> = await axios.put(
       `${apiUrl}/${id}`,
       updatedProductData
     );

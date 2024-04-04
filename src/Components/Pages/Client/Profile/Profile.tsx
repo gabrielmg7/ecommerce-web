@@ -11,7 +11,6 @@ import { PersonalData } from "./PersonalData";
 const Profile = () => {
     const { data, setData } = useUserContext();
     const [formState, setFormState] = useState<IUsuario>(data ? data : initialUser);
-    const { isValidEmail, isValidCEP, validateEmail, validateCEP } = useFormatValidation();
 
 
     //TODO: inserir comunicação com o back end

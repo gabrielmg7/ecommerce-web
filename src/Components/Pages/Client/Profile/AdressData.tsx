@@ -1,10 +1,12 @@
 import { MarkunreadMailboxTwoTone } from "@mui/icons-material";
 import { Grid, Typography, TextField } from "@mui/material";
 import { useState } from "react";
+import useFormatValidation from "../../../../Hooks/useFormatValidation";
 
 
 export const AdressData = () => {
 
+    const { isValidEmail, isValidCEP, validateEmail, validateCEP } = useFormatValidation();
 
     
 

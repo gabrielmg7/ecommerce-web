@@ -10,8 +10,8 @@ type ProfileButtonProps = {
     isLoggedIn: boolean | undefined}
 
 const ProfileButton: React.FC<ProfileButtonProps> = ({isLoggedIn}) => {
-    const navigate = useNavigate()
-    const { theme } = useThemeContext()
+    const navigate = useNavigate();
+    const { theme } = useThemeContext();
 
     const handleButtonClick = () => {
         if (isLoggedIn) {
