@@ -23,7 +23,7 @@ export const AppAuthenticator = () => {
           navigate('/admin');
           console.info('📞 AppAuthenticator -> Navegando para /admin/*')
           break;
-        case 'unauth':
+        case 'UNAUTHENTICATED':
           navigate('/unauthenticated');
           console.info('📞 AppAuthenticator -> Navegando para /unauthenticated/*')
           break;
