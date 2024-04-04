@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Grid, TextField, Button, Typography } from "@mui/material";
 import { IUsuario, initialUser } from "../../../../types/restAPI/IUsuario";
 import ClientLayout from "../../../Layouts/ClientLayout";
@@ -7,6 +7,7 @@ import { useUserContext } from "../../../../Contexts/UserContext";
 import useFormatValidation from "../../../../Hooks/useFormatValidation";
 import ChangePassword from "./ChangePassword";
 import AssignmentTwoToneIcon from '@mui/icons-material/AssignmentTwoTone';
+import { MarkunreadMailboxTwoTone } from "@mui/icons-material";
 
 const Profile = () => {
     const { data, setData } = useUserContext();
@@ -49,7 +50,8 @@ const Profile = () => {
                 bgcolor={"background.paper"}
                 sx={gridStyle}
             >
-                <Grid item marginBlock={2} paddingInline={1}> {/* Título do formulário */}
+                <Grid item container direction={"row"} gap={1} alignItems={"center"} marginBlock={2} paddingInline={2}> {/* Título do formulário */}
+                    <AssignmentTwoToneIcon color="action" />
                     <Typography color={"text.primary"} variant="h5">
                         Dados Básicos
                     </Typography>
@@ -183,18 +185,19 @@ const Profile = () => {
         return (
             <Grid item container xs sm md lg xl direction={'column'} bgcolor={'background.paper'} sx={gridStyle}>
                 {/* Título do formulário */}
-                <Grid item marginBlock={2} paddingInline={1}>
+                <Grid item container direction={"row"} alignItems={"center"} gap={1} marginBlock={2} paddingInline={2}>
+                    <MarkunreadMailboxTwoTone color="action" />
                     <Typography color={'text.primary'} variant="h5">
                         Endereço
                     </Typography>
                 </Grid>
                 {/* Campos do formulário */}
-                <Grid item container 
-                direction={'row'} 
-                rowSpacing={2} 
-                columnSpacing={1} 
-                justifyContent={'center'}
-                marginBottom={3}
+                <Grid item container
+                    direction={'row'}
+                    rowSpacing={2}
+                    columnSpacing={1}
+                    justifyContent={'center'}
+                    marginBottom={3}
                 >
                     <Grid item xs={11} sm={10} md={6} lg={4}>
                         <TextField
@@ -291,7 +294,7 @@ const Profile = () => {
                     direction={"column"}
                     alignItems={"center"}
                     justifyContent={"center"}
-                    
+
                 >
                     <Grid item container // Dados do Cliente
                         xs={12} sm={10} md={8} lg={6} xl={4}
