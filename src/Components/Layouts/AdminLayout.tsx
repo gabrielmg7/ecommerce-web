@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import Footer from '../Utils/Footer';
 import MenuBar from '../Utils/MenuBar';
+import { Grid } from '@mui/material';
 
 type AdminLayoutProps = {
     children: ReactNode; //Isso significa que você pode passar qualquer elemento React como filho para o componente ClientLayout.
@@ -9,11 +10,17 @@ type AdminLayoutProps = {
 const AdminLayout = ({ children }: AdminLayoutProps) => {
 
     return (
-        <>
-            <MenuBar />
-            {children}
-            <Footer />
-        </>
+        <Grid container direction="column" style={{ minHeight: '100vh' }}>
+            <Grid item>
+                <MenuBar />
+            </Grid>
+            <Grid item xs>
+                {children}
+            </Grid>
+            <Grid item>
+                <Footer />
+            </Grid>
+        </Grid>
     );
 };
 
