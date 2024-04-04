@@ -3,23 +3,19 @@ import { Grid, Button } from "@mui/material";
 import { IUsuario, initialUser } from "../../../../types/restAPI/IUsuario";
 import ClientLayout from "../../../Layouts/ClientLayout";
 import { useUserContext } from "../../../../Contexts/UserContext";
-import useFormatValidation from "../../../../Hooks/useFormatValidation";
-import ChangePassword from "./ChangePassword";
 import { AdressData } from "./AdressData";
+import ChangePassword from "./ChangePassword";
 import { PersonalData } from "./PersonalData";
 
 const Profile = () => {
     const { data, setData } = useUserContext();
     const [formState, setFormState] = useState<IUsuario>(data ? data : initialUser);
 
-
     //TODO: inserir comunicação com o back end
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
         setData(formState);
     };
-
-
 
     const ButtonGroup = () => {
         return (

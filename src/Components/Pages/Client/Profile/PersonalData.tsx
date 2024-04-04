@@ -1,10 +1,10 @@
 import { Grid, Typography, TextField } from "@mui/material";
 import ChangePassword from "./ChangePassword";
-import { DateOfBirthInput } from "./DateOfBirthInput";
 import { useState } from "react";
 import { IUsuario, initialUser } from "../../../../types/restAPI/IUsuario";
 import { useUserContext } from "../../../../Contexts/UserContext";
 import AssignmentTwoToneIcon from '@mui/icons-material/AssignmentTwoTone';
+import { DateOfBirthInput } from "./DateOfBirthInput";
 
 
 export const PersonalData = () => {
