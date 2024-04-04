@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ItemPedido } from "../../Types/restAPI/ItemPedido";
+import { ItemPedido } from "../../types/restAPI/IItemPedido";
 
 const API_BASE_URL = "http://localhost:3003/api";
 

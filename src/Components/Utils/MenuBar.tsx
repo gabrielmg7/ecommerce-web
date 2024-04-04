@@ -7,7 +7,7 @@ import CartButton from '../Pages/Client/Cart/CartDrawer';
 import ToggleThemeButton from '../Buttons/ToggleThemeButton';
 import ProfileButton from '../Buttons/ProfileButton';
 import { useThemeContext } from '../../Themes/ThemeProviderWrapper';
-import { initialUser } from '../../Types/restAPI/IUser';
+import { initialUser } from '../../types/restAPI/IUsuario';
 import AnimatedGrid from './AnimatedGrid';
 import Logo from './Logo/Logo';
 export interface MenuLinksProps {
@@ -163,7 +163,7 @@ const MenuBar: React.FC = () => {
     }
 
     return (
-        <Grid mb={1}>
+        <Grid mb={4}>
             <AppBar position="static" color='transparent'>
                 <AnimatedGrid>
                     <Toolbar>

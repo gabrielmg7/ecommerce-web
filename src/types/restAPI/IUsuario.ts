@@ -2,8 +2,16 @@ import { ICarrinho } from "./ICarrinho";
 import { IEndereco } from "./IEndereco";
 import { IPedido } from "./IPedido";
 
+enum UserRole {
+  CLIENT = "CLIENT_ROLE",
+  ADMIN = "ADMIN_ROLE",
+  UNAUTH = "UNAUTHENTICATED"
+}
 export interface IUsuario {
   id: number;
+  idCarrinho: ICarrinho["id"]; //FK de Carrinho
+  pedidos: IPedido[]; //Array de todos os pedidos para este cliente
+  endereco: IEndereco[]; //Array de Endereços
   nome: string;
   sobrenome?: string;
   cpf: string;
@@ -11,10 +19,7 @@ export interface IUsuario {
   email: string;
   dataNascimento: string;
   password: string;
-  endereco: IEndereco[];
-  carrinho: ICarrinho["id"];
-  pedidos: IPedido[];
-  role: "CLIENT_ROLE" | "ADMIN_ROLE" | "unauth";
+  role: UserRole;
   allowExtraEmails: boolean;
   isLoggedIn: boolean;
 }
@@ -27,10 +32,10 @@ export const initialUser: IUsuario = {
   email: "",
   password: "",
   dataNascimento: "",
-  carrinho: 0,
+  idCarrinho: 0,
   telefone: 0,
   endereco: [],
-  role: "CLIENT_ROLE",
+  role: UserRole.CLIENT,
   allowExtraEmails: false,
   isLoggedIn: true,
   pedidos: [],

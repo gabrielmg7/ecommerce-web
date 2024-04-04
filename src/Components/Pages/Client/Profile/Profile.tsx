@@ -1,22 +1,20 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { Grid, TextField, Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Typography } from "@mui/material";
 import { VisibilityOff, Visibility } from "@mui/icons-material";
-import { IUser, initialUser } from "../../../../Types/restAPI/IUser";
+import { IUser, initialUser } from "../../../../types/restAPI/IUsuario";
 import ClientLayout from "../../../Layouts/ClientLayout";
 import { DateOfBirthInput } from "./DateOfBirthInput";
 import { useUserContext } from "../../../../Contexts/UserContext";
+import useFormatValidation from "../../../../Hooks/useFormatValidation";
+import ChangePassword from "./ChangePassword";
 
 
 const Profile = () => {
     const { data, setData } = useUserContext();
-    const [formState, setFormState] = useState<IUser>(data || initialUser);
+    const [formState, setFormState] = useState<IUser>(data ? data : initialUser);
     const [showPassword, setShowPassword] = React.useState(false);
     const [errors, setErrors] = useState({ email: '', name: '', sobrenome: '' });
-
-    const validateEmail = (email: string) => {
-        const re = /\S+@\S+\.\S+/;
-        return re.test(email);
-    };
+    const { isValidEmail, isValidCEP, validateEmail, validateCEP } = useFormatValidation();
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -25,68 +23,18 @@ const Profile = () => {
             [name]: value
         }));
     };
+
+    //TODO: inserir comunicação com o back end
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
         setData(formState);
-
-        //TODO: inserir comunicação com o back end
-    };
-
-    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormState(prevState => ({
-            ...prevState,
-            senha: value // Atualize o estado apenas para o campo de senha
-        }));
-    };
-
-    const handleRepeatPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormState(prevState => ({
-            ...prevState,
-            repetirSenha: value // Atualiza o estado apenas para o campo de repetição de senha
-        }));
-    };
-
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-
-    const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-    };
-
-    const consultarCEP = async (cep: string) => {
-        // Verifica se o CEP possui o formato correto
-        const cepRegex = /^[0-9]{8}$/;
-        if (!cepRegex.test(cep)) {
-            console.log("Formato de CEP inválido.");
-            return;
-        }
-
-        try {
-            const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-            const data = await response.json();
-            if (data.erro) {
-                console.log("CEP não encontrado na base de dados.");
-                return;
-            }
-            setFormState({
-                ...formState,
-                endereco: {
-                    cidade: data.localidade,
-                    bairro: data.bairro,
-                    rua: data.logradouro,
-                    complemento: data.complemento,
-                    numero: 0,
-                    cep: 0
-                }
-            });
-        } catch (error) {
-            console.error("Ocorreu um erro:", error);
-        }
     };
 
     const PersonalData = () => {
+
+        const handleButtonClick = () => {
+            ChangePassword();
+        };
 
         const gridStyle = {
             width: '100%',
@@ -177,76 +125,9 @@ const Profile = () => {
                                 helperText={errors.email}
                             />
                         </Grid>
-                    </Grid>
-                </Grid>
-                <Grid item marginTop={2} paddingInline={1} > {/*  Título do formulário*/}
-                    <Typography color={"text.primary"} variant="h5">
-                        Alterar Senha
-                    </Typography>
-                </Grid>
-                <Grid item marginBlock={2} > {/*  Alterar a senha */}
 
-                    <Grid item container
-                        direction={"row"}
-                        spacing={1}
-                        justifyContent={"center"}
-                    >
-                        <Grid item xs={11} sm={10} md={6} lg={5.5}> {/*  Campo de nova senha */}
-                            <FormControl fullWidth variant="outlined">
-                                <InputLabel htmlFor="outlined-adornment-password">
-                                    Senha
-                                </InputLabel>
-                                <OutlinedInput
-                                    name="password"
-                                    id="outlined-adornment-password"
-                                    type={showPassword ? 'text' : 'password'}
-                                    value={formState.password}
-                                    onChange={handlePasswordChange}
-                                    fullWidth
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="toggle password visibility"
-                                                onClick={handleClickShowPassword}
-                                                onMouseDown={handleMouseDownPassword}
-                                                edge="end"
-                                            >
-                                                {showPassword ? <VisibilityOff /> : <Visibility />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    }
-                                    label="Senha"
-                                />
-                            </FormControl>
-                        </Grid>
-                        <Grid item xs={11} sm={10} md={6} lg={5.5}> {/*  Repetir nova senha */}
-                            <FormControl fullWidth variant="outlined">
-                                <InputLabel htmlFor="outlined-adornment-password">
-                                    Nova Senha
-                                </InputLabel>
-                                <OutlinedInput
-                                    name="password"
-                                    id="outlined-adornment-password"
-                                    type={showPassword ? 'text' : 'password'}
-                                    value={formState.password}
-                                    onChange={handleRepeatPasswordChange}
-                                    fullWidth
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="toggle password visibility"
-                                                onClick={handleClickShowPassword}
-                                                onMouseDown={handleMouseDownPassword}
-                                                edge="end"
-                                            >
-                                                {showPassword ? <VisibilityOff /> : <Visibility />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    }
-                                    label="Senha"
-                                />
-                            </FormControl>
-                        </Grid>
+                    </Grid>
+                    <Grid item container direction="row" justifyContent="flex-end">
                     </Grid>
 
                 </Grid>
@@ -255,33 +136,64 @@ const Profile = () => {
     };
 
     const AdressData = () => {
+        const [formState, setFormState] = useState({
+            endereco: {
+                cidade: '',
+                bairro: '',
+                rua: '',
+                numero: '',
+                complemento: '',
+                cep: '',
+            },
+        });
+
+        const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+            const { name, value } = e.target;
+            setFormState({
+                endereco: {
+                    ...formState.endereco,
+                    [name]: value,
+                },
+            });
+        };
+
+        const consultarCEP = (cep: string) => {
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then((response) => response.json())
+                .then((data) => {
+                    setFormState({
+                        endereco: {
+                            ...formState.endereco,
+                            cidade: data.localidade,
+                            bairro: data.bairro,
+                            rua: data.logradouro,
+                            // Você pode adicionar mais campos aqui se desejar
+                        },
+                    });
+                })
+                .catch((error) => {
+                    console.error('Erro ao consultar CEP:', error);
+                    alert('CEP inválido ou não encontrado.');
+                });
+        };
+
         const gridStyle = {
             width: '100%',
             height: '100%',
             borderRadius: '2px',
-            boxShadow: '3px 3px 10px rgba(0, 0, 0, 0.1)'
+            boxShadow: '3px 3px 10px rgba(0, 0, 0, 0.1)',
         };
 
         return (
-            <Grid item container
-                xs sm md lg xl
-                direction={"column"}
-                bgcolor={"background.paper"}
-                sx={gridStyle}
-            >
+            <Grid item container xs sm md lg xl direction={'column'} bgcolor={'background.paper'} sx={gridStyle}>
                 {/* Título do formulário */}
                 <Grid item marginBlock={2} paddingInline={1}>
-                    <Typography color={"text.primary"} variant="h5">
+                    <Typography color={'text.primary'} variant="h5">
                         Endereço
                     </Typography>
                 </Grid>
                 {/* Campos do formulário */}
-                <Grid item container
-                    direction={"row"}
-                    rowSpacing={2}
-                    columnSpacing={1}
-                    justifyContent={"center"}
-                >
+                <Grid item container direction={'row'} rowSpacing={2} columnSpacing={1} justifyContent={'center'}>
                     <Grid item xs={11} sm={10} md={6} lg={4}>
                         <TextField
                             name="cidade"
@@ -338,16 +250,9 @@ const Profile = () => {
                             label="CEP"
                             type="text"
                             value={formState.endereco.cep}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-                                const inputElement = e.target as HTMLInputElement;
-                                handleInputChange({
-                                    target: {
-                                        name: inputElement.name,
-                                        value: inputElement.value,
-                                        type: 'text',
-                                        checked: false,
-                                    }
-                                } as React.ChangeEvent<HTMLInputElement>);
+                            onChange={(e) => {
+                                const inputElement = e.target;
+                                handleInputChange(e);
                                 consultarCEP(inputElement.value);
                             }}
                             fullWidth
@@ -365,10 +270,12 @@ const Profile = () => {
                 direction={"row"}
                 justifyContent={"center"}
                 alignItems={"center"}
+                gap={2}
                 mt={2}
                 mb={2}
             >
-                <Button type="submit" color="primary">
+                <ChangePassword />
+                <Button type="submit" color="primary" variant="contained">
                     Salvar
                 </Button>
             </Grid>
@@ -388,7 +295,7 @@ const Profile = () => {
                         alignItems={"center"}
                         justifyContent={"center"}
                         marginBlock={3}
-                        
+
                     >
                         <Typography color={"text.primary"} variant="h4">
                             Minha Conta

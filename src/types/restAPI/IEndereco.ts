@@ -2,7 +2,7 @@ import { IUsuario } from "./IUsuario";
 
 export interface IEndereco {
     id: number;
-    idUsuario: IUsuario["id"];
+    idUsuario: IUsuario["id"]; //FK de Usuário
     cep: string;
     logradouro: string;
     complemento: string;

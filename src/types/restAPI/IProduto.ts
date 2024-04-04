@@ -1,26 +1,28 @@
 import { IAvaliacao } from "./IAvaliacao";
+import { ICategoriaProduto } from "./ICategoriaProduto";
 import { IImagemProduto } from "./IImagemProduto";
 
 
 export interface IProduto {
-    id?: number;
+    id: number;
+    idCategoria: ICategoriaProduto["id"]; //FK de ICategoriaProduto
+    avaliacoes: IAvaliacao[]; //Array de Avaliações 
+    imagens: IImagemProduto[]; //Array de Imagens
     nome: string;
     descricao: string;
     preco: number;
     desconto: number;
-    categoria: string;
     quantidade: number;   
-    avaliacoes: IAvaliacao[];
-    imagens: IImagemProduto[];
 }
 
 export const initialProduto: IProduto = {
+    id: 0,
+    idCategoria: 0,
     nome: "",
     descricao: "",
     preco: 0,
     desconto: 0,
-    categoria: "",
     quantidade: 0,
     avaliacoes: [],
-    imagens: []
+    imagens: [],
 }

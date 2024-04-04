@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { TextField, Button, Typography, Box, Grid, Avatar, Checkbox, CssBaseline, FormControlLabel, Link, Paper } from '@mui/material';
-import { IUser, initialUser } from '../../../Types/restAPI/IUser';
+import { IUser, initialUser } from '../../../types/restAPI/IUsuario';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useUserContext } from '../../../Contexts/UserContext';
 
