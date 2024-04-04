@@ -1,12 +1,12 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
-import { Grid, TextField, Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Typography } from "@mui/material";
+import { Grid, TextField, Button, Typography } from "@mui/material";
 import { IUsuario, initialUser } from "../../../../types/restAPI/IUsuario";
 import ClientLayout from "../../../Layouts/ClientLayout";
 import { DateOfBirthInput } from "./DateOfBirthInput";
 import { useUserContext } from "../../../../Contexts/UserContext";
 import useFormatValidation from "../../../../Hooks/useFormatValidation";
 import ChangePassword from "./ChangePassword";
-
+import AssignmentTwoToneIcon from '@mui/icons-material/AssignmentTwoTone';
 
 const Profile = () => {
     const { data, setData } = useUserContext();
