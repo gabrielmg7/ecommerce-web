@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from 'react';
 import userApiService from '../Services/restAPI/userService';
 import { ICarrinho } from '../Types/restAPI/ICarrinho';
-import { IPedido } from '../Types/restAPI/IPedido';
+import { IPedido } from '../types/restAPI/IPedido';
 import { IUser, initialUser } from '../types/restAPI/IUsuario';
 
 interface UserContextProps {

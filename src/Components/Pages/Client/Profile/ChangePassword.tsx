@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Modal, Backdrop, Fade, Grid, Typography, FormControl, InputLabel, OutlinedInput, InputAdornment, IconButton, Stack, Button } from '@mui/material';
 import { VisibilityOff, Visibility } from '@mui/icons-material';
-import { IUser, initialUser } from '../../../../types/restAPI/IUsuario';
+import { IUsuario, initialUser } from '../../../../types/restAPI/IUsuario';
 import { useUserContext } from '../../../../Contexts/UserContext';
 
 const ChangePassword = () => {
     const { data, setData } = useUserContext();
-    const [formState, setFormState] = useState<IUser>(data ? data : initialUser);
+    const [formState, setFormState] = useState<IUsuario>(data ? data : initialUser);
     const [showPassword, setShowPassword] = useState(false);
     const [open, setOpen] = useState(false);
 

@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { TextField, Button, Typography, Box, Grid, Avatar, Checkbox, CssBaseline, FormControlLabel, Link, Paper } from '@mui/material';
-import { IUser, initialUser } from '../../../types/restAPI/IUsuario';
+import { IUsuario, initialUser } from '../../../types/restAPI/IUsuario';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useUserContext } from '../../../Contexts/UserContext';
 
@@ -21,7 +21,7 @@ function Copyright(props: any) {
 }
 
 const Login = () => {
-    const [formData, setFormData] = useState<IUser>(initialUser);
+    const [formData, setFormData] = useState<IUsuario>(initialUser);
     const userContext = useUserContext();
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

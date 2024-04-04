@@ -1,7 +1,6 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { Grid, TextField, Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Typography } from "@mui/material";
-import { VisibilityOff, Visibility } from "@mui/icons-material";
-import { IUser, initialUser } from "../../../../types/restAPI/IUsuario";
+import { IUsuario, initialUser } from "../../../../types/restAPI/IUsuario";
 import ClientLayout from "../../../Layouts/ClientLayout";
 import { DateOfBirthInput } from "./DateOfBirthInput";
 import { useUserContext } from "../../../../Contexts/UserContext";
@@ -11,7 +10,7 @@ import ChangePassword from "./ChangePassword";
 
 const Profile = () => {
     const { data, setData } = useUserContext();
-    const [formState, setFormState] = useState<IUser>(data ? data : initialUser);
+    const [formState, setFormState] = useState<IUsuario>(data ? data : initialUser);
     const [showPassword, setShowPassword] = React.useState(false);
     const [errors, setErrors] = useState({ email: '', name: '', sobrenome: '' });
     const { isValidEmail, isValidCEP, validateEmail, validateCEP } = useFormatValidation();
@@ -61,6 +60,7 @@ const Profile = () => {
                         rowSpacing={2}
                         columnSpacing={1}
                         justifyContent={"center"}
+                        marginBottom={3}
                     >
                         <Grid item xs={11} sm={10} md={6} lg={5}> {/*  Campo de nome */}
                             <TextField
@@ -125,11 +125,7 @@ const Profile = () => {
                                 helperText={errors.email}
                             />
                         </Grid>
-
                     </Grid>
-                    <Grid item container direction="row" justifyContent="flex-end">
-                    </Grid>
-
                 </Grid>
             </Grid>
         );
@@ -193,7 +189,13 @@ const Profile = () => {
                     </Typography>
                 </Grid>
                 {/* Campos do formulário */}
-                <Grid item container direction={'row'} rowSpacing={2} columnSpacing={1} justifyContent={'center'}>
+                <Grid item container 
+                direction={'row'} 
+                rowSpacing={2} 
+                columnSpacing={1} 
+                justifyContent={'center'}
+                marginBottom={3}
+                >
                     <Grid item xs={11} sm={10} md={6} lg={4}>
                         <TextField
                             name="cidade"
@@ -289,18 +291,8 @@ const Profile = () => {
                     direction={"column"}
                     alignItems={"center"}
                     justifyContent={"center"}
+                    
                 >
-                    <Grid item container // Título
-                        direction={"row"}
-                        alignItems={"center"}
-                        justifyContent={"center"}
-                        marginBlock={3}
-
-                    >
-                        <Typography color={"text.primary"} variant="h4">
-                            Minha Conta
-                        </Typography>
-                    </Grid>
                     <Grid item container // Dados do Cliente
                         xs={12} sm={10} md={8} lg={6} xl={4}
                         justifyContent={"center"}

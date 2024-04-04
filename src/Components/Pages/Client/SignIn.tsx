@@ -12,14 +12,14 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { IUser, initialUser } from '../../../types/restAPI/IUsuario';
+import { IUsuario, initialUser } from '../../../types/restAPI/IUsuario';
 import { useUserContext } from '../../../Contexts/UserContext';
 import { useThemeContext } from '../../../Themes/ThemeProviderWrapper';
 import { ThemeProvider } from '@mui/material';
 
 export default function SignIn() {
     const { theme } = useThemeContext()
-    const [user, setUser] = useState<IUser>(initialUser);
+    const [user, setUser] = useState<IUsuario>(initialUser);
     const userContext = useUserContext();
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
