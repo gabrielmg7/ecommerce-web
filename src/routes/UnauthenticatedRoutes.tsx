@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom"
-import Home from "../Components/Pages/Client/Home";
-import SignIn from "../Components/Pages/Client/SignIn";
-import Login from "../Components/Pages/Client/Login";
-import Sobre from "../Components/Pages/Sobre";
+import Home from "../Components/pages/Client/Home";
+import SignIn from "../Components/pages/Client/SignIn";
+import Login from "../Components/pages/Client/Login";
+import Sobre from "../Components/pages/Sobre";
 
 export const UnauthenticatedRoutes = () => {
     return (

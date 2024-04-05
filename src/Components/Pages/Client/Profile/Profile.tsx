@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Grid, Button } from "@mui/material";
 import { IUsuario, initialUser } from "../../../../types/restAPI/IUsuario";
-import ClientLayout from "../../../Layouts/ClientLayout";
+import ClientLayout from "../../../layouts/ClientLayout";
 import { useUserContext } from "../../../../Contexts/UserContext";
 import { AdressData } from "./AdressData";
 import ChangePassword from "./ChangePassword";

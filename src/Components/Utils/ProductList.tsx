@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardMedia, Typography, Grid, Button, ButtonGroup, Skeleton } from '@mui/material';
 import { useProduct } from '../../Contexts/ProductContext';
 import { IProduct } from '../../Types/fakeAPI/type';
-import AddToCartButton from '../Pages/Client/Cart/AddToCart';
+import AddToCartButton from '../pages/Client/Cart/AddToCart';
 
 // TODO: Lógica para adicionar o item ao carrinho aqui
 const addToCart = () => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import ClientLayout from '../../../Layouts/ClientLayout'
+import ClientLayout from '../../../layouts/ClientLayout'
 import { Grid, Typography } from '@mui/material';
 import MarkunreadMailboxTwoToneIcon from '@mui/icons-material/MarkunreadMailboxTwoTone';
 import LocalMallTwoToneIcon from '@mui/icons-material/LocalMallTwoTone';

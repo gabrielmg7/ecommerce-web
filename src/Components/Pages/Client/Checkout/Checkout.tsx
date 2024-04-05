@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
-import ClientLayout from '../../../Layouts/ClientLayout';
+import ClientLayout from '../../../layouts/ClientLayout';
 import { useUserContext } from '../../../../Contexts/UserContext';
 import AddAddressForm from './AddressForm';
 

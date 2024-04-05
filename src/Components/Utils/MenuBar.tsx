@@ -3,7 +3,7 @@ import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import { useUserContext } from '../../Contexts/UserContext';
-import CartButton from '../Pages/Client/Cart/CartDrawer';
+import CartButton from '../pages/Client/Cart/CartDrawer';
 import ToggleThemeButton from '../Buttons/ToggleThemeButton';
 import ProfileButton from '../Buttons/ProfileButton';
 import { useThemeContext } from '../../Themes/ThemeProviderWrapper';

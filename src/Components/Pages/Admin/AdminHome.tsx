@@ -1,5 +1,5 @@
-import AdminLayout from "../../Layouts/AdminLayout";
-import ProductList from "../../Utils/ProductList";
+import AdminLayout from "../../layouts/AdminLayout";
+import ProductList from "../../utils/ProductList";
 
 const Home = () => {
 

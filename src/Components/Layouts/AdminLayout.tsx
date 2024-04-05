@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
-import Footer from '../Utils/Footer';
-import MenuBar from '../Utils/MenuBar';
+import Footer from '../utils/Footer';
+import MenuBar from '../utils/MenuBar';
 import { Grid } from '@mui/material';
 
 type AdminLayoutProps = {

@@ -1,8 +1,8 @@
 import { Home } from "@mui/icons-material";
 import { Routes, Route } from "react-router-dom";
-import AdminCrudProduto from "../components/Pages/Admin/AdminCrudProduto";
-import AdminListarProdutos from "../components/Pages/Admin/AdminListarProdutos";
-import Sobre from "../components/Pages/Sobre";
+import AdminCrudProduto from "../components/pages/Admin/AdminCrudProduto";
+import AdminListarProdutos from "../components/pages/Admin/AdminListarProdutos";
+import Sobre from "../components/pages/Sobre";
 
 export const AdminRoutes = () => {
     return (

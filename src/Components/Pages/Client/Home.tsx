@@ -1,6 +1,6 @@
-import ClientLayout from "../../Layouts/ClientLayout"
-import BannerFooter from "../../Utils/ShoppingInfoBanner";
-import ProductList from "../../Utils/ProductList";
+import ClientLayout from "../../layouts/ClientLayout"
+import BannerFooter from "../../utils/ShoppingInfoBanner";
+import ProductList from "../../utils/ProductList";
 
 export default function Home() {
     return (
