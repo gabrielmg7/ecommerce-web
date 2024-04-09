@@ -32,6 +32,7 @@ export const DateOfBirthInput: React.FunctionComponent<DateOfBirthInputProps> = 
             value={value}
             onChange={handleInputChange}
             fullWidth
+            size="small"
         />
     );
 };

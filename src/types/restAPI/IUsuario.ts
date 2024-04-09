@@ -18,7 +18,6 @@ export interface IUsuario {
   telefone: number;
   email: string;
   dataNascimento: string;
-  password: string;
   role: UserRole;
   allowExtraEmails: boolean;
   isLoggedIn: boolean;
@@ -30,7 +29,6 @@ export const initialUser: IUsuario = {
   sobrenome: "",
   cpf: "",
   email: "",
-  password: "",
   dataNascimento: "",
   idCarrinho: 0,
   telefone: 0,

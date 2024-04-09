@@ -1,4 +1,4 @@
-import { Grid, Typography, TextField } from "@mui/material";
+import { Grid, Typography, TextField, Checkbox, Button } from "@mui/material";
 import ChangePassword from "./ChangePassword";
 import { useState } from "react";
 import { IUsuario, initialUser } from "../../../../types/restAPI/IUsuario";
@@ -10,13 +10,22 @@ import { DateOfBirthInput } from "./DateOfBirthInput";
 export const PersonalData = () => {
     const { data, setData } = useUserContext();
     const [formState, setFormState] = useState<IUsuario>(data ? data : initialUser);
-    const [errors, setErrors] = useState({ email: '', name: '', sobrenome: '' });
+    const [allowExtraEmails, setAllowExtraEmails] = useState<boolean>(false);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormState(prevState => ({
             ...prevState,
             [name]: value
+        }));
+    };
+
+    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { checked } = e.target;
+        setAllowExtraEmails(checked);
+        setData(prevData => ({
+            ...prevData,
+            allowExtraEmails: checked
         }));
     };
 
@@ -53,30 +62,30 @@ export const PersonalData = () => {
                     justifyContent={"center"}
                     marginBottom={3}
                 >
-                    <Grid item xs={11} sm={10} md={6} lg={5}> {/*  Campo de nome */}
+                    <Grid item xs={11} sm={10} md={6} lg={5}> {/* Textfield Nome */}
                         <TextField
                             name="name"
                             label="Nome"
                             type="text"
                             value={formState.nome}
                             onChange={handleInputChange}
-                            error={Boolean(errors.name)}
                             fullWidth
                             required
+                            size="small"
                         />
                     </Grid>
-                    <Grid item xs={11} sm={10} md={6} lg={6}>{/*  Campo de sobrenome */}
+                    <Grid item xs={11} sm={10} md={6} lg={6}> {/* Textfield Sobrenome */}
                         <TextField
                             name="sobrenome"
                             label="Sobrenome"
                             type="text"
                             value={formState.sobrenome}
                             onChange={handleInputChange}
-                            error={Boolean(errors.sobrenome)}
                             fullWidth
+                            size="small"
                         />
                     </Grid>
-                    <Grid item xs={11} sm={10} md={6} lg={4}>{/*  Campo de CPF */}
+                    <Grid item xs={11} sm={10} md={6} lg={4}> {/* Textfield CPF */}
                         <TextField
                             name="cpf"
                             label="CPF"
@@ -84,15 +93,17 @@ export const PersonalData = () => {
                             value={formState.cpf}
                             onChange={handleInputChange}
                             fullWidth
+                            size="small"
                         />
                     </Grid>
-                    <Grid item xs={11} sm={10} md={6} lg={3}>{/*  Campo de data de nascimento */}
+                    <Grid item xs={11} sm={10} md={6} lg={3}> {/* Textfield Data de Nascimento */}
                         <DateOfBirthInput
                             value={formState.dataNascimento}
                             onChange={handleInputChange}
+
                         />
                     </Grid>
-                    <Grid item xs={11} sm={10} md={6} lg={4}>{/*  Campo de telefone */}
+                    <Grid item xs={11} sm={10} md={6} lg={4}> {/* Textfield Telefone */}
                         <TextField
                             name="telefone"
                             label="Telefone"
@@ -100,10 +111,10 @@ export const PersonalData = () => {
                             value={formState.telefone}
                             onChange={handleInputChange}
                             fullWidth
-
+                            size="small"
                         />
                     </Grid>
-                    <Grid item xs={11} sm={10} md={6} lg={11}> {/*  Campo de email */}
+                    <Grid item xs={11} sm={10} md={6} lg={11}>{/* Textfield E-mail */}
                         <TextField
                             name="email"
                             label="Email"
@@ -112,12 +123,23 @@ export const PersonalData = () => {
                             onChange={handleInputChange}
                             fullWidth
                             required
-                            error={Boolean(errors.email)}
-                            helperText={errors.email}
+                            size="small"
                         />
+                        <Grid item container direction={"row"} alignItems={"center"} mt={1}>
+                            <Checkbox
+                                checked={allowExtraEmails}
+                                onChange={handleCheckboxChange}
+                            />
+                            <Typography variant="body2" color={"text.primary"}>
+                                Deseja receber e-mails de promoções, descontos e novas coleções?
+                            </Typography>
+                        </Grid>
                     </Grid>
+
                 </Grid>
             </Grid>
         </Grid>
+
     );
 };
+

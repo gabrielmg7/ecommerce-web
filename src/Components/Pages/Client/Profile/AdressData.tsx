@@ -1,5 +1,5 @@
 import { MarkunreadMailboxTwoTone } from "@mui/icons-material";
-import { Grid, Typography, TextField } from "@mui/material";
+import { Grid, Typography, TextField, Button } from "@mui/material";
 import { useState } from "react";
 import useFormatValidation from "../../../../hooks/useFormatValidation";
 
@@ -8,7 +8,7 @@ export const AdressData = () => {
 
     const { isValidEmail, isValidCEP, validateEmail, validateCEP } = useFormatValidation();
 
-    
+
 
     const [formState, setFormState] = useState({
         endereco: {
@@ -75,7 +75,7 @@ export const AdressData = () => {
                 justifyContent={'center'}
                 marginBottom={3}
             >
-                <Grid item xs={11} sm={10} md={6} lg={4}>
+                <Grid item xs={11} sm={10} md={6} lg={4}> {/* Textfield Cidade*/}
                     <TextField
                         name="cidade"
                         label="Cidade"
@@ -83,9 +83,10 @@ export const AdressData = () => {
                         value={formState.endereco.cidade}
                         onChange={handleInputChange}
                         fullWidth
+                        size="small"
                     />
                 </Grid>
-                <Grid item xs={11} sm={10} md={6} lg={7}>
+                <Grid item xs={11} sm={10} md={6} lg={7}> {/* Textfield Bairro*/}
                     <TextField
                         name="bairro"
                         label="Bairro"
@@ -93,9 +94,10 @@ export const AdressData = () => {
                         value={formState.endereco.bairro}
                         onChange={handleInputChange}
                         fullWidth
+                        size="small"
                     />
                 </Grid>
-                <Grid item xs={11} sm={10} md={6} lg={9}>
+                <Grid item xs={11} sm={10} md={6} lg={9}> {/* Textfield Rua */}
                     <TextField
                         name="rua"
                         label="Rua"
@@ -103,9 +105,10 @@ export const AdressData = () => {
                         value={formState.endereco.rua}
                         onChange={handleInputChange}
                         fullWidth
+                        size="small"
                     />
                 </Grid>
-                <Grid item xs={11} sm={10} md={6} lg={2}>
+                <Grid item xs={11} sm={10} md={6} lg={2}> {/* Textfield Número*/}
                     <TextField
                         name="numero"
                         label="Número"
@@ -113,9 +116,10 @@ export const AdressData = () => {
                         value={formState.endereco.numero}
                         onChange={handleInputChange}
                         fullWidth
+                        size="small"
                     />
                 </Grid>
-                <Grid item xs={11} sm={10} md={6} lg={8}>
+                <Grid item xs={11} sm={10} md={6} lg={8}> {/* Textfield Complemento */}
                     <TextField
                         name="complemento"
                         label="Complemento"
@@ -123,9 +127,10 @@ export const AdressData = () => {
                         value={formState.endereco.complemento}
                         onChange={handleInputChange}
                         fullWidth
+                        size="small"
                     />
                 </Grid>
-                <Grid item xs={11} sm={10} md={6} lg={3}>
+                <Grid item xs={11} sm={10} md={6} lg={3} > {/* Textfield CEP */}
                     <TextField
                         name="cep"
                         label="CEP"
@@ -137,7 +142,13 @@ export const AdressData = () => {
                             consultarCEP(inputElement.value);
                         }}
                         fullWidth
+                        size="small"
                     />
+                </Grid>
+                <Grid item justifyItems={"center"} alignContent={"center"} >
+                    <Button color="primary" variant="outlined" size="small">
+                        Novo Endereço
+                    </Button>
                 </Grid>
             </Grid>
         </Grid>
