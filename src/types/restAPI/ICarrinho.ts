@@ -9,7 +9,7 @@ export interface ICarrinho {
     criadoEm: string;
 }
 
-const initialCarrinho: ICarrinho = {
+export const initialCarrinho: ICarrinho = {
     id: 0,
     idUsuario: 0,
     itens: [initialItemCarrinho],

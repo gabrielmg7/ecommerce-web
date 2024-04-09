@@ -1,52 +1,75 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext} from 'react';
+import { useState } from 'react';
 import { IProduto } from '../types/restAPI/IProduto';
-import { useUserContext } from './UserContext';
-import { ICarrinho } from '../types/restAPI/ICarrinho';
+import { ICarrinho, initialCarrinho } from '../types/restAPI/ICarrinho';
+import { ItemCarrinho, initialItemCarrinho } from '../types/restAPI/IItemCarrinho';
 
-interface CarrinhoContextProps {
+interface CartContextProps {
     carrinho: ICarrinho | null;
     adicionarProdutoAoCarrinho: (produto: IProduto) => void;
     removerProdutoDoCarrinho: (produtoId: number) => void;
     limparCarrinho: () => void;
 }
 
-const CarrinhoContext = createContext<CarrinhoContextProps | undefined>(undefined);
+const CartContext = createContext<CartContextProps | undefined>(undefined);
 
-export const CarrinhoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const { data: usuarioData } = useUserContext();
-    const [carrinho, setCarrinho] = useState<ICarrinho | null>(null);
+export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+    const [carrinho, setCarrinho] = useState<ICarrinho>(initialCarrinho);
 
-    useEffect(() => {
-        if (usuarioData?.isLoggedIn) {
-            // Se o usuário estiver logado, carregue o carrinho do usuário do backend
-            // Aqui você pode fazer uma solicitação para obter o carrinho do usuário do backend
-            // e definir o estado do carrinho com os produtos do carrinho do usuário
-        }
-    }, [usuarioData]);
-
-    // TODO: Lógica para adicionar um produto ao carrinho
     const adicionarProdutoAoCarrinho = (produto: IProduto) => {
+        // Verificar se o produto já está no carrinho
+        const itemExistente = carrinho.itens.find(item => item.idProduto === produto.id);
+        
+        if (itemExistente) {
+            // Se o produto já estiver no carrinho, atualizar a quantidade
+            const novoCarrinho: ICarrinho = {
+                ...carrinho,
+                itens: carrinho.itens.map(item =>
+                    item.idProduto === produto.id ? { ...item, quantidade: item.quantidade + 1 } : item
+                ),
+                quantidade: carrinho.quantidade + 1
+            };
+            setCarrinho(novoCarrinho);
+        } else {
+          
+            const novoItem: ItemCarrinho = {
+                ...initialItemCarrinho,
+                idProduto: produto.id,
+                quantidade: 1
+            };
+            const novoCarrinho: ICarrinho = {
+                ...carrinho,
+                itens: [...carrinho.itens, novoItem],
+                quantidade: carrinho.quantidade + 1
+            };
+            setCarrinho(novoCarrinho);
+        }
     };
 
-    // TODO: Lógica para remover um produto do carrinho
     const removerProdutoDoCarrinho = (produtoId: number) => {
+        const novoCarrinho: ICarrinho = {
+            ...carrinho,
+            itens: carrinho.itens.filter(item => item.idProduto !== produtoId),
+            quantidade: carrinho.quantidade - 1
+        };
+        setCarrinho(novoCarrinho);
     };
 
-    // TODO: Lógica para limpar o carrinho
     const limparCarrinho = () => {
+        setCarrinho(initialCarrinho);
     };
 
     return (
-        <CarrinhoContext.Provider value={{ carrinho, adicionarProdutoAoCarrinho, removerProdutoDoCarrinho, limparCarrinho }}>
+        <CartContext.Provider value={{ carrinho, adicionarProdutoAoCarrinho, removerProdutoDoCarrinho, limparCarrinho }}>
             {children}
-        </CarrinhoContext.Provider>
+        </CartContext.Provider>
     );
 };
 
-export const useCarrinhoContext = () => {
-    const context = useContext(CarrinhoContext);
+export const useCartContext = () => {
+    const context = useContext(CartContext);
     if (!context) {
-        throw new Error('useCarrinhoContext deve ser usado dentro de um CarrinhoProvider');
+        throw new Error('useCartContext deve ser usado dentro de um CartProvider');
     }
     return context;
 };
