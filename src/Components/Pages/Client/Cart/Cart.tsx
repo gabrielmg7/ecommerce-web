@@ -1,10 +1,10 @@
-import React from 'react'
 import ClientLayout from '../../../layouts/ClientLayout'
 import { Grid, Typography } from '@mui/material';
 import MarkunreadMailboxTwoToneIcon from '@mui/icons-material/MarkunreadMailboxTwoTone';
 import LocalMallTwoToneIcon from '@mui/icons-material/LocalMallTwoTone';
 import FindInPageTwoToneIcon from '@mui/icons-material/FindInPageTwoTone';
 import AddressComponent from './AddressComponent';
+import ProductsComponent from './ProductsComponent';
 
 const Cart = () => {
   return (
@@ -29,9 +29,7 @@ const Cart = () => {
             </Grid>
             {/* Conteúdo da Seção ===================================== */}
             <Grid container direction={'column'}>
-              <AddressComponent/>
-
-
+              <AddressComponent />
             </Grid>
           </Grid>
           {/* Produtos ===================================== */}
@@ -49,8 +47,8 @@ const Cart = () => {
               </Typography>
             </Grid>
             {/* Conteúdo da Seção ===================================== */}
-            <Grid>
-
+            <Grid container direction={'column'}>
+              <ProductsComponent/>
             </Grid>
           </Grid>
         </Grid>
@@ -71,4 +69,3 @@ const Cart = () => {
 };
 
 export default Cart;
-

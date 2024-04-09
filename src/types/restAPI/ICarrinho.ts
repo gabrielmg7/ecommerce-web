@@ -1,5 +1,5 @@
 import { IUsuario } from "./IUsuario";
-import { ItemCarrinho } from "./IItemCarrinho";
+import { ItemCarrinho, initialItemCarrinho } from "./IItemCarrinho";
 
 export interface ICarrinho {
     id: number;
@@ -7,4 +7,12 @@ export interface ICarrinho {
     itens: ItemCarrinho[];
     quantidade: number;
     criadoEm: string;
+}
+
+const initialCarrinho: ICarrinho = {
+    id: 0,
+    idUsuario: 0,
+    itens: [initialItemCarrinho],
+    quantidade: 0,
+    criadoEm: ""
 }
