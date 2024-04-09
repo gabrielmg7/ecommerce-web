@@ -11,7 +11,7 @@ const Cart = () => {
     <ClientLayout>
       <Grid container direction={'row'} justifyContent={'space-evenly'} alignItems={'flex-start'}>
         {/* Coluna 1 ===================================== */}
-        <Grid container direction={'column'} justifyContent='space-evenly' alignItems='center' gap={2} xs={12} sm={11} md={7} lg={7.4} xl={6.4}>
+        <Grid item container direction={'column'} justifyContent='space-evenly' alignItems='center' gap={2} xs={12} sm={11} md={7} lg={7.4} xl={6.4}>
           {/* Endereço de Entrega ===================================== */}
           <Grid item container bgcolor={'background.paper'} padding={2}>
             {/* Título da Seção ===================================== */}

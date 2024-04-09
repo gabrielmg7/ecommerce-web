@@ -8,7 +8,7 @@ const AddressComponent: React.FC = () => {
 
     return (
         <Grid container direction="row" justifyContent="center">
-            <Grid container direction="column" justifyContent="space-evenly" alignItems="flex-start" xs={12} bgcolor="background.card" rowGap={1} paddingInline={1}>
+            <Grid item container direction="column" justifyContent="space-evenly" alignItems="flex-start" xs={12} bgcolor="background.card" rowGap={1} paddingInline={1}>
                 <Grid item container direction="row" justifyContent="flex-start" alignItems="center" gap={1} marginTop={1} >
                     <PlaceIcon color="action" fontSize="small" />
                     <Typography variant="subtitle1" color="text.primary">

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Avatar, Grid, Typography } from '@mui/material';
-import { useCarrinhoContext } from '../../../../contexts/CartContext';
 import { useProduct } from '../../../../contexts/ProductContext';
+import { useCartContext } from '../../../../contexts/CartContext';
 
 const ProductsComponent = () => {
-    const { carrinho } = useCarrinhoContext();
+    const { carrinho } = useCartContext();
     const { produtos } = useProduct();
 
     return (
