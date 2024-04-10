@@ -1,12 +1,12 @@
 import axios, { AxiosResponse } from "axios";
-import { IProduto } from "../../types/restAPI/IProduto";
+import { IProduct } from "../../types/FakeAPI/type";
 
 const apiUrl = "https://fakestoreapi.com/products";
 
 // Função para obter todos os produtos
-export const getAllProducts = async (): Promise<IProduto[]> => {
+export const getAllProducts = async (): Promise<IProduct[]> => {
   try {
-    const response: AxiosResponse<IProduto[]> = await axios.get(apiUrl);
+    const response: AxiosResponse<IProduct[]> = await axios.get(apiUrl);
     return response.data;
   } catch (error) {
     console.error("Error fetching products:", error);
@@ -17,9 +17,9 @@ export const getAllProducts = async (): Promise<IProduto[]> => {
 // Função para obter um produto por ID
 export const getProductById = async (
   id: number
-): Promise<IProduto | undefined> => {
+): Promise<IProduct | undefined> => {
   try {
-    const response: AxiosResponse<IProduto> = await axios.get(
+    const response: AxiosResponse<IProduct> = await axios.get(
       `${apiUrl}/${id}`
     );
     return response.data;
@@ -31,10 +31,10 @@ export const getProductById = async (
 
 // Função para criar um novo produto
 export const createProduct = async (
-  newProduct: Omit<IProduto, "id">
-): Promise<IProduto> => {
+  newProduct: Omit<IProduct, "id">
+): Promise<IProduct> => {
   try {
-    const response: AxiosResponse<IProduto> = await axios.post(
+    const response: AxiosResponse<IProduct> = await axios.post(
       apiUrl,
       newProduct
     );
@@ -48,12 +48,12 @@ export const createProduct = async (
 // Função para atualizar um produto existente por ID
 export const updateProduct = async (
   id: number,
-  updatedProductData: Partial<IProduto>
-): Promise<IProduto> => {
+  updatedProductData: Partial<IProduct>
+): Promise<IProduct> => {
   try {
-    const response: AxiosResponse<IProduto> = await axios.put(
+    const response: AxiosResponse<IProduct> = await axios.put(
       `${apiUrl}/${id}`,
-      updatedProductData
+      updatedProductData    
     );
     return response.data;
   } catch (error) {
@@ -68,6 +68,28 @@ export const deleteProduct = async (id: number): Promise<void> => {
     await axios.delete(`${apiUrl}/${id}`);
   } catch (error) {
     console.error(`Error deleting product with ID ${id}:`, error);
+    throw error;
+  }
+};
+
+// Função para obter todas as categorias de produtos
+export const getAllProductCategories = async (): Promise<IProduct[]> => {
+  try {
+    const response: AxiosResponse<string[]> = await axios.get(`${apiUrl}/categories`);
+    const product: IProduct[] = response.data.map(category => ({
+      id: 0, 
+      title: '', 
+      price: 0, 
+      category: category, 
+      description: '', 
+      image: '' 
+    }));
+    // Remove duplicatas e retorna os produtos únicos
+    return product.filter((product, index, self) =>
+      index === self.findIndex(p => p.category === product.category)
+    );
+  } catch (error) {
+    console.error("Error fetching product categories:", error);
     throw error;
   }
 };

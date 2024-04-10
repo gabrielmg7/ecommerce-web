@@ -1,9 +1,9 @@
 // ProductList.tsx
 import React, { useState } from 'react';
-import { Card, CardContent, CardMedia, Typography, Grid, Button, ButtonGroup, Skeleton } from '@mui/material';
-import { useProduct } from '../../Contexts/ProductContext';
-import { IProduct } from '../../Types/fakeAPI/type';
-import AddToCartButton from '../pages/Client/Cart/AddToCart';
+import { Card, CardContent, CardMedia, Typography, Grid, Skeleton } from '@mui/material';
+import { IProduct } from '../../types/FakeAPI/type';
+import { useProduct } from '../../contexts/ProductContext';
+import AddToCartButton from '../pages/Client/Cart/AddToCartButton';
 
 // TODO: Lógica para adicionar o item ao carrinho aqui
 const addToCart = () => {
@@ -48,7 +48,13 @@ const ProductList: React.FC = () => {
                     {/*================= | card | ================= */}
                     <Card style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                         {/*================= | imagem do produto | ================= */}
-                        <CardMedia component="img" height="230" image={produto.image} alt={produto.title} style={{ objectFit: 'cover' }} />
+                        <CardMedia
+                            component="img"
+                            height="230"
+                            image={produto.image}
+                            alt={produto.title}
+                            style={{ objectFit: 'cover' }}
+                        />
                         {/*================= | conteúdo do card | ================= */}
                         <CardContent style={{ flex: 1 }}>
                             <Typography id="productTitle" variant="h6" color={"text.primary"}>
@@ -67,7 +73,7 @@ const ProductList: React.FC = () => {
                                     </Typography>
                                 </Grid>
                                 <Grid item>
-                                        <AddToCartButton onClick={addToCart} />
+                                    <AddToCartButton onClick={addToCart} />
                                 </Grid>
                             </Grid>
                         </CardContent>
