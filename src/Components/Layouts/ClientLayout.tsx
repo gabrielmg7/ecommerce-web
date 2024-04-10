@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import Footer from '../utils/Footer';
-import MenuBar from '../utils/MenuBar';
+import MenuBar from '../utils/MenuBar/MenuBar';
 import { Grid } from '@mui/material';
 
 type ClientLayoutProps = {
