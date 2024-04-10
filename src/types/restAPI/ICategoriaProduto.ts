@@ -5,7 +5,7 @@ export interface ICategoriaProduto {
     imagem?: Uint8Array; //Array de bytes
 }
 
-const initialCategoriaProduto: ICategoriaProduto = {
+export const initialCategoriaProduto: ICategoriaProduto = {
     id: 0,
     nome: "",
     descricao: ""

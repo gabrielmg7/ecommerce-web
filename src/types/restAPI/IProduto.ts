@@ -1,13 +1,14 @@
+import { IProduct } from "../FakeAPI/type";
 import { IAvaliacao } from "./IAvaliacao";
 import { ICategoriaProduto } from "./ICategoriaProduto";
-import { IImagemProduto } from "./IImagemProduto";
-
+import { IImagemProduto, initialImagemProduto } from "./IImagemProduto";
 
 export interface IProduto {
     id: number;
-    idCategoria: ICategoriaProduto["id"]; //FK de ICategoriaProduto
-    avaliacoes: IAvaliacao[]; //Array de Avaliações 
-    imagens: IImagemProduto[]; //Array de Imagens
+    idCategoria: ICategoriaProduto["id"]; // FK de ICategoriaProduto
+    avaliacoes: IAvaliacao[]; // Array de Avaliações 
+    imagemPrincipal: IImagemProduto; // Imagem principal
+    outrasImagens: IImagemProduto[]; // Outras imagens
     nome: string;
     descricao: string;
     preco: number;
@@ -24,5 +25,7 @@ export const initialProduto: IProduto = {
     desconto: 0,
     quantidade: 0,
     avaliacoes: [],
-    imagens: [],
-}
+    imagemPrincipal: initialImagemProduto,
+    outrasImagens: [],
+};
+
